@@ -1,0 +1,28 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 20/11/2017, 03:19:20 PM
+    Author     : clan-
+*/
+
+    .modal {
+        text-align: left;
+    }
+
+    @media screen and (min-width: 768px) { 
+        .modal:before {
+            display: inline-block;
+            vertical-align: middle;
+            content: " ";
+            height: 100%;
+        }
+    }
+
+    .modal-dialog {
+        display: inline-block;
+        text-align: left;
+        vertical-align: middle;
+    }
