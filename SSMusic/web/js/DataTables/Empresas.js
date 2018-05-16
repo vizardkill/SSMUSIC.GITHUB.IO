@@ -66,7 +66,7 @@ $(document).ready(function () {
                 className: 'btn btn-success btn-sm m-5 width-140 assets-select-btn export-print',
                 action: function (e, dt, node, config) {
                     alert("llego aki");
-                    
+
 
                     $.fn.DataTable.ext.buttons.excelHtml5.action.call(this, e, dt, node, config);
                 }
@@ -78,7 +78,7 @@ $(document).ready(function () {
                 className: 'btn btn-info btn-sm m-5 width-140 assets-select-btn export-print',
                 action: function (e, dt, node, config) {
                     alert("llego aki");
-                    
+
 
                     $.fn.DataTable.ext.buttons.csvHtml5.action.call(this, e, dt, node, config);
                 }
@@ -109,10 +109,21 @@ $(document).ready(function () {
         }
     });
     $(document).on('click', '.btn_delete', function () {
-        var id = $(this).attr('id');
-        var row = $(this).parent().parent();
-        var nombre = $(this).parents("tr").find("td")[1].innerHTML;
-        $('#Estudiante').html(nombre);
+        if (confirm("Desea eliminar al usuario?")) {
+            var data = table.row($(this).parents('tr')).data();
+            data = data.id;
+            $.post("Datos?peticion=Eliminar", {Id: data}, function (result) {
+                if (result) {
+                    $('#table_usuarios').DataTable().ajax.reload();
+                    alert("El usuario fue eliminado con exito!");
+                } else {
+                    alert("No funciono");
+                }
+            }, 'json');
+
+        } else {
+            alert("presiono cancelar chupapija");
+        }
     });
 });
 function Empresasformat(d) {
