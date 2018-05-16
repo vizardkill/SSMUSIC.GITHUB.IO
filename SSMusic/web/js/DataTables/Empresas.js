@@ -112,9 +112,9 @@ $(document).ready(function () {
         if (confirm("Desea eliminar al usuario?")) {
             var data = table.row($(this).parents('tr')).data();
             data = data.id;
-            $.post("Datos?peticion=Eliminar", {Id: data}, function (result) {
+            $.post("../../Datos?peticion=EliminarEmpresa", {Id: data}, function (result) {
                 if (result) {
-                    $('#table_usuarios').DataTable().ajax.reload();
+                    $('#table_Empresas').DataTable().ajax.reload();
                     alert("El usuario fue eliminado con exito!");
                 } else {
                     alert("No funciono");
@@ -122,7 +122,7 @@ $(document).ready(function () {
             }, 'json');
 
         } else {
-            alert("presiono cancelar chupapija");
+            alert("presiono cancelar");
         }
     });
 });

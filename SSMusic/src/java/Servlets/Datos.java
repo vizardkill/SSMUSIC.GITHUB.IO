@@ -5,7 +5,10 @@
  */
 package Servlets;
 
+import Controladores.controller_emp;
 import Metodos.Json_Datos;
+import Modelo.Empresa;
+import com.google.gson.JsonObject;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -79,6 +82,20 @@ public class Datos extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("application/json;charset=UTF-8");
+        String peticion = request.getParameter("peticion");
+        if (peticion.equals("EliminarEmpresa")) {
+            controller_emp cemp = new controller_emp();
+            Empresa emp = new Empresa();
+            emp.setId_emp(Integer.parseInt(request.getParameter("Id")));
+            boolean result = cemp.deleteEmpresa(emp);
+
+            com.google.gson.JsonObject json = new JsonObject();
+            JsonObject item = new JsonObject();
+            item.addProperty("result", result);
+            json.add("result", item);
+            response.getWriter().write(json.toString());
+        }
 
     }
 
@@ -92,5 +109,3 @@ public class Datos extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 }
-
-
