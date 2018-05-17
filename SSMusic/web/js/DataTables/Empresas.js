@@ -111,7 +111,7 @@ $(document).ready(function () {
     $(document).on('click', '.btn_delete', function () {
         if (confirm("Desea eliminar al usuario?")) {
             var data = table.row($(this).parents('tr')).data();
-            data = data.id;
+            data = data.Id;
             $.post("../../Datos?peticion=EliminarEmpresa", {Id: data}, function (result) {
                 if (result) {
                     $('#table_Empresas').DataTable().ajax.reload();
