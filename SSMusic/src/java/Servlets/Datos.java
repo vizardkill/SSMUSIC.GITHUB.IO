@@ -89,6 +89,7 @@ public class Datos extends HttpServlet {
         if (peticion.equals("EliminarEmpresa")) {
             controller_emp cemp = new controller_emp();
             Empresa emp = new Empresa();
+            System.out.println("Id empresa: "+ request.getParameter("Id"));
             emp.setId_emp(Integer.parseInt(request.getParameter("Id")));
             boolean result = cemp.deleteEmpresa(emp);
 

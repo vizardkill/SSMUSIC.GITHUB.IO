@@ -1,5 +1,5 @@
 var xMLHttpRequest = new XMLHttpRequest();
-var id_user = document.getElementById("iduser").innerHTML;
+
             function RegistrarUsuario() {
                
                var USERNAME = document.getElementById("USERNAME").value;
@@ -11,7 +11,7 @@ var id_user = document.getElementById("iduser").innerHTML;
                var CORREO = document.getElementById("CORREO").value;
                var TELEFONO = document.getElementById("TELEFONO").value;
                var DIRECCION = document.getElementById("DIRECCION").value;
-                xMLHttpRequest.open("Post", "../../Registros?USERNAME="+USERNAME+"&PASS="+PASS+"&NOMBRES="+NOMBRES+"&APELLIDO1="+APELLIDO1+"&APELLIDO2="+APELLIDO2+"&DOCUMENTO="+DOCUMENTO+"&CORREO="+CORREO+"&TELEFONO="+TELEFONO+"&ID_USUARIO_LOG="+id_user+"&DIRECCION="+DIRECCION+"&RegistroOperario=true", true);
+                xMLHttpRequest.open("Post", "../../Registros?USERNAME="+USERNAME+"&PASS="+PASS+"&NOMBRES="+NOMBRES+"&APELLIDO1="+APELLIDO1+"&APELLIDO2="+APELLIDO2+"&DOCUMENTO="+DOCUMENTO+"&CORREO="+CORREO+"&TELEFONO="+TELEFONO+"&ID_USUARIO_LOG="+id_user+"&DIRECCION="+DIRECCION+"&peticion=Reg_Operario", true);
                 xMLHttpRequest.onreadystatechange = PostRegistrarUsuario;
                 xMLHttpRequest.send(null);
                 

@@ -1,5 +1,5 @@
 var xMLHttpRequest = new XMLHttpRequest();
-var id_user = document.getElementById("iduser").innerHTML;
+
 
 
 

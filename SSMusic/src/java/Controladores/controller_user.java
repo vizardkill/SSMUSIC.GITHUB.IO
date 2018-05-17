@@ -7,6 +7,7 @@ package Controladores;
 
 import DAO.DAO_Usuario;
 import DAO.IUsuario_DAO;
+import Metodos.SegurityPass;
 import Modelo.Usuario;
 import java.util.List;
 
@@ -20,6 +21,11 @@ public class controller_user {
     }
 
     public boolean registerUser(Usuario user) {
+        SegurityPass md5 = new SegurityPass();
+        
+        String hash = md5.getMD5(user.getPass());
+        user.setPass(hash);
+        
         IUsuario_DAO udao = new DAO_Usuario();
         boolean result = udao.setUser(user);
         return result;
@@ -36,9 +42,14 @@ public class controller_user {
     }
 
     public Usuario getOneUser(Usuario user) {
+        SegurityPass md5 = new SegurityPass();
+       String hash = md5.getMD5(user.getPass());
+        user.setPass(hash);
+        
         Usuario users;
         IUsuario_DAO udao = new DAO_Usuario();
         users = udao.getOneUser(user);
+        
         return users;
     }
 
