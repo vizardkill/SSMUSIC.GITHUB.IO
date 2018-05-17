@@ -31,7 +31,7 @@ public class Json_Datos {
         for (Empresa x : listEmp) {
             JsonObject item = new JsonObject();
             //Datos de la Tabla
-            item.addProperty("id", x.getId_emp());
+            item.addProperty("Id", x.getId_emp());
             item.addProperty("NIT_Empresa", x.getNIT_emp());
             item.addProperty("Nom_Empresa", x.getNom_emp());
             item.addProperty("Tipo_operacion", x.getTipo_operacion());
@@ -67,13 +67,13 @@ public class Json_Datos {
 
             JsonObject item = new JsonObject();
 
-            item.addProperty("ID_ARTISTA", resultado.getId());
+            item.addProperty("Id", resultado.getId());
             item.addProperty("img_artista", "<img src='" + resultado.getSrc() + "' class='img-responsive img-circle' style='height:30px; width:30px'>");
             item.addProperty("FECHA_REGISTRO_ART", resultado.getFecha_registro_art());
             item.addProperty("acciones", ""
                     + "<div class='btn-group'>"
                     + "<button type='button' id='" + resultado.getId() + "' style='width:40px; height:34px' title='Modificar Registro' class='btn btn-xs btn-primary' data-toggle='modal' data-target='#Modal_RegistrarEmp' data-id='1' data-accion='Observacion'> <i class='icon_pencil-edit'></i></button> "
-                    + "<button type='button' id='" + resultado.getId() + "' style='width:40px; height:34px' title='Eliminar Registro' class='btn btn-xs btn-danger btn_delete' data-toggle='modal' data-target='#ModalEliminar' data-id='1' data-accion='Eliminar'><i class='icon_trash'></i></button>"
+                    + "<button type='button' id='" + resultado.getId() + "' style='width:40px; height:34px' title='Eliminar Registro' class='btn btn-xs btn-danger btn_delete' name='btn_delete'><i class='icon_trash'></i></button>"
                     + "</div>");
             resultado.getSrc();
 

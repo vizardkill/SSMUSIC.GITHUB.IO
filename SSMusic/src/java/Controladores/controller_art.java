@@ -30,9 +30,10 @@ public class controller_art {
         adao.updateArtista(art);
     }
 
-    public void deleteUser(Artista art) {
+    public boolean deleteUser(Artista art) {
         IArtista_DAO adao = new DAO_Artista();
-        adao.deleteArtista(art);
+        boolean result = adao.deleteArtista(art);
+        return result;
     }
 
     public ArrayList<Artista> getUsers() {

@@ -2,6 +2,17 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/D:/Documents/NetBeansProjects/PPI/SSMusic/src/java/Servlets/Registros.java</file>
+            <file>file:/D:/Documents/NetBeansProjects/PPI/SSMusic/src/java/DAO/IArtista_DAO.java</file>
+            <file>file:/D:/Documents/NetBeansProjects/PPI/SSMusic/src/java/Servlets/Datos.java</file>
+            <file>file:/D:/Documents/NetBeansProjects/PPI/SSMusic/src/java/Metodos/Json_Datos.java</file>
+            <file>file:/D:/Documents/NetBeansProjects/PPI/SSMusic/web/js/Validator/Artista.js</file>
+            <file>file:/D:/Documents/NetBeansProjects/PPI/SSMusic/web/js/DataTables/Artistas.js</file>
+            <file>file:/D:/Documents/NetBeansProjects/PPI/SSMusic/src/java/Controladores/controller_art.java</file>
+            <file>file:/D:/Documents/NetBeansProjects/PPI/SSMusic/web/js/Validator/Empresa.js</file>
+            <file>file:/D:/Documents/NetBeansProjects/PPI/SSMusic/web/js/DataTables/Empresas.js</file>
+            <file>file:/D:/Documents/NetBeansProjects/PPI/SSMusic/src/java/DAO/DAO_Artista.java</file>
+        </group>
     </open-files>
 </project-private>

@@ -107,10 +107,21 @@ $(document).ready(function () {
         }
     });
     $(document).on('click', '.btn_delete', function () {
-        var id = $(this).attr('id');
-        var row = $(this).parent().parent();
-        var nombre = $(this).parents("tr").find("td")[1].innerHTML;
-        $('#Estudiante').html(nombre);
+        if (confirm("Desea eliminar al usuario?")) {
+            var data = table.row($(this).parents('tr')).data();
+            data = data.Id;
+            $.post("../../Datos?peticion=EliminarArtista", {Id: data}, function (result) {
+                if (result) {
+                    $('#table_Artistas').DataTable().ajax.reload();
+                    alert("El usuario fue eliminado con exito!");
+                } else {
+                    alert("No funciono");
+                }
+            }, 'json');
+
+        } else {
+            alert("presiono cancelar");
+        }
     });
 });
 function Artistasformat(d) {

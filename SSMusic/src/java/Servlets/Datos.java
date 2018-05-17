@@ -5,8 +5,10 @@
  */
 package Servlets;
 
+import Controladores.controller_art;
 import Controladores.controller_emp;
 import Metodos.Json_Datos;
+import Modelo.Artista;
 import Modelo.Empresa;
 import com.google.gson.JsonObject;
 import java.io.IOException;
@@ -95,6 +97,19 @@ public class Datos extends HttpServlet {
             item.addProperty("result", result);
             json.add("result", item);
             response.getWriter().write(json.toString());
+        }
+        if (peticion.equals("EliminarArtista")) {
+            controller_art cart = new controller_art();
+            Artista art = new Artista();
+            System.out.println(request.getParameter("Id"));
+            art.setId(Integer.parseInt(request.getParameter("Id")));
+            boolean result = cart.deleteUser(art);
+            
+            com.google.gson.JsonObject json = new JsonObject();
+            JsonObject item = new JsonObject();
+            item.addProperty("result", result);
+            json.add("result", item);
+            response.getWriter().write(json.toString());    
         }
 
     }
