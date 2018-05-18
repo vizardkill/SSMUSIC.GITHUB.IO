@@ -98,20 +98,16 @@ public class Registros extends HttpServlet {
         if (peticion.equals("Reg_Empresa")) {
             response.getWriter().write(RegistroEmpresa(request, response));
         }
-        if (request.getParameter("RegistroEmpresa") != null) {
-            response.setContentType("text/html");
-            response.getWriter().write(RegistroEmpresa(request, response));
-        }
         if (peticion.equals("Reg_Artista")) {
             response.getWriter().write(RegistroArtista(request, response));
         }
+        if (peticion.equals("Reg_Operarios")) {
+            response.getWriter().write(RegistroOperario(request, response));
+        }
+
         if (peticion.equals("listarEmpresa")) {
             response.setContentType("text/html");
             response.getWriter().write(listarEmpresas(request, response));
-        }
-        if (peticion.equals("Reg_Operarios")) {
-            response.setContentType("text/html");
-            response.getWriter().write(RegistroOperario(request, response));
         }
 
     }
@@ -198,8 +194,6 @@ public class Registros extends HttpServlet {
         return item.toString();
     }
 
-    ;
-    
     public String listarEmpresas(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         System.out.println("entro al servlet");
@@ -233,7 +227,6 @@ public class Registros extends HttpServlet {
         return array.toString();
     }
 
-    
     public String RegistroOperario(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession(true);
@@ -247,7 +240,7 @@ public class Registros extends HttpServlet {
             Log log = new Log();
             Usuario user = new Usuario();
             user.setId(1);
-            user.setId_empresa(2);
+            user.setId_empresa(1);
             user.setTipo_perfil("Oper");
             user.setUsername(request.getParameter("USERNAME"));
             user.setPass(request.getParameter("PASS"));
@@ -260,15 +253,14 @@ public class Registros extends HttpServlet {
             user.setDireccion(request.getParameter("DIRECCION"));
             user.setFecha_registro(FECHA_REGISTRO);
 
-            int id_user = (Integer) session.getAttribute("ID_USUARIO");
-            log.setId_usuario_log(id_user);
-
+            // int id_user = (Integer) session.getAttribute("ID_USUARIO");
+            //log.setId_usuario_log(id_user);
             controller_user edao = new controller_user();
             boolean result = edao.registerUser(user);
-            controller_log logdao = new controller_log();
-            if (result) {
+            //controller_log logdao = new controller_log();
+            /* if (result) {
                 logdao.registerLog(log);
-            }
+            }*/
 
             item.addProperty("result", result);
 
@@ -297,7 +289,7 @@ public class Registros extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         // Create path components to save the file
-        String ruta = "D:\\Documents\\NetBeansProjects\\HTML\\SSMusic\\web\\img\\Icons_art\\";
+        String ruta = "D:\\Documents\\NetBeansProjects\\SSMusic\\web\\img\\Icons_art\\";
         final String path = ruta;
         final Part filePart = request.getPart("Img_art-0");
         final String fileName = getFileName(filePart);

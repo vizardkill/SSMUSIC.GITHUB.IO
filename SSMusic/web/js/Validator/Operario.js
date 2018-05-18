@@ -125,7 +125,7 @@ $(document).ready(function () {
                 $.post($form.attr('action'), $form.serialize(), function (result) {
                     if (result) {
                         $('#table_Operarios').DataTable().ajax.reload();
-                        $('#ErrorRegistroOp').text('Empresa registrada con Exito');
+                        $('#ErrorRegistroOp').text('Operario Registrado con exito');
                     } else {
                         $('#ErrorRegistroOp').text('Hubo problemas con el Registro');
                     }
