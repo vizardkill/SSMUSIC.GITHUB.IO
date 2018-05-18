@@ -1,9 +1,9 @@
 $(document).ready(function () {
     $('#Reg_Operarios').bootstrapValidator({
         feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
+            valid: 'fa fa-check',
+            invalid: 'fa fa-times',
+            validating: 'fa fa-refresh'
         },
         fields: {
             USERNAME: {
@@ -108,7 +108,7 @@ $(document).ready(function () {
 
             .on('success.form.bv', function (e) {
                 $('#success_message').slideDown({opacity: "show"}, "slow"); // Do something ...
-                $('#Reg_Empresa').data('bootstrapValidator').resetForm();
+                $('#Reg_Operarios').data('bootstrapValidator').resetForm();
 
 
 
@@ -124,20 +124,14 @@ $(document).ready(function () {
                 // Use Ajax to submit form data
                 $.post($form.attr('action'), $form.serialize(), function (result) {
                     if (result) {
-                        $('#table_Empresas').DataTable().ajax.reload();
-                        $('#Error_ReEmp').text('Empresa registrada con Exito');
+                        $('#table_Operarios').DataTable().ajax.reload();
+                        $('#ErrorRegistroOp').text('Empresa registrada con Exito');
                     } else {
-                        $('#Error_ReEmp').text('Hubo problemas con el Registro');
+                        $('#ErrorRegistroOp').text('Hubo problemas con el Registro');
                     }
                     setTimeout(function () {
-                        $('#Modal_RegistrarEmp').modal('hide');
+                        $('#Modal_RegistrarOp').modal('hide');
                     }, 2000);
-                    /*if (result) {
-                     $('#Error_ReEmp').text('Empresa Registrada con exito');
-                     } else {
-                     $('#Error_ReEmp').text('Hubo un problema');  
-                     }*/
-
                 }, 'json');
             });
 

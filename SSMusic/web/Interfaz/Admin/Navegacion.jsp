@@ -13,16 +13,15 @@
 <meta name="author" content="GeeksLabs">
 <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
 
-<link href="../../css/bootstrap.min.css" rel="stylesheet">
+
+<link href="../../css/bootstrap.css" rel="stylesheet" type="text/css"/>
 <link href="../../css/bootstrap-theme.css" rel="stylesheet">
-<link href="../../css/elegant-icons-style.css" rel="stylesheet" />
-<link href="../../css/font-awesome.min.css" rel="stylesheet" />
+<link href="../../css/fontawesome-all.css" rel="stylesheet" type="text/css"/>
+<link href="../../css/elegant-icons-style.css" rel="stylesheet" type="text/css"/>
 <link href="../../css/interfaz.css" rel="stylesheet">
 <link href="../../css/style-responsive.css" rel="stylesheet" />
 <link href="../../css/modal.css" rel="stylesheet" type="text/css"/>
 <link href="../../css/main.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Lato:400,900" rel="stylesheet">
-<link href="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.16/af-2.2.2/b-1.5.1/b-colvis-1.5.1/b-flash-1.5.1/b-html5-1.5.1/b-print-1.5.1/cr-1.4.1/fc-3.2.4/fh-3.1.3/kt-2.3.2/r-2.2.1/rg-1.0.2/sc-1.4.4/datatables.min.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css"/>
 
 
@@ -105,10 +104,7 @@
 
 <!--sidebar end-->
 <script src="https://code.jquery.com/jquery-3.3.1.js" type="text/javascript" ></script>
-<script src="../../js/jquery-1.8.3.min.js" type="text/javascript"></script>
-<script src="../../js/jquery-ui-1.10.4.min.js" type="text/javascript" ></script>
-<script src="../../js/jquery-ui-1.9.2.custom.min.js" type="text/javascript" ></script>
-<script src="../../js/bootstrap.min.js" type="text/javascript" ></script>
+<script src="../../js/bootstrap.js" type="text/javascript"></script>
 <script src="../../js/jquery.scrollTo.min.js" type="text/javascript" ></script>
 <script src="../../js/jquery.nicescroll.js" type="text/javascript"></script>
 <script src="../../js/jquery.customSelect.min.js" type="text/javascript" ></script>

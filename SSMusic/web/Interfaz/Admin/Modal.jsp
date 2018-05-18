@@ -11,11 +11,13 @@
 <link href="../../css/interfaz.css" rel="stylesheet" type="text/css"/>
 
 
+
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="Modal_RegistrarEmp" >
     <div class="modal-dialog modal-lg" role="document">
 
-        <form id="Reg_Empresa" class="" action="../../Registros?peticion=Reg_Empresa" >
-            <div class="modal-content">
+
+        <div class="modal-content">
+            <form id="Reg_Empresa" class="form form-inline" action="../../Registros?peticion=Reg_Empresa" >
 
                 <div class="modal-header">
                     <div class="form_top">
@@ -28,58 +30,45 @@
                     <div class="container-fluid">
                         <span id="Error_ReEmp" name="Error_ReEmp" style="color: #ff0000"></span>
 
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-3">
+                        <div class="col-md-12">
+                            <div class="form-group col-md-6">
                                 <label for="NIT_EMPRESA_D" class="control-label">Nit: </label>
                                 <input name="NIT_EMPRESA_D" id='NIT_EMPRESA_D' type='text' placeholder="Nit" class="form-control input"/>
                             </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-sm-6">
+                            <div class="form-group col-sm-6">
                                 <label for="NOM_EMPRESA_D" class="control-label">Nombre: </label>
                                 <input name="NOM_EMPRESA_D" id='NOM_EMPRESA_D' type='text' placeholder="Nombre Empresa" class="form-control input"/>
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <div class="col-sm-6">
+                        <div class="col-md-12">
+                            <div class="form-group col-sm-6">
                                 <label for="NOM_ENCARGADO_D" class="control-label">Nombre Encargado: </label>
                                 <input name="NOM_ENCARGADO_D" id='NOM_ENCARGADO_D'  type='text' placeholder="Nombre Encargado" class="form-control input"/>
                             </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-sm-6">
+                            <div class="form-group col-sm-6">
                                 <label for="DOC_ENCARGADO_D" class="control-label">Documento Encargado: </label>
                                 <input name="DOC_ENCARGADO_D" id='DOC_ENCARGADO_D'  type='text' placeholder="Documento Encargado" class="form-control input"/>
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <div class="col-sm-6">
+                        <div class="col-md-12">
+                            <div class="form-group col-sm-6">
                                 <label for="TEL_ENCARGADO_D" class="control-label">Telefono: </label>
                                 <input name="TEL_ENCARGADO_D" id='TEL_ENCARGADO_D' type='text' placeholder="Telefono Encargado" class="form-control input"/>
                             </div>
-                        </div>
-
-
-                        <div class="form-group">
-                            <div class="col-sm-6">
+                            <div class="form-group col-sm-6">
                                 <label for="COR_ENCARGADO_D" class="control-label">Correo: </label>
                                 <input name="COR_ENCARGADO_D" id='COR_ENCARGADO_D' type='text' placeholder="Correo Encargado" class="form-control input"/>
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <div class="col-sm-6">
+                        <div class="col-md-12">
+                            <div class="form-group col-sm-6">
                                 <label for="TIPO_OPERACION_D" class="control-label">Tipo Operacion </label>
                                 <input name="TIPO_OPERACION_D" id='TIPO_OPERACION_D' type='text' placeholder="Tipo de Operacion" class="form-control input"/>
                             </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-sm-6">
+                            <div class="form-group col-sm-6">
                                 <label for="VALOR_OPERACION_D" class="control-label">Valor Operacion </label>
                                 <input name="VALOR_OPERACION_D" id='VALOR_OPERACION_D' type='text' placeholder="Valor Operacion" class="form-control input"/>
                             </div>
@@ -91,16 +80,18 @@
                     <button id="RegistroEmpresa" type="submit" class="btn btn-default" name="RegistroEmpresa">Registrar</button>
                     <button id="btn_emp_close" type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
+
     </div>
 </div>
 <!--Modal Registro Artista -->                     
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="Modal_RegistrarArt" >
     <div class="modal-dialog modal-lg" role="document">
-        <form class="form" action="../../Registros?peticion=Reg_Artista" id="Reg_Artistas" enctype="multipart/form-data">
 
-            <div class="modal-content">
+
+        <div class="modal-content">
+            <form class="form form-inline" action="../../Registros?peticion=Reg_Artista" id="Reg_Artistas" enctype="multipart/form-data">
                 <div class="modal-header">
                     <div class="form_top">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -110,59 +101,48 @@
 
 
                 <div class="modal-body" >
-                    <div class="container-fluid" >
+                    <div class="container-fluid">
                         <span id="Error_ReArt" name="Error_ReArt" style="color: #ff0000"></span>
 
-                        <div class="col-sm-12">
-                            <div class="form-group">
-                                <div class="col-sm-12">
-                                    <label for="ID_ARTISTA" class='control-label'>Empresa: </label>
-                                    <select id="select_empresas" name="select_empresas" class="form-control input select" >
-                                        <option value=" ">Seleccione una empresa</option>
-                                    </select>
-                                </div>
+                        <div class="col-sm-12">    
+                            <div class="form-group col-md-6">
+                                <label for="ID_ARTISTA" class="control-label">Empresa: </label>
+                                <select id="select_empresas" name="select_empresas" class="form-control input select" >
+                                    <option value=" ">Seleccione una empresa</option>
+                                </select>
                             </div>
+                            <div class="form-group col-sm-6">  
+                                <label for="NOM_ARTISTA" class="control-label">Nombre Artista: </label>
+                                <input name="NOM_ARTISTA" id='NOM_ARTISTA' type='text' placeholder="Nombre Artista" class="form-control input"/>      
+                            </div>
+                        </div>
 
+                        <div class="col-md-12">
+                            <div class="form-group col-sm-6">       
+                                <label for="NOM_REPRESENTANTE" class="control-label">Nombre Representante: </label>
+                                <input name="NOM_REPRESENTANTE" id='NOM_REPRESENTANTE' type='text' placeholder="Nombre Representante" class="form-control input"/>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label for="DOC_REPRESENTANTE" class="control-label">Documento Representante: </label>
+                                <input name="DOC_REPRESENTANTE" id='DOC_REPRESENTANTE' type='text' placeholder="Documento Representante" class="form-control input"/>
+                            </div>
+                        </div>
 
-                            <div class="form-group">
-                                <div class="col-sm-6">  
-                                    <label for="NOM_ARTISTA" class="control-label">Nombre Artista: </label>
-                                    <input name="NOM_ARTISTA" id='NOM_ARTISTA' type='text' placeholder="Nombre Artista" class="form-control input"/>      
-                                </div>
+                        <div class="col-md-12">
+                            <div class="form-group col-sm-6">
+                                <label for="TEL_REPRESENTANTE" class="control-label">Telefono Representante: </label>
+                                <input name="TEL_REPRESENTANTE" id='TEL_REPRESENTANTE' type='text' placeholder="Telefono Representante" class="form-control input"/>
                             </div>
-                            <br>
+                            <div class="form-group col-sm-6">
+                                <label for="COR_REPRESENTANTE" class="control-label">Correo Representante: </label>
+                                <input name="COR_REPRESENTANTE" id='COR_REPRESENTANTE' type='text' placeholder="Correo Representante" class="form-control input"/>
+                            </div>
+                        </div>
 
-                            <div class="form-group">
-                                <div class="col-sm-6">       
-                                    <label for="NOM_REPRESENTANTE" class="control-label">Nombre Representante: </label>
-                                    <input name="NOM_REPRESENTANTE" id='NOM_REPRESENTANTE' type='text' placeholder="Nombre Representante" class="form-control input"/>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-sm-6">
-                                    <label for="DOC_REPRESENTANTE" class="control-label">Documento Representante: </label>
-                                    <input name="DOC_REPRESENTANTE" id='DOC_REPRESENTANTE' type='text' placeholder="Documento Representante" class="form-control input"/>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-sm-6">
-                                    <label for="TEL_REPRESENTANTE" class="control-label">Telefono Representante: </label>
-                                    <input name="TEL_REPRESENTANTE" id='TEL_REPRESENTANTE' type='text' placeholder="Telefono Representante" class="form-control input"/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-6">
-                                    <label for="COR_REPRESENTANTE" class="control-label">Correo Representante: </label>
-                                    <input name="COR_REPRESENTANTE" id='COR_REPRESENTANTE' type='text' placeholder="Correo Representante" class="form-control input"/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-9">
-                                    <label for="Img_art">Imagen Artista: </label>
-                                    <input id="Img_art" name="Img_art" type="file" class="fileinput-button form-control" multiple>
-                                </div>
+                        <div class="col-md-12">
+                            <div class="form-group col-md-6">
+                                <label for="Img_art" class="control-label">Imagen Artista: </label>
+                                <input id="Img_art" name="Img_art" type="file" class="fileinput-button" multiple>
                             </div>
                         </div>
                     </div>
@@ -171,8 +151,9 @@
                         <button id="btn_art_close" type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                     </div>
                 </div>
-            </div> 
-        </form>  
+            </form>  
+        </div> 
+
     </div>
 </div>
 
@@ -182,7 +163,7 @@
 
 
         <div class="modal-content">
-            <form class="form-horizontal" action="../../Registros?peticion=Reg_Operarios" id="Reg_Operarios">
+            <form class="form form-inline" action="../../Registros?peticion=Reg_Operarios" id="Reg_Operarios">
                 <div class="modal-header">
                     <div class="form_top">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -190,62 +171,58 @@
                     </div> 
                 </div>
                 <div class="modal-body" >
+                    <p id="mensaje_Rope" style="color: #ff0000">${sessionScope['ErrorRegistroOp']}</p>
                     <div class="container-fluid">
-                        <p id="mensaje_Rope" style="color: #ff0000">${sessionScope['ErrorRegistroOp']}</p>
-                            <div class="form-group">
-                                <div class="col-md-12">
-                                    <label for="USERNAME">Usuario: </label>
-                                    <input name="USERNAME" id='USERNAME' type='text' placeholder="Usuario" class="form-control"/>
-                                </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group col-md-6">
+                                <label for="USERNAME" class="control-label">Usuario: </label>
+                                <input name="USERNAME" id='USERNAME' type='text' placeholder="Usuario" class="form-control input"/>
                             </div>
-                            <div class="form-group">
-                                <div class="col-md-12">
-                                    <label for="PASS">Contraseña: </label>
-                                    <input name="PASS" id='PASS' type='text'placeholder="Contraseña" class="form-control"/>
-                                </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="PASS" class="control-label">Contraseña: </label>
+                                <input name="PASS" id='PASS' type='text'placeholder="Contraseña" class="form-control input"/>
                             </div>
-                            <div class="form-group">
-                                <div class="col-md-12">
-                                    <label for="NOMBRES">Nombres: </label>
-                                    <input name="NOMBRES" id='NOMBRES' type='text' placeholder="Nombres" class="form-control"/>
-                                </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group col-md-6">
+                                <label for="DOCUMENTO" class="control-label">Documento: </label>
+                                <input name="DOCUMENTO" id='DOCUMENTO' type='text' placeholder="Documento" class="form-control input"/>
                             </div>
-                            <div class="form-group">
-                                <div class="col-md-12">
-                                    <label for="APELLIDO1">Primer Apellido: </label>
-                                    <input name="APELLIDO1" id='APELLIDO1' type='text' placeholder="Primer Apellido " class="form-control"/>
-                                </div>
+                            <div class="form-group col-md-6">
+                                <label for="NOMBRES" class="control-label">Nombres: </label>
+                                <input name="NOMBRES" id='NOMBRES' type='text' placeholder="Nombres" class="form-control input"/>
                             </div>
-                            <div class="form-group">
-                                <div class="col-md-12">
-                                    <label for="APELLIDO2">Segundo Apellido: </label>
-                                    <input name="APELLIDO2" id='APELLIDO2' type='text' placeholder="Segundo Apellido" class="form-control"/>
-                                </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group col-md-6">
+                                <label for="APELLIDO1" class="control-label">Primer Apellido: </label>
+                                <input name="APELLIDO1" id='APELLIDO1' type="text" placeholder="Primer Apellido " class="form-control input"/>
+                            </div>   
+                            <div class="form-group col-md-6">
+                                <label for="APELLIDO2" class="control-label" >Segundo Apellido: </label>
+                                <input name="APELLIDO2" id='APELLIDO1' style="width: 220.5px;" type="text" placeholder="Segundo Apellido " class="form-control input"/>
+                            </div>   
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group col-md-6">
+                                <label for="CORREO" class="control-label">Email: </label>
+                                <input name="CORREO" id='CORREO' type='text' style="width: 220.5px;" placeholder="Email" class="form-control input"/>
                             </div>
-                            <div class="form-group">
-                                <div class="col-md-12">
-                                    <label for="DOCUMENTO">Documento: </label>
-                                    <input name="DOCUMENTO" id='DOCUMENTO' type='text' placeholder="Documento" class="form-control"/>
-                                </div>
+                            <div class="form-group col-md-6">
+                                <label for="TELEFONO" class="control-label">Telefono: </label>
+                                <input name="TELEFONO" id='TELEFONO' type='text' style="width: 220.5px;" placeholder="Telefono" class="form-control input"/>
                             </div>
-                            <div class="form-group">
-                                <div class="col-md-12">
-                                    <label for="CORREO">Email: </label>
-                                    <input name="CORREO" id='CORREO' type='text' placeholder="Email" class="form-control"/>
-                                </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group col-md-8">
+                                <label for="DIRECCION" class="control-label">Direccion: </label>
+                                <input name="DIRECCION" id='DIRECCION' type='text' style="width: 465px;" placeholder="Direccion" class="form-control input"/>
                             </div>
-                            <div class="form-group">
-                                <div class="col-md-12">
-                                    <label for="TELEFONO">Telefono: </label>
-                                    <input name="TELEFONO" id='TELEFONO' type='text' placeholder="Telefono" class="form-control"/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-12">
-                                    <label for="DIRECCION">Direccion: </label>
-                                    <input name="DIRECCION" id='DIRECCION' type='text' placeholder="Direccion" class="form-control"/>
-                                </div>
-                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">

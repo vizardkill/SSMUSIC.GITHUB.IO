@@ -109,7 +109,7 @@ public class Registros extends HttpServlet {
             response.setContentType("text/html");
             response.getWriter().write(listarEmpresas(request, response));
         }
-        if (peticion.equals("Reg_Operario")) {
+        if (peticion.equals("Reg_Operarios")) {
             response.setContentType("text/html");
             response.getWriter().write(RegistroOperario(request, response));
         }

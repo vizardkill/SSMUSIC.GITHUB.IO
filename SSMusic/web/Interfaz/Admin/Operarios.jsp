@@ -39,24 +39,24 @@
                                 <button type="button" class="btn btn-xs btn-success BTN_Accion" role="button" data-toggle="modal" data-target="#Modal_RegistrarOp" data-id="1" data-accion="Registrar Operario">Registrar Operario</button>
                             </header>                      
                             <div id="table-responsive">
-                                <table id="table_Empresas" class="table table-striped table-advance table-hover" >
+                                <table id="table_Operarios" class="table table-striped table-advance table-hover" >
                                     <thead>
                                         <tr>                                            
                                             <th></th>
-                                            <th>NIT Empresa</th>
-                                            <th>Empresa</th>
-                                            <th>Tipo de Operacion</th>
-                                            <th>Valor de Operacion</th>
+                                            <th>Documento</th>
+                                            <th>Usuario</th>
+                                            <th>Tipo de Perfil</th>
+                                            <th>Fecha de Registro</th>
                                             <th>Acciones</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                             <th></th>
-                                            <th>NIT Empresa</th>
-                                            <th>Empresa</th>
-                                            <th>Tipo de Operacion</th>
-                                            <th>Valor de Operacion</th>
+                                            <th>Documento</th>
+                                            <th>Usuario</th>
+                                            <th>Tipo de Perfil</th>
+                                            <th>Fecha de Registro</th>
                                             <th>Acciones</th>
                                         </tr>
                                     </tfoot>

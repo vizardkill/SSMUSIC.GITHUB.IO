@@ -11,9 +11,11 @@
         <meta name="description" content="Free Bootstrap Theme by BootstrapMade.com">
         <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link href="../css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="../css/bootstrap-theme.css" rel="stylesheet" type="text/css"/>
+        <link href="../css/fontawesome-all.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" type="text/css" href="../css/jquery.bxslider.css">
-        <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../css/animate.css">
         <link rel="stylesheet" type="text/css" href="../css/style.css">
         <link rel="stylesheet" type="text/css" href="../css/main.css">   
@@ -46,7 +48,7 @@
             <section id="blog" class="section-padding wow fadeInUp delay-05s">    
             </section>
             <section id="blog" class="section-padding wow fadeInUp delay-05s">
-                
+
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 text-center">
@@ -56,66 +58,66 @@
                                 <p id="P_confirmacion" style="color: #ff0000"></p>
                                 <!--<form id="Registro" class="form_in" method="post" action="">   -->
                                 <div class="container">
-                                <div class="col-sm-4"></div>
-                                <div class="col-sm-4">
-                                    <input name="nick" id="nick" class="form-control" type="text" placeholder="&#128100; Usuario" required autofocus>
+                                    <div class="col-sm-4"></div>
+                                    <div class="col-sm-4">
+                                        <input name="nick" id="nick" class="form-control" type="text" placeholder="&#128100; Usuario" required autofocus>
                                     </div>
                                 </div>
                                 <br/>
                                 <div class="container">
                                     <div class="col-sm-4"></div>
-                                <div class="col-sm-4">
-                                    <input name="password" id="password" class="form-control" type="password" placeholder="&#128273; Contraseña" required autofocus>
+                                    <div class="col-sm-4">
+                                        <input name="password" id="password" class="form-control" type="password" placeholder="&#128273; Contraseña" required autofocus>
                                     </div>
                                 </div>
-                                    <a href="../Ingreso_Registro/Inicio.jsp" style="font-size: small; text-align: left">¿Olvidaste tu contraseña?</a>
-                                    <div class="btn_form">
-                                        <button id="btn_ingreso" onclick="Login();" class="btn_submit">Iniciar</button>
-                                       <!-- <input class="btn_submit" type="submit" value="Ingresar">-->
-                                    </div>
-                              <!--  </fordsadsadsadm>-->
+                                <a href="../Ingreso_Registro/Inicio.jsp" style="font-size: small; text-align: left">¿Olvidaste tu contraseña?</a>
+                                <div class="btn_form">
+                                    <button id="btn_ingreso" onclick="Login();" class="btn_submit">Iniciar</button>
+                                    <!-- <input class="btn_submit" type="submit" value="Ingresar">-->
+                                </div>
+                                <!--  </fordsadsadsadm>-->
                             </div>
                         </div>
 
                     </div>
                 </div>
             </section>
-                                
-                                <script>
-            var xMLHttpRequest = new XMLHttpRequest();
-            function Login() {
-               
-                xMLHttpRequest.open("Get", "../Ingreso?nick="+document.getElementById("nick").value+"&password="+document.getElementById("password").value, true);
-                xMLHttpRequest.onreadystatechange = processLogin;
-                xMLHttpRequest.send(null);
-                
-            }
-            function clean(){
-                document.getElementById("P_confirmacion").style="display:none;";
-            }
-            function processLogin(){
-                  if (xMLHttpRequest.readyState == 4 && xMLHttpRequest.status == 200) {
-                       var resp = eval('(' + xMLHttpRequest.responseText + ')');
-                       
-                      if(resp.respuesta[0].ID_USUARIO !== 0 || resp.respuesta[0].TIPO_PERFIL !== null){
-                          if(resp.respuesta[0].TIPO_PERFIL === "Admin"){
-                              location.href="/SSMusic/Interfaz/Admin/Inicio.jsp";
-                              
-                      }else if(resp.respuesta[0].TIPO_PERFIL === "Oper"){
-                          location.href="/SSMusic/Interfaz/Operario/Inicio_op.jsp";
-                          
-                      }
-                      }else{
-                          document.getElementById("P_confirmacion").style="display:inline;";
-                          document.getElementById("P_confirmacion").style="color:red; font: message-box; font-size: x-large;";
-                          
-                          document.getElementById("P_confirmacion").innerHTML="Usuario y/o contraseña Incorrecto";
-                          myVar = setTimeout(clean, 5000);
-                          
-                      }
-                  }
-            }
-                                </script>
+
+            <script>
+                var xMLHttpRequest = new XMLHttpRequest();
+                function Login() {
+
+                    xMLHttpRequest.open("Get", "../Ingreso?nick=" + document.getElementById("nick").value + "&password=" + document.getElementById("password").value, true);
+                    xMLHttpRequest.onreadystatechange = processLogin;
+                    xMLHttpRequest.send(null);
+
+                }
+                function clean() {
+                    document.getElementById("P_confirmacion").style = "display:none;";
+                }
+                function processLogin() {
+                    if (xMLHttpRequest.readyState == 4 && xMLHttpRequest.status == 200) {
+                        var resp = eval('(' + xMLHttpRequest.responseText + ')');
+
+                        if (resp.respuesta[0].ID_USUARIO !== 0 || resp.respuesta[0].TIPO_PERFIL !== null) {
+                            if (resp.respuesta[0].TIPO_PERFIL === "Admin") {
+                                location.href = "/SSMusic/Interfaz/Admin/Inicio.jsp";
+
+                            } else if (resp.respuesta[0].TIPO_PERFIL === "Oper") {
+                                location.href = "/SSMusic/Interfaz/Operario/Inicio_op.jsp";
+
+                            }
+                        } else {
+                            document.getElementById("P_confirmacion").style = "display:inline;";
+                            document.getElementById("P_confirmacion").style = "color:red; font: message-box; font-size: x-large;";
+
+                            document.getElementById("P_confirmacion").innerHTML = "Usuario y/o contraseña Incorrecto";
+                            myVar = setTimeout(clean, 5000);
+
+                        }
+                    }
+                }
+            </script>
             <!---->
             <section id="contact" class="section-padding wow fadeInUp delay-05s">
                 <div class="container">
@@ -128,7 +130,7 @@
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="loction-info white">
                                 <p><i class="fa fa-map-marker fa-fw pull-left fa-2x"></i>Politecnico Colombiano J.I.C<br>Medellin, Antioquia</p>
-                                <p><i class="fa fa-envelope-o fa-fw pull-left fa-2x"></i>santiago_cardona82141@elpoli.edu.co <br>santiago_arbelaez82141@elpoli.edu.co</p>
+                                <p><i class="fa fa-address-book fa-fw pull-left fa-2x fa"></i>santiago_cardona82141@elpoli.edu.co <br>santiago_arbelaez82141@elpoli.edu.co</p>
                                 <p><i class="fa fa-phone fa-fw pull-left fa-2x"></i>+57 302-420-9853</p>
                             </div>
                         </div>
@@ -185,7 +187,7 @@
         </div>
         <script src="../js/jquery.min.js"></script>
         <script src="../js/jquery.easing.min.js"></script>
-        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/bootstrap.js" type="text/javascript"></script>
         <script src="../js/wow.js"></script>
         <script src="../js/jquery.bxslider.min.js"></script>
         <script src="../js/custom.js"></script>

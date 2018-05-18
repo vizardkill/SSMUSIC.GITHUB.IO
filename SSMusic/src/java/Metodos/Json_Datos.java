@@ -7,7 +7,9 @@ package Metodos;
 
 import Controladores.controller_art;
 import Controladores.controller_emp;
+import Controladores.controller_user;
 import Modelo.Empresa;
+import Modelo.Usuario;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import java.util.ArrayList;
@@ -87,6 +89,32 @@ public class Json_Datos {
             array.add(item);
         }
         json.add("Artistas", array);
+        return json.toString();
+    }
+
+    public String jsonOperarios() {
+        controller_user cuser = new controller_user();
+        com.google.gson.JsonObject json = new JsonObject();
+        List<Usuario> list = cuser.getUsers();
+
+        JsonArray array = new JsonArray();
+        for (Usuario x : list) {
+            JsonObject item = new JsonObject();
+            if (x.getTipo_perfil().equals("Oper")) {
+                item.addProperty("Id", x.getId());
+                item.addProperty("DOCUMENTO", x.getDocumento());
+                item.addProperty("USERNAME", x.getUsername());
+                item.addProperty("TIPO_PERFIL", x.getTipo_perfil());
+                item.addProperty("FECHA_REGISTRO", x.getFecha_registro());
+                item.addProperty("acciones", ""
+                        + "<div class='btn-group'>"
+                        + "<button type='button' id='" + x.getId() + "' style='width:40px; height:34px' title='Eliminar Registro' class='btn btn-xs btn-danger btn_delete' name='btn_delete'><i class='icon_trash'></i></button>"
+                        + "</div>");
+                array.add(item);
+            }
+
+        }
+        json.add("Operarios", array);
         return json.toString();
     }
 

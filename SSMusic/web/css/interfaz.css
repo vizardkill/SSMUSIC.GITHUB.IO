@@ -6,11 +6,13 @@
 */
 /* Import fonts */
 
-.form-control-feedback{
-  position:relative !important;
-  float: left;
-  left:5px;
-  top:-1px !important;
+.has-feedback .form-control-feedback {
+    top: 25px;
+    right: 0;
+}
+.form-horizontal .has-feedback .form-control-feedback {
+    top: 0;
+    right: 15px;
 }
 
 .editar {color: blue; cursor:pointer;}

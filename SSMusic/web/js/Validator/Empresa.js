@@ -1,9 +1,9 @@
 $(document).ready(function () {
     $('#Reg_Empresa').bootstrapValidator({
         feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
+            valid: 'fa fa-check',
+            invalid: 'fa fa-times',
+            validating: 'fa fa-refresh'
         },
         fields: {
             NIT_EMPRESA_D: {
@@ -127,8 +127,8 @@ $(document).ready(function () {
                         $('#table_Empresas').DataTable().ajax.reload();
                         $('#Error_ReEmp').text('Empresa registrada con Exito');
                     } else {
-                         $('#Error_ReEmp').text('Hubo problemas con el Registro');                      
-                    }  
+                        $('#Error_ReEmp').text('Hubo problemas con el Registro');
+                    }
                     setTimeout(function () {
                         $('#Modal_RegistrarEmp').modal('hide');
                     }, 2000);
