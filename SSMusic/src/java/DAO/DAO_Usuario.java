@@ -101,7 +101,7 @@ public class DAO_Usuario implements IUsuario_DAO {
             rs = stm.executeQuery(sql);
             while (rs.next()) {
                 Usuario u = new Usuario();
-                u.setId(rs.getInt("ID_PERFIL"));
+                u.setId(rs.getInt("ID_USUARIO"));
                 u.setTipo_perfil(rs.getString("TIPO_PERFIL"));
                 u.setUsername(rs.getString("USERNAME"));
                 u.setPass(rs.getString("PASS"));
