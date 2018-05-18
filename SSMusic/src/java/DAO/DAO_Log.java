@@ -40,7 +40,7 @@ public class DAO_Log implements ILog_DAO {
                 ps.setInt(1, 1);
                 ps.setInt(2, log.getId_usuario_log());
                 ps.setString(3, log.getTipo_de_gestion());
-                ps.setString(4, "05/03/2018");
+                ps.setString(4, log.getFecha_log());
 
                 ps.executeUpdate();
                 ps.close();
