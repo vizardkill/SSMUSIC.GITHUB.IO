@@ -32,9 +32,7 @@ public class DAO_Usuario implements IUsuario_DAO {
 
     @Override
     public Boolean setUser(Usuario user) {
-        boolean registrar = true;
-        
-        Connection con = null;
+        Connection con;
         String sql = "INSERT INTO USUARIO"
                 + "("
                 + "ID_USUARIO, "
@@ -55,45 +53,44 @@ public class DAO_Usuario implements IUsuario_DAO {
 
         try {
             con = DBUtil.getConexion();
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, user.getId());
-            ps.setInt(2, user.getId_empresa());
-            ps.setString(3, user.getTipo_perfil());
-            ps.setString(4, user.getUsername());
-            ps.setString(5, user.getPass());
-            ps.setString(6, user.getNombres());
-            ps.setString(7, user.getApellido1());
-            ps.setString(8, user.getApellido2());
-            ps.setString(9,user.getDocumento());
-            ps.setString(10, user.getCorreo());
-            ps.setString(11, user.getTelefono());
-            ps.setString(12, user.getDireccion());
-            ps.setString(13, user.getFecha_registro());
-            System.out.println("Ps: "+ps);
-            System.out.println("sql: "+sql);
-            ps.executeQuery();
-            ps.close();
+            try (PreparedStatement ps = con.prepareStatement(sql)) {
+                ps.setInt(1, user.getId());
+                ps.setInt(2, user.getId_empresa());
+                ps.setString(3, user.getTipo_perfil());
+                ps.setString(4, user.getUsername());
+                ps.setString(5, user.getPass());
+                ps.setString(6, user.getNombres());
+                ps.setString(7, user.getApellido1());
+                ps.setString(8, user.getApellido2());
+                ps.setString(9,user.getDocumento());
+                ps.setString(10, user.getCorreo());
+                ps.setString(11, user.getTelefono());
+                ps.setString(12, user.getDireccion());
+                ps.setString(13, user.getFecha_registro());
+                System.out.println("Ps: "+ps);
+                System.out.println("sql: "+sql);
+                ps.executeQuery();
+            }
             con.close();
             
             controller_log ldao=new controller_log();
         } catch (SQLException e) {
             System.out.println("Error: Clase DAO_Usuario, método registrar");
             e.printStackTrace();
-            return registrar = false;
-        } 
-        
-        return registrar;
+            return false;
+        }         
+        return true;
     }
 
     @Override
     public List<Usuario> getUser() {
-        Connection co = null;
-        Statement stm = null;
-        ResultSet rs = null;
+        Connection co;
+        Statement stm ;
+        ResultSet rs;
 
         String sql = "SELECT * FROM USUARIO ORDER BY TIPO_PERFIL";
 
-        List<Usuario> listaUsuario = new ArrayList<Usuario>();
+        List<Usuario> listaUsuario = new ArrayList<>();
 
         try {
             co = DBUtil.getConexion();
@@ -120,7 +117,6 @@ public class DAO_Usuario implements IUsuario_DAO {
             co.close();
         } catch (SQLException e) {
             System.out.println("Error: Clase DAO_USUARIO, método obtener");
-            e.printStackTrace();
         }
 
         return listaUsuario;
@@ -185,8 +181,7 @@ public class DAO_Usuario implements IUsuario_DAO {
 
     @Override
     public boolean updateUser(Usuario user) {
-        boolean actualizar = false;
-        Connection con = null;
+        Connection con;
 
         String sql = "UPDATE USUARIO SET TIPO_PERFIL = ?, "
                 + "PASS = ?, "
@@ -199,31 +194,29 @@ public class DAO_Usuario implements IUsuario_DAO {
                 + "WHERE DOCUMENTO = ?";
         try {
             con = DBUtil.getConexion();
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, user.getTipo_perfil());
-            ps.setString(2, user.getPass());
-            ps.setString(3, user.getNombres());
-            ps.setString(4, user.getApellido1());
-            ps.setString(5, user.getApellido2());
-            ps.setString(6, user.getCorreo());
-            ps.setString(7, user.getTelefono());
-            ps.setString(8, user.getDireccion());
-            ps.setString(9, user.getDocumento());
-            ps.executeUpdate();
-            ps.close();
+            try (PreparedStatement ps = con.prepareStatement(sql)) {
+                ps.setString(1, user.getTipo_perfil());
+                ps.setString(2, user.getPass());
+                ps.setString(3, user.getNombres());
+                ps.setString(4, user.getApellido1());
+                ps.setString(5, user.getApellido2());
+                ps.setString(6, user.getCorreo());
+                ps.setString(7, user.getTelefono());
+                ps.setString(8, user.getDireccion());
+                ps.setString(9, user.getDocumento());
+                ps.executeUpdate();
+            }
             con.close();
         } catch (SQLException e) {
             System.out.println("Error: Clase DAO_USUARIO, método actualizar");
-            e.printStackTrace();
+            return false;
         }
-        actualizar = true;
-        return actualizar;
+        return true;
     }
 
     @Override
     public boolean deleteUser(Usuario user) {
-        boolean eliminar = false;
-        Connection con = null;
+        Connection con;
 
         String sql = "DELETE FROM USUARIO WHERE DOCUMENTO = ?";
         
@@ -233,13 +226,11 @@ public class DAO_Usuario implements IUsuario_DAO {
             ps.setString(1, user.getDocumento());
             ps.executeQuery();
             ps.close();
-            eliminar = true;
         } catch (SQLException e) {
             System.out.println("Error: Clase ClienteDaoImple, método eliminar");
-            e.printStackTrace();
+            return false;
         }
-        return eliminar;
-
+        return true;
     }
 
 }
