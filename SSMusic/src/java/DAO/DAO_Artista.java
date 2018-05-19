@@ -97,6 +97,43 @@ public class DAO_Artista implements IArtista_DAO {
         }
         return listaArtista;
     }
+    
+    @Override
+    public ArrayList<Artista> getArtistasPorEmpresa(Artista artista) {
+        Connection co;
+        Statement stm;
+        ResultSet rs;
+        System.out.println("El id en dao es: "+artista.getId_empresa_d_art());
+        String sql = "SELECT * FROM ARTISTA WHERE ID_EMPRESA_D_ART=? ORDER BY NOM_ARTISTA ASC";
+        ArrayList<Artista> listaArtista = new ArrayList<>();
+
+        try {
+            co = DBUtil.getConexion();
+            PreparedStatement ps = co.prepareStatement(sql);
+            ps.setInt(1,artista.getId_empresa_d_art());
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Artista art = new Artista();
+                art.setId(rs.getInt("ID_ARTISTA"));
+                art.setNombre_art(rs.getString("NOM_ARTISTA"));
+                art.setNom_representante(rs.getString("NOM_REPRESENTANTE"));
+                art.setDoc_representante(rs.getString("DOC_REPRESENTANTE"));
+                art.setTel_representante(rs.getString("TEL_REPRESENTANTE"));
+                art.setCor_representante(rs.getString("COR_REPRESENTANTE"));
+                art.setId_empresa_d_art(rs.getInt("ID_EMPRESA_D_ART"));
+                art.setFecha_registro_art(rs.getString("FECHA_REGISTRO_ART"));
+                art.setSrc(rs.getString("SRC"));
+                listaArtista.add(art);
+            }
+            
+             rs.close();
+            co.close();
+
+        } catch (SQLException ex) {
+            System.out.println("Error: Clase DAO_Artista, método obtener"+ex);
+        }
+        return listaArtista;
+    }
 
     @Override
     public boolean deleteArtista(Artista art) {

@@ -109,6 +109,10 @@ public class Registros extends HttpServlet {
             response.setContentType("text/html");
             response.getWriter().write(listarEmpresas(request, response));
         }
+        if (peticion.equals("listarArt")) {
+            response.setContentType("text/html");
+            response.getWriter().write(listarArtPorEmpresa(request, response));
+        }
         
 
     }
@@ -201,7 +205,7 @@ public class Registros extends HttpServlet {
 
     public String listarEmpresas(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        System.out.println("entro al servlet");
+        
         com.google.gson.JsonObject json = new JsonObject();
         JsonArray array = new JsonArray();
         List<Modelo.Empresa> resultado;
@@ -225,6 +229,41 @@ public class Registros extends HttpServlet {
                 item.addProperty("VALOR_OPERACION_D", result.getValor_operacion());
                 item.addProperty("FECHA_REGISTRO_D", result.getFecha_registro());
                 array.add(item);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return array.toString();
+    }
+    
+    public String listarArtPorEmpresa(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        com.google.gson.JsonObject json = new JsonObject();
+        JsonArray array = new JsonArray();
+        List<Modelo.Artista> resultado;
+
+        try {
+            Artista art = new Artista();
+            controller_art adao = new controller_art();
+            art.setId_empresa_d_art(Integer.parseInt(request.getParameter("ID_EMPRESA_D")));
+
+            resultado = adao.getArtPorEmpresa(art);
+            for (Artista result : resultado) {
+                JsonObject item = new JsonObject();
+                item.addProperty("ID_ARTISTA", result.getId());
+                item.addProperty("NOM_ARTISTA", result.getNombre_art());
+                item.addProperty("NOM_REPRESENTANTE", result.getNom_representante());
+                item.addProperty("DOC_REPRESENTANTE", result.getDoc_representante());
+                item.addProperty("TEL_REPRESENTANTE", result.getTel_representante());
+                item.addProperty("COR_REPRESENTANTE", result.getCor_representante());
+                item.addProperty("ID_EMPRESA_D_ART", result.getId_empresa_d_art());
+                item.addProperty("SRC", result.getSrc());
+                item.addProperty("FECHA_REGISTRO_ART", result.getFecha_registro_art());
+                
+                
+                array.add(item);
+                
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -296,7 +335,7 @@ public class Registros extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         // Create path components to save the file
-        String ruta = "D:\\Documents\\NetBeansProjects\\PPI\\SSMusic\\web\\img\\Icons_art\\";
+        String ruta = "C:\\Users\\SNT\\Documents\\Universidad\\LastvsPPI4\\SSMusic\\web\\img\\Icons_art\\";
         final String path = ruta;
         final Part filePart = request.getPart("Img_art-0");
         String SRC;

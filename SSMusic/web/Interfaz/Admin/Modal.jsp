@@ -253,13 +253,13 @@
                         <div class="col-sm-12">    
                             <div class="form-group col-md-6">
                                 <label class="control-label">Empresa: </label>
-                                <select onclick="ListarArtista()" id="select_empresas" name="select_empresas" class="form-control input select" >
-                                    <option value=" ">Seleccione una empresa</option>
+                                <select id="select_empresas_venta" onchange="cargarSelectArtistaPorEmpresa(this);" name="select_empresas" class="form-control input select" >
+                                    <option valor=" " value=" ">Seleccione una empresa</option>
                                 </select>
                             </div>
                             <div class="form-group col-sm-6">  
                                <label class="control-label">Artista: </label>
-                                <select id="" name="" class="form-control input select" >
+                                <select id="select_artista_venta" name="" class="form-control input select" >
                                     <option value=" ">Seleccione un Artista</option>
                                 </select>
                             </div>
@@ -268,10 +268,10 @@
                         <div class="col-md-12">
                             <div class="form-group col-md-6">
                                 <label for="CANTIDAD_OPERACIONES" class="control-label">Cantidad de Operaciones:</label>
-                                <input name="CANTIDAD_OPERACIONES" id="CANTIDAD_OPERACIONES" type="text" class="form-control input" placeholder="Cantidad de Operaciones"/>
+                                <input name="CANTIDAD_OPERACIONES" onchange="operacionventa();" id="CANTIDAD_OPERACIONES" type="text" class="form-control input" placeholder="Cantidad de Operaciones"/>
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="VALOR_VENTA" class="control-label">Valor de la Venta: </label>
+                                <label for="VALOR_VENTA" class="control-label">Total Venta: </label>
                                 <input name="VALOR_VENTA" id="VALOR_VENTA" type="text" class="form-control input" placeholder="$ Monto total" disabled/>
                             </div>
                         </div>                   

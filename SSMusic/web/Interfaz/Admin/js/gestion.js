@@ -21,7 +21,7 @@ function GuardarEmpresa() {
 function PostGuardarEmpresa() {
     if (xMLHttpRequest.readyState == 4 && xMLHttpRequest.status == 200) {
         var resp = eval('(' + xMLHttpRequest.responseText + ')');
-        console.log(resp);
+        
         if (resp.result === true) {
             document.getElementById("mensaje_Remp").innerHTML = "";
             document.getElementById("mensaje_Remp").innerHTML = "Almacenado con Exito";
@@ -160,7 +160,7 @@ function GuardarArtista() {
 function PostGuardarArtista() {
     if (xMLHttpRequest.readyState == 4 && xMLHttpRequest.status == 200) {
         var resp = eval('(' + xMLHttpRequest.responseText + ')');
-        console.log(resp);
+        
         if (resp.result === true) {
             document.getElementById("select_empresas").value = "";
             document.getElementById("mensaje_Rart").innerHTML = "Almacenado con Exito";
@@ -185,5 +185,83 @@ function PostListarEmpresa() {
         var resp = eval('(' + xMLHttpRequest.responseText + ')');
         cargarSelectEmpresa(resp);
     }
+}
+
+
+function ListarArtista(id) {
+    xMLHttpRequest.open("Post", "../../Registros?ID_EMPRESA_D="+id+"&peticion=listarArt", true);
+    xMLHttpRequest.onreadystatechange = PostListarArtista;
+    xMLHttpRequest.send(null);
+
+}
+
+function PostListarArtista() {
+    if (xMLHttpRequest.readyState == 4 && xMLHttpRequest.status == 200) {
+        var resp = eval('(' + xMLHttpRequest.responseText + ')');
+        
+        var select = document.getElementById("select_artista_venta");
+        cargarSelectArtistaVenta(resp,select);
+        
+    }
+}
+
+function ListarArtistaPorEmpresa() {
+    xMLHttpRequest.open("Post", "../../Registros?peticion=listarEmpresa", true);
+    xMLHttpRequest.onreadystatechange = PostListarArtistaPorEmpresa;
+    xMLHttpRequest.send(null);
+
+}
+
+function PostListarArtistaPorEmpresa() {
+    if (xMLHttpRequest.readyState == 4 && xMLHttpRequest.status == 200) {
+        var resp = eval('(' + xMLHttpRequest.responseText + ')');
+        
+        var select = document.getElementById("select_empresas_venta");
+        cargarSelectEmpresaVenta(resp,select);
+    }
+}
+
+function cargarSelectEmpresaVenta(respuesta, select) {
+
+    document.getElementById("select_empresas_venta").length=1;
+    for (var i = 0; i < respuesta.length; i++) {
+        var obj = respuesta[i];
+        var option = document.createElement("option");
+        option.setAttribute("value", obj.ID_EMPRESA_D);
+        option.setAttribute("valor", obj.VALOR_OPERACION_D);
+        var contenido = document.createTextNode(obj.NOM_EMPRESA_D);
+        select.appendChild(option);
+        option.appendChild(contenido);
+    }
+
+}
+function cargarSelectArtistaVenta(respuesta, select) {
+
+    document.getElementById("select_artista_venta").length=1;
+    for (var i = 0; i < respuesta.length; i++) {
+        var obj = respuesta[i];
+        var option = document.createElement("option");
+        option.setAttribute("value", obj.ID_ARTISTA);
+        var contenido = document.createTextNode(obj.NOM_ARTISTA);
+        select.appendChild(option);
+        option.appendChild(contenido);
+    }
+
+}
+
+function cargarSelectArtistaPorEmpresa(respuesta) {
+    ListarArtista(respuesta.value);
+ }
+
+function operacionventa(){
+    var select = document.getElementById("select_empresas_venta");
+    var selectedOption = select.options[select.selectedIndex];
+    
+    
+    var valor_venta = selectedOption.getAttribute("valor");
+    var cantidad = document.getElementById("CANTIDAD_OPERACIONES").value;
+    var total = valor_venta * cantidad;
+    document.getElementById("VALOR_VENTA").value=total;
+    
 }
 

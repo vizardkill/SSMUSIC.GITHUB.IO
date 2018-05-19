@@ -41,7 +41,7 @@
                                             <option>Operaciones</option>
                                             <option>Ventas</option>
                                         </select>
-                                        <button type="button" class="btn btn-xs btn-success BTN_Accion" onclick="ListarEmpresa()" role="button" data-toggle="modal" data-target="#Modal_Venta" data-id="1" data-accion="Registrar Venta">Registrar Venta</button>
+                                        <button type="button" class="btn btn-xs btn-success BTN_Accion" onclick="ListarArtistaPorEmpresa();" role="button" data-toggle="modal" data-target="#Modal_Venta" data-id="1" data-accion="Registrar Venta">Registrar Venta</button>
                                     </header>                      
                                     <div id="table-responsive">
                                         <table id="table_Empresas" class="table table-striped table-advance table-hover">

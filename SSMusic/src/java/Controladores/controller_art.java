@@ -35,6 +35,12 @@ public class controller_art {
         boolean result = adao.deleteArtista(art);
         return result;
     }
+    public ArrayList<Artista> getArtPorEmpresa(Artista art) {
+        ArrayList<Artista> arts = new ArrayList<>();
+        IArtista_DAO adao = new DAO_Artista();
+        arts = adao.getArtistasPorEmpresa(art);
+        return arts;
+    }
 
     public ArrayList<Artista> getUsers() {
         ArrayList<Artista> arts = new ArrayList<>();
