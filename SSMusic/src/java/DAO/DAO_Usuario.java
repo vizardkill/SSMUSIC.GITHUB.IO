@@ -67,9 +67,7 @@ public class DAO_Usuario implements IUsuario_DAO {
                 ps.setString(11, user.getTelefono());
                 ps.setString(12, user.getDireccion());
                 ps.setString(13, user.getFecha_registro());
-                System.out.println("Ps: "+ps);
-                System.out.println("sql: "+sql);
-                ps.executeQuery();
+                ps.executeUpdate();
             }
             con.close();
             
@@ -222,10 +220,10 @@ public class DAO_Usuario implements IUsuario_DAO {
         
         try {
             con = DBUtil.getConexion();;
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, user.getDocumento());
-            ps.executeQuery();
-            ps.close();
+            try (PreparedStatement ps = con.prepareStatement(sql)) {
+                ps.setString(1, user.getDocumento());
+                ps.executeUpdate();
+            }
         } catch (SQLException e) {
             System.out.println("Error: Clase ClienteDaoImple, método eliminar");
             return false;
