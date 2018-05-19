@@ -235,3 +235,54 @@
     </div>
 </div>
 
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="Modal_Venta" >
+    <div class="modal-dialog modal-lg" role="document">
+
+
+        <div class="modal-content">
+            <form class="form form-inline" action="../../Registros?peticion=Reg_Venta" id="Re_Venta">
+                <div class="modal-header">
+                    <div class="form_top">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h2>Registro de <span>Ventas</span></h2>
+                    </div> 
+                </div>
+                <div class="modal-body" >
+                    <p id="mensaje_Rope" style="color: #ff0000">${sessionScope['ErrorReVenta']}</p>
+                    <div class="container-fluid">
+                        <div class="col-sm-12">    
+                            <div class="form-group col-md-6">
+                                <label class="control-label">Empresa: </label>
+                                <select onclick="ListarArtista()" id="select_empresas" name="select_empresas" class="form-control input select" >
+                                    <option value=" ">Seleccione una empresa</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-sm-6">  
+                               <label class="control-label">Artista: </label>
+                                <select id="" name="" class="form-control input select" >
+                                    <option value=" ">Seleccione un Artista</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-12">
+                            <div class="form-group col-md-6">
+                                <label for="CANTIDAD_OPERACIONES" class="control-label">Cantidad de Operaciones:</label>
+                                <input name="CANTIDAD_OPERACIONES" id="CANTIDAD_OPERACIONES" type="text" class="form-control input" placeholder="Cantidad de Operaciones"/>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="VALOR_VENTA" class="control-label">Valor de la Venta: </label>
+                                <input name="VALOR_VENTA" id="VALOR_VENTA" type="text" class="form-control input" placeholder="$ Monto total" disabled/>
+                            </div>
+                        </div>                   
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="RegistroVenta" type="submit" class="btn btn-default" name="RegistroVenta">Registrar</button>
+                    <button id="btn_ope_close" type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>

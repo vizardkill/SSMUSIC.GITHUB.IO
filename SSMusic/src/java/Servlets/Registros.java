@@ -109,6 +109,7 @@ public class Registros extends HttpServlet {
             response.setContentType("text/html");
             response.getWriter().write(listarEmpresas(request, response));
         }
+        
 
     }
 
@@ -140,6 +141,8 @@ public class Registros extends HttpServlet {
             //Datos log
             int id_user = (Integer) session.getAttribute("ID_USUARIO");
             log.setId_usuario_log(id_user);
+            log.setTipo_de_gestion("Registro Empresa");
+            log.setFecha_log(FECHA_REGISTRO);
 
             controller_emp edao = new controller_emp();
             controller_log logdao = new controller_log();
@@ -178,6 +181,8 @@ public class Registros extends HttpServlet {
 
             int id_user = (Integer) session.getAttribute("ID_USUARIO");
             log.setId_usuario_log(id_user);
+            log.setTipo_de_gestion("Registro Artista");
+            log.setFecha_log(FECHA_REGISTRO);
 
             controller_art adao = new controller_art();
             boolean result = adao.registerArt(art);
@@ -235,7 +240,6 @@ public class Registros extends HttpServlet {
 
             Calendario fechaR = new Calendario();
             String FECHA_REGISTRO = fechaR.Fecha_Registro();
-            System.out.println("fecha en servlet: " + FECHA_REGISTRO);
 
             Log log = new Log();
             Usuario user = new Usuario();
@@ -253,14 +257,17 @@ public class Registros extends HttpServlet {
             user.setDireccion(request.getParameter("DIRECCION"));
             user.setFecha_registro(FECHA_REGISTRO);
 
-            // int id_user = (Integer) session.getAttribute("ID_USUARIO");
-            //log.setId_usuario_log(id_user);
+            int id_user = (Integer) session.getAttribute("ID_USUARIO");
+            log.setId_usuario_log(id_user);
+            log.setTipo_de_gestion("Registro Operario");
+            log.setFecha_log(FECHA_REGISTRO);
+
             controller_user edao = new controller_user();
             boolean result = edao.registerUser(user);
-            //controller_log logdao = new controller_log();
-            /* if (result) {
+            controller_log logdao = new controller_log();
+            if (result) {
                 logdao.registerLog(log);
-            }*/
+            }
 
             item.addProperty("result", result);
 
@@ -289,11 +296,15 @@ public class Registros extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         // Create path components to save the file
-        String ruta = "D:\\Documents\\NetBeansProjects\\SSMusic\\web\\img\\Icons_art\\";
+        String ruta = "D:\\Documents\\NetBeansProjects\\PPI\\SSMusic\\web\\img\\Icons_art\\";
         final String path = ruta;
         final Part filePart = request.getPart("Img_art-0");
+        String SRC;
+        if (filePart == null) {
+             return SRC = "../../img/male.png";
+        }
         final String fileName = getFileName(filePart);
-        String SRC = "../../img/Icons_art/" + fileName;
+        SRC = "../../img/Icons_art/" + fileName;
         OutputStream out = null;
         InputStream filecontent = null;
         final PrintWriter writer = response.getWriter();

@@ -25,10 +25,10 @@
                 <section class="wrapper">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h3 class="page-header"><i class="fa fa-laptop"></i> Seguimiento</h3>
+                            <h3 class="page-header"><i class="fa fa-laptop"></i> Gestion de Ventas</h3>
                             <ol class="breadcrumb">
                                 <li><i class="fa fa-home"></i><a href="Estudiante.jsp">Inicio</a></li>
-                                <li><i class="fa fa-laptop"></i>Seguimiento</li>  
+                                <li><i class="fa fa-laptop"></i> Gestion de Ventas</li>  
                             </ol>             
                         </div>
                     </div> 
@@ -41,33 +41,32 @@
                                             <option>Operaciones</option>
                                             <option>Ventas</option>
                                         </select>
-                                        <button type="button" class="btn btn-xs btn-success BTN_Accion" role="button" data-toggle="modal" data-target="#Modal_RegistrarEmp" data-id="1" data-accion="Registrar Empresa">Registrar Empresa</button>
-                                        <button type="button" class="btn btn-xs btn-primary BTN_Accion" role="button" onclick="ListarEmpresa();" data-toggle="modal" data-target="#Modal_RegistrarArt" data-id="2" data-accion="Registrar Artista">Registrar Artista</button>
+                                        <button type="button" class="btn btn-xs btn-success BTN_Accion" onclick="ListarEmpresa()" role="button" data-toggle="modal" data-target="#Modal_Venta" data-id="1" data-accion="Registrar Venta">Registrar Venta</button>
                                     </header>                      
                                     <div id="table-responsive">
                                         <table id="table_Empresas" class="table table-striped table-advance table-hover">
                                             <thead>
                                                 <tr>                                            
                                                     <th></th>
-                                                    <th>NIT Empresa</th>
+                                                    <th>ID Empresa</th>
                                                     <th>Empresa</th>
-                                                    <th>Tipo de Operacion</th>
-                                                    <th>Valor de Operacion</th>
-                                                    <th>Acciones</th>
+                                                    <th>ID Artista</th>
+                                                    <th>Artista</th>
+                                                    <th>Cantidad de Operaciones</th>
                                                 </tr>
                                             </thead>
                                             <tfoot>
                                                 <tr>
                                                     <th></th>
-                                                    <th>NIT Empresa</th>
+                                                    <th>ID Empresa</th>
                                                     <th>Empresa</th>
-                                                    <th>Tipo de Operacion</th>
-                                                    <th>Valor de Operacion</th>
-                                                    <th>Acciones</th>
+                                                    <th>ID Artista</th>
+                                                    <th>Artista</th>
+                                                    <th>Cantidad de Operaciones</th>
                                                 </tr>
                                             </tfoot>
                                             <tbody id="employee_data">
-                                                
+
                                             </tbody>
                                         </table>
                                     </div>

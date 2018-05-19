@@ -70,10 +70,8 @@ public class DAO_Usuario implements IUsuario_DAO {
                 ps.executeUpdate();
             }
             con.close();
-            
-            controller_log ldao=new controller_log();
         } catch (SQLException e) {
-            System.out.println("Error: Clase DAO_Usuario, método registrar");
+            System.out.println("Error: Clase DAO_Usuario, método registrar: " +e);
             return false;
         }         
         return true;

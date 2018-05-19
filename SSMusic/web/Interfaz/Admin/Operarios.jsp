@@ -13,7 +13,7 @@
         <script src="js/gestion.js" type="text/javascript"></script>
         <link rel="shortcut icon" href="../../favicon.ico">
 
-        <title>S&SMusic - Empresas</title>
+        <title>S&SMusic - Operarios</title>
     </head>
     <body>
         <%@include file="Navegacion.jsp" %>
