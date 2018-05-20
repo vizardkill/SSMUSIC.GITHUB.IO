@@ -37,38 +37,22 @@
                             <section class="panel">
                                 <form action="" method="get" id="data">
                                     <header class="panel-heading">
-                                        Tipo de Gestión: <select class="simple">
-                                            <option>Operaciones</option>
-                                            <option>Ventas</option>
+                                        Tipo de Gestión: <select id="gestion" class="simple" onchange="return mostrarSelect()">
+                                            <option value="">Ninguno</option>
+                                            <option value="ventas">Ventas</option>
+                                            <option value="informes">Informes</option>
                                         </select>
                                         <button type="button" class="btn btn-xs btn-success BTN_Accion" onclick="ListarArtistaPorEmpresa();" role="button" data-toggle="modal" data-target="#Modal_Venta" data-id="1" data-accion="Registrar Venta">Registrar Venta</button>
-                                    </header>                      
-                                    <div id="table-responsive">
-                                        <table id="table_Operacion" class="table table-striped table-advance table-hover">
-                                            <thead>
-                                                <tr>                                            
-                                                    <th></th>
-                                                    <th>ID Empresa</th>
-                                                    <th>Empresa</th>
-                                                    <th>ID Artista</th>
-                                                    <th>Artista</th>
-                                                    <th>Cantidad de Operaciones</th>
-                                                </tr>
-                                            </thead>
-                                            <tfoot>
-                                                <tr>
-                                                    <th></th>
-                                                    <th>ID Empresa</th>
-                                                    <th>Empresa</th>
-                                                    <th>ID Artista</th>
-                                                    <th>Artista</th>
-                                                    <th>Cantidad de Operaciones</th>
-                                                </tr>
-                                            </tfoot>
-                                            <tbody id="employee_data">
-
-                                            </tbody>
-                                        </table>
+                                    </header>
+                                    <lable id="tipo_informe" style="visibility: hidden">Tipo de Informe:</lable><select id="informe" style="visibility: hidden" class="simple" onchange="return mostrarInforme()">
+                                        <option value="">Ninguno</option>
+                                        <option>Ventas por Empresa</option>
+                                        <option>Total de Ventas por Empresa</option> 
+                                        <option>Artistas con mas Ventas</option>
+                                        <option>Artistas con Premios</option>
+                                    </select>
+                                    <span id="no_hay">Por favor Seleccione una Opcion</span>
+                                    <div id="table"> 
                                     </div>
                                 </form>
                             </section>
@@ -83,7 +67,7 @@
                     <a href="http://www.politecnicojic.edu.co/">Politécnico Colombiano Jaime Isaza Cadavid</a> desarrollado por <a href="">Santiago Cardona & Santiago Arbelaez</a>
                 </div>
             </div>
-            <script src="../../js/DataTables/Operacion.js" type="text/javascript"></script>
+            <script src="js/Serialize_Tables.js" type="text/javascript"></script>
             <script src="../../js/Validator/Venta.js" type="text/javascript"></script>
     </body>
 </html>

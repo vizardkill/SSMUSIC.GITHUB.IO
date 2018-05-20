@@ -128,23 +128,23 @@ function Empresasformat(d) {
     return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
             '<tr>' +
             '<td><b>Fecha de Registro:</b></td>' +
-            '<td>' +  '</td>' +
+            '<td>' + '</td>' +
             '</tr>' +
             '<tr>' +
             '<td><b>Nombre del Encargado:</b></td>' +
-            '<td>' +  '</td>' +
+            '<td>'  + '</td>' +
             '</tr>' +
             '<tr>' +
             '<td><b>Documento del Encargo:</b></td>' +
-            '<td>' + '</td>' +
+            '<td>'  + '</td>' +
             '</tr>' +
             '<tr>' +
             '<td><b>Telefono del Encargado:</b></td>' +
-            '<td>' + '</td>' +
+            '<td>'  + '</td>' +
             '</tr>' +
             '<tr>' +
             '<td><b>Correo del Encargado:</b></td>' +
-            '<td>' +  '</td>' +
+            '<td>' + '</td>' +
             '</tr>' +
             '<tr>' +
             '<td><b>Informacion Adicional:</b></td>' +

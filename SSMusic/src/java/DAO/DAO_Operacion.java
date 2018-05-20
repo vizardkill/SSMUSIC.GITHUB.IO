@@ -20,7 +20,7 @@ import java.util.List;
  * @author Softcaribbean-DEV2
  */
 public class DAO_Operacion implements IOperacion_DAO {
-
+    
     @Override
     public boolean setOperacion(Operacion Op) {
         Connection con;
@@ -33,7 +33,7 @@ public class DAO_Operacion implements IOperacion_DAO {
                 + "FECHA_VENTA "
                 + ") "
                 + "VALUES(?,?,?,?,?)";
-
+        
         try {
             con = DBUtil.getConexion();
             try (PreparedStatement ps = con.prepareStatement(sql)) {
@@ -51,17 +51,17 @@ public class DAO_Operacion implements IOperacion_DAO {
         }
         return true;
     }
-
+    
     @Override
     public List<Operacion> getOperacion() {
         Connection co;
         Statement stm;
         ResultSet rs;
-
+        
         String sql = "SELECT * FROM VENTAS ORDER BY CANTIDAD_OPERACIONES";
-
-        ArrayList<Operacion> listaEmpresa = new ArrayList();
-
+        
+        ArrayList<Operacion> listaOperacion = new ArrayList();
+        
         try {
             co = DBUtil.getConexion();
             stm = co.createStatement();
@@ -73,7 +73,7 @@ public class DAO_Operacion implements IOperacion_DAO {
                 o.setCANTIDAD_OPERACIONES(rs.getInt("CANTIDAD_OPERACIONES"));
                 o.setVALOR_VENTA(rs.getLong("VALOR_VENTA"));
                 o.setFECHA_VENTA(rs.getString("FECHA_VENTA"));
-                listaEmpresa.add(o);
+                listaOperacion.add(o);
             }
             stm.close();
             rs.close();
@@ -81,7 +81,39 @@ public class DAO_Operacion implements IOperacion_DAO {
         } catch (SQLException e) {
             System.out.println("Error: Clase DAO_Empresa, método obtener");
         }
-        return listaEmpresa;
+        return listaOperacion;
     }
-
+    
+    @Override
+    public List<Operacion> getTotalOperacion() {
+        Connection co;
+        Statement stm;
+        ResultSet rs;
+        
+        String sql = "SELECT * FROM OPERACIONES ORDER BY EMP";
+        
+        ArrayList<Operacion> listaOperacion = new ArrayList();
+        
+        try {
+            co = DBUtil.getConexion();
+            stm = co.createStatement();
+            rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                Operacion o = new Operacion();
+                o.setID_EMP(rs.getInt("ID_EMP"));
+                o.setEMP(rs.getString("EMP"));
+                o.setID_ARTISTA_VE(rs.getInt("ID_ART"));
+                o.setNOM_ART(rs.getString("NOM_ART"));
+                o.setCANTIDAD_OPERACIONES(rs.getInt("TOTAL_OPERACIONES"));
+                listaOperacion.add(o);
+            }
+            stm.close();
+            rs.close();
+            co.close();
+        } catch (SQLException e) {
+            System.out.println("Error: Clase DAO_Empresa, método obtener");
+        }
+        return listaOperacion;
+    }
+    
 }

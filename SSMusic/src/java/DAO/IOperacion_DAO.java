@@ -15,4 +15,6 @@ import java.util.List;
 public interface IOperacion_DAO {
     public boolean setOperacion(Operacion Operaciones);
     public List<Operacion> getOperacion();
+    public List<Operacion> getTotalOperacion();
+    
 }

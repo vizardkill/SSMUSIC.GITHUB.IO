@@ -120,24 +120,42 @@ public class Json_Datos {
         return json.toString();
     }
 
-    public String jsonOperaciones() {
+    public String jsonOperaciones(String tipo) {
         controller_oper coper = new controller_oper();
         com.google.gson.JsonObject json = new JsonObject();
-        List<Operacion> list = coper.getOperaciones();
 
-        JsonArray array = new JsonArray();
-        for (Operacion x : list) {
-            JsonObject item = new JsonObject();
-            item.addProperty("Id", x.getID_VENTAS());
-            item.addProperty("ID_ARTISTA_VE", x.getID_ARTISTA_VE());
-            item.addProperty("CANTIDAD_OPERACIONES", x.getCANTIDAD_OPERACIONES());
-            item.addProperty("VALOR_VENTA", x.getVALOR_VENTA());
-            item.addProperty("FECHA_VENTA", x.getFECHA_VENTA());
-            array.add(item);
+        if (tipo.equals("total_operaciones")) {
+            List<Operacion> list = coper.getTotalOperaciones();
+            JsonArray array = new JsonArray();
+            for (Operacion x : list) {
+                JsonObject item = new JsonObject();
+                item.addProperty("ID_EMP", x.getID_EMP());
+                item.addProperty("EMP", x.getEMP());
+                item.addProperty("ID_ART", x.getID_ARTISTA_VE());
+                item.addProperty("NOM_ART", x.getNOM_ART());
+                item.addProperty("TOTAL_OPERACIONES", x.getCANTIDAD_OPERACIONES());
+                array.add(item);
+            }
+            json.add("Total_Operaciones", array);
+            return json.toString();
         }
-        json.add("Operaciones", array);
-        return json.toString();
 
+        if (tipo.equals("operaciones")) {
+            List<Operacion> list = coper.getOperaciones();
+            JsonArray array = new JsonArray();
+            for (Operacion x : list) {
+                JsonObject item = new JsonObject();
+                item.addProperty("Id", x.getID_VENTAS());
+                item.addProperty("ID_ARTISTA_VE", x.getID_ARTISTA_VE());
+                item.addProperty("CANTIDAD_OPERACIONES", x.getCANTIDAD_OPERACIONES());
+                item.addProperty("VALOR_VENTA", x.getVALOR_VENTA());
+                item.addProperty("FECHA_VENTA", x.getFECHA_VENTA());
+                array.add(item);
+            }
+            json.add("Operaciones", array);
+            return json.toString();
+        }
+        return "null";
     }
 
 }

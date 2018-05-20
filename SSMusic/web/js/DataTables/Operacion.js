@@ -32,8 +32,8 @@ $(document).ready(function () {
         },
         ajax: {
             method: "GET",
-            url: "../../Datos?peticion=data_operacion",
-            dataSrc: "Operaciones"
+            url: "../../Datos?peticion=data_operacion&tipo=total_operaciones",
+            dataSrc: "Total_Operaciones"
         },
         select: "single",
         columns: [
@@ -47,11 +47,11 @@ $(document).ready(function () {
                 },
                 width: '15px'
             },
-            {data: "Id"},
-            {data: "ID_ARTISTA_VE"},
-            {data: "CANTIDAD_OPERACIONES"},
-            {data: "VALOR_VENTA"},
-            {data: "FECHA_VENTA"}
+            {data: "ID_EMP"},
+            {data: "EMP"},
+            {data: "ID_ART"},
+            {data: "NOM_ART"},
+            {data: "TOTAL_OPERACIONES"}
         ],
         order: [[1, 'asc']],
         dom: 'fBrtip',

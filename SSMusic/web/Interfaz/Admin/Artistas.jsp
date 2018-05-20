@@ -37,31 +37,15 @@
                             <section class="panel">
                                 <form action="" method="post" id="data">
                                     <header class="panel-heading">
+                                        Mostrar: <select id="Tables" class="simple" onchange="return mostrar()">
+                                            <option value="">Ninguno</option>
+                                            <option>Artistas</option>
+                                            <option>Operaciones</option>
+                                        </select>
                                         <button type="button" class="btn btn-xs btn-primary BTN_Accion" role="button" onclick="ListarEmpresa();" data-toggle="modal" data-target="#Modal_RegistrarArt" data-id="2" data-accion="Registrar Artista">Registrar Artista</button>
                                     </header>                      
-                                    <div id="table-responsive">
-                                        <table id="table_Artistas" class="table table-striped table-advance table-hover" >
-                                            <thead>
-                                                <tr>                                            
-                                                    <th></th>
-                                                    <th>Poster</th>
-                                                    <th>Banda o Artista</th>
-                                                    <th>Fecha de Registro</th>
-                                                    <th>Acciones</th>
-                                                </tr>
-                                            </thead>
-                                            <tfoot>
-                                                <tr>
-                                                    <th></th>
-                                                    <th>Poster</th>
-                                                    <th>Banda o Artista</th>
-                                                    <th>Fecha de Registro</th>
-                                                    <th>Acciones</th>
-                                                </tr>
-                                            </tfoot>
-                                            <tbody id="employee_data" >
-                                            </tbody>
-                                        </table>
+                                    <span id="no_hay">Por favor Seleccione una Opcion</span>
+                                    <div id="table"> 
                                     </div>
                                 </form>
                             </section>
@@ -76,7 +60,7 @@
                     <a href="http://www.politecnicojic.edu.co/">Politécnico Colombiano Jaime Isaza Cadavid</a> desarrollado por <a href="">Santiago Cardona & Santiago Arbelaez</a>
                 </div>
             </div>
-            <script src="../../js/DataTables/Artistas.js" type="text/javascript"></script>
+            <script src="js/Serialize_Tables.js" type="text/javascript"></script>
             <script src="../../js/Validator/Artista.js" type="text/javascript"></script>
     </body>
 </html>

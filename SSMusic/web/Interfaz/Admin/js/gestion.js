@@ -49,7 +49,6 @@ function cargarSelectEmpresa(respuesta) {
         select.appendChild(option);
         option.appendChild(contenido);
     }
-
 }
 
 function validarEmpresa(){
