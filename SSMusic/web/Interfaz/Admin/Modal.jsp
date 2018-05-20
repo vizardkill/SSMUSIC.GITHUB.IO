@@ -163,7 +163,7 @@
 
 
         <div class="modal-content">
-            <form class="form form-inline" action="../../Registros?peticion=Reg_Operarios" id="Reg_Operarios">
+            <form class="form form-inline" action="../../Registros?peticion=Reg_Operarios" id="Reg_Operarios" method="POST">
                 <div class="modal-header">
                     <div class="form_top">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -248,18 +248,18 @@
                     </div> 
                 </div>
                 <div class="modal-body" >
-                    <p id="mensaje_Rope" style="color: #ff0000">${sessionScope['ErrorReVenta']}</p>
+                     <span id="Error_Venta" name="Error_Venta" style="color: #ff0000"></span>
                     <div class="container-fluid">
                         <div class="col-sm-12">    
                             <div class="form-group col-md-6">
                                 <label class="control-label">Empresa: </label>
-                                <select id="select_empresas_venta" onchange="cargarSelectArtistaPorEmpresa(this);" name="select_empresas" class="form-control input select" >
+                                <select id="select_empresas_venta" onchange="cargarSelectArtistaPorEmpresa(this);" name="select_empresas_venta" class="form-control input select" >
                                     <option valor=" " value=" ">Seleccione una empresa</option>
                                 </select>
                             </div>
                             <div class="form-group col-sm-6">  
                                <label class="control-label">Artista: </label>
-                                <select id="select_artista_venta" name="" class="form-control input select" >
+                                <select id="select_artista_venta" name="select_artista_venta" class="form-control input select" >
                                     <option value=" ">Seleccione un Artista</option>
                                 </select>
                             </div>
@@ -272,7 +272,7 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="VALOR_VENTA" class="control-label">Total Venta: </label>
-                                <input name="VALOR_VENTA" id="VALOR_VENTA" type="text" class="form-control input" placeholder="$ Monto total" disabled/>
+                                <input name="VALOR_VENTA" id="VALOR_VENTA" type="text" class="form-control input" placeholder="$ Monto total" value="" readonly/>
                             </div>
                         </div>                   
                     </div>

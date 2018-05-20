@@ -5,7 +5,7 @@
  * @see https://datatables.net/
  */
 $(document).ready(function () {
-    var table = $('#table_Empresas').DataTable({
+    var table = $('#table_Operacion').DataTable({
         language: {
             sProcessing: "Procesando...",
             sLengthMenu: "Mostrar _MENU_  Registros",
@@ -32,12 +32,12 @@ $(document).ready(function () {
         },
         ajax: {
             method: "GET",
-            url: "../../Datos?peticion=data_emp",
-            dataSrc: "Empresas"
+            url: "../../Datos?peticion=data_operacion",
+            dataSrc: "Operaciones"
         },
         select: "single",
         columns: [
-            {
+             {
                 className: 'details-control',
                 orderable: false,
                 data: null,
@@ -47,14 +47,11 @@ $(document).ready(function () {
                 },
                 width: '15px'
             },
-            {data: "NIT_Empresa"},
-            {data: "Nom_Empresa"},
-            {data: "Tipo_operacion"},
-            {
-                data: "Valor_operacion",
-                render: $.fn.dataTable.render.number(',', '.', 0, '$')
-            },
-            {data: "acciones"}
+            {data: "Id"},
+            {data: "ID_ARTISTA_VE"},
+            {data: "CANTIDAD_OPERACIONES"},
+            {data: "VALOR_VENTA"},
+            {data: "FECHA_VENTA"}
         ],
         order: [[1, 'asc']],
         dom: 'fBrtip',
@@ -85,7 +82,7 @@ $(document).ready(function () {
             }
         ]
     });
-    $('#table_Empresas tbody').on('click', 'td.details-control', function () {
+    $('#table_Operacion tbody').on('click', 'td.details-control', function () {
         var tr = $(this).closest('tr');
         var tdi = tr.find('i.fa');
         var row = table.row(tr);
@@ -131,23 +128,23 @@ function Empresasformat(d) {
     return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
             '<tr>' +
             '<td><b>Fecha de Registro:</b></td>' +
-            '<td>' + d.FECHA_REGISTRO_D + '</td>' +
+            '<td>' + '</td>' +
             '</tr>' +
             '<tr>' +
             '<td><b>Nombre del Encargado:</b></td>' +
-            '<td>' + d.NOM_ENCARGADO_D + '</td>' +
+            '<td>'  + '</td>' +
             '</tr>' +
             '<tr>' +
             '<td><b>Documento del Encargo:</b></td>' +
-            '<td>' + d.DOC_ENCARGADO_D + '</td>' +
+            '<td>'  + '</td>' +
             '</tr>' +
             '<tr>' +
             '<td><b>Telefono del Encargado:</b></td>' +
-            '<td>' + d.TEL_ENCARGADO_D + '</td>' +
+            '<td>'  + '</td>' +
             '</tr>' +
             '<tr>' +
             '<td><b>Correo del Encargado:</b></td>' +
-            '<td>' + d.COR_ENCARGADO_D + '</td>' +
+            '<td>' + '</td>' +
             '</tr>' +
             '<tr>' +
             '<td><b>Informacion Adicional:</b></td>' +
@@ -155,3 +152,4 @@ function Empresasformat(d) {
             '</tr>' +
             '</table>';
 }
+

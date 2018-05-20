@@ -44,7 +44,7 @@
                                         <button type="button" class="btn btn-xs btn-success BTN_Accion" onclick="ListarArtistaPorEmpresa();" role="button" data-toggle="modal" data-target="#Modal_Venta" data-id="1" data-accion="Registrar Venta">Registrar Venta</button>
                                     </header>                      
                                     <div id="table-responsive">
-                                        <table id="table_Empresas" class="table table-striped table-advance table-hover">
+                                        <table id="table_Operacion" class="table table-striped table-advance table-hover">
                                             <thead>
                                                 <tr>                                            
                                                     <th></th>
@@ -83,5 +83,7 @@
                     <a href="http://www.politecnicojic.edu.co/">Politécnico Colombiano Jaime Isaza Cadavid</a> desarrollado por <a href="">Santiago Cardona & Santiago Arbelaez</a>
                 </div>
             </div>
+            <script src="../../js/DataTables/Operacion.js" type="text/javascript"></script>
+            <script src="../../js/Validator/Venta.js" type="text/javascript"></script>
     </body>
 </html>

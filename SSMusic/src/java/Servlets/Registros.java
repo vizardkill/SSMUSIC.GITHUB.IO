@@ -8,11 +8,13 @@ package Servlets;
 import Controladores.controller_art;
 import Controladores.controller_emp;
 import Controladores.controller_log;
+import Controladores.controller_oper;
 import Controladores.controller_user;
 import Metodos.Calendario;
 import Modelo.Artista;
 import Modelo.Empresa;
 import Modelo.Log;
+import Modelo.Operacion;
 import Modelo.Usuario;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -104,6 +106,9 @@ public class Registros extends HttpServlet {
         if (peticion.equals("Reg_Operarios")) {
             response.getWriter().write(RegistroOperario(request, response));
         }
+        if (peticion.equals("Reg_Venta")) {
+            response.getWriter().write(RegistroVentas(request, response));
+        }
 
         if (peticion.equals("listarEmpresa")) {
             response.setContentType("text/html");
@@ -113,7 +118,6 @@ public class Registros extends HttpServlet {
             response.setContentType("text/html");
             response.getWriter().write(listarArtPorEmpresa(request, response));
         }
-        
 
     }
 
@@ -203,74 +207,6 @@ public class Registros extends HttpServlet {
         return item.toString();
     }
 
-    public String listarEmpresas(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
-        com.google.gson.JsonObject json = new JsonObject();
-        JsonArray array = new JsonArray();
-        List<Modelo.Empresa> resultado;
-
-        try {
-
-            controller_emp edao = new controller_emp();
-
-            resultado = edao.getEmpresas();
-            for (Empresa result : resultado) {
-                JsonObject item = new JsonObject();
-                item.addProperty("ID_EMPRESA_D", result.getId_emp());
-                item.addProperty("ID_EMAYOR", result.getId_emp_ma());
-                item.addProperty("NIT_EMPRESA_D", result.getNIT_emp());
-                item.addProperty("NOM_EMPRESA_D", result.getNom_emp());
-                item.addProperty("NOM_ENCARGADO_D", result.getNom_encargado());
-                item.addProperty("DOC_ENCARGADO_D", result.getDoc_encargado());
-                item.addProperty("TEL_ENCARGADO_D", result.getTel_encargado());
-                item.addProperty("COR_ENCARGADO_D", result.getCor_encargado());
-                item.addProperty("TIPO_OPERACION_D", result.getTipo_operacion());
-                item.addProperty("VALOR_OPERACION_D", result.getValor_operacion());
-                item.addProperty("FECHA_REGISTRO_D", result.getFecha_registro());
-                array.add(item);
-            }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        return array.toString();
-    }
-    
-    public String listarArtPorEmpresa(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
-        com.google.gson.JsonObject json = new JsonObject();
-        JsonArray array = new JsonArray();
-        List<Modelo.Artista> resultado;
-
-        try {
-            Artista art = new Artista();
-            controller_art adao = new controller_art();
-            art.setId_empresa_d_art(Integer.parseInt(request.getParameter("ID_EMPRESA_D")));
-
-            resultado = adao.getArtPorEmpresa(art);
-            for (Artista result : resultado) {
-                JsonObject item = new JsonObject();
-                item.addProperty("ID_ARTISTA", result.getId());
-                item.addProperty("NOM_ARTISTA", result.getNombre_art());
-                item.addProperty("NOM_REPRESENTANTE", result.getNom_representante());
-                item.addProperty("DOC_REPRESENTANTE", result.getDoc_representante());
-                item.addProperty("TEL_REPRESENTANTE", result.getTel_representante());
-                item.addProperty("COR_REPRESENTANTE", result.getCor_representante());
-                item.addProperty("ID_EMPRESA_D_ART", result.getId_empresa_d_art());
-                item.addProperty("SRC", result.getSrc());
-                item.addProperty("FECHA_REGISTRO_ART", result.getFecha_registro_art());
-                
-                
-                array.add(item);
-                
-            }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        return array.toString();
-    }
-
     public String RegistroOperario(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession(true);
@@ -316,6 +252,106 @@ public class Registros extends HttpServlet {
         return item.toString();
     }
 
+    public String RegistroVentas(HttpServletRequest request, HttpServletResponse response) {
+        HttpSession session = request.getSession(true);
+        com.google.gson.JsonObject json = new JsonObject();
+        JsonObject item = new JsonObject();
+
+        Calendario fechaR = new Calendario();
+        String FECHA_REGISTRO = fechaR.Fecha_Registro();
+
+        Log log = new Log();
+        Operacion oper = new Operacion();
+
+        System.out.println("ID del artista: "+request.getParameter("select_artista_venta"));
+        System.out.println("Valor de la Venta: "+request.getParameter("VALOR_VENTA"));
+        oper.setID_ARTISTA_VE(Integer.parseInt(request.getParameter("select_artista_venta")));
+        oper.setCANTIDAD_OPERACIONES(Integer.parseInt(request.getParameter("CANTIDAD_OPERACIONES")));
+        oper.setVALOR_VENTA(Long.parseLong(request.getParameter("VALOR_VENTA")));
+        oper.setFECHA_VENTA(FECHA_REGISTRO);
+
+        int id_user = (Integer) session.getAttribute("ID_USUARIO");
+        log.setId_usuario_log(id_user);
+        log.setTipo_de_gestion("Registro Venta");
+        log.setFecha_log(FECHA_REGISTRO);
+
+        controller_oper coper = new controller_oper();
+        boolean result = coper.setOperacion(oper);
+        controller_log logdao = new controller_log();
+        if (result) {
+            logdao.registerLog(log);
+        }
+        item.addProperty("result", result);
+        return item.toString();
+    }
+
+    public String listarEmpresas(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        com.google.gson.JsonObject json = new JsonObject();
+        JsonArray array = new JsonArray();
+        List<Modelo.Empresa> resultado;
+
+        try {
+
+            controller_emp edao = new controller_emp();
+
+            resultado = edao.getEmpresas();
+            for (Empresa result : resultado) {
+                JsonObject item = new JsonObject();
+                item.addProperty("ID_EMPRESA_D", result.getId_emp());
+                item.addProperty("ID_EMAYOR", result.getId_emp_ma());
+                item.addProperty("NIT_EMPRESA_D", result.getNIT_emp());
+                item.addProperty("NOM_EMPRESA_D", result.getNom_emp());
+                item.addProperty("NOM_ENCARGADO_D", result.getNom_encargado());
+                item.addProperty("DOC_ENCARGADO_D", result.getDoc_encargado());
+                item.addProperty("TEL_ENCARGADO_D", result.getTel_encargado());
+                item.addProperty("COR_ENCARGADO_D", result.getCor_encargado());
+                item.addProperty("TIPO_OPERACION_D", result.getTipo_operacion());
+                item.addProperty("VALOR_OPERACION_D", result.getValor_operacion());
+                item.addProperty("FECHA_REGISTRO_D", result.getFecha_registro());
+                array.add(item);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return array.toString();
+    }
+
+    public String listarArtPorEmpresa(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        com.google.gson.JsonObject json = new JsonObject();
+        JsonArray array = new JsonArray();
+        List<Modelo.Artista> resultado;
+
+        try {
+            Artista art = new Artista();
+            controller_art adao = new controller_art();
+            art.setId_empresa_d_art(Integer.parseInt(request.getParameter("ID_EMPRESA_D")));
+
+            resultado = adao.getArtPorEmpresa(art);
+            for (Artista result : resultado) {
+                JsonObject item = new JsonObject();
+                item.addProperty("ID_ARTISTA", result.getId());
+                item.addProperty("NOM_ARTISTA", result.getNombre_art());
+                item.addProperty("NOM_REPRESENTANTE", result.getNom_representante());
+                item.addProperty("DOC_REPRESENTANTE", result.getDoc_representante());
+                item.addProperty("TEL_REPRESENTANTE", result.getTel_representante());
+                item.addProperty("COR_REPRESENTANTE", result.getCor_representante());
+                item.addProperty("ID_EMPRESA_D_ART", result.getId_empresa_d_art());
+                item.addProperty("SRC", result.getSrc());
+                item.addProperty("FECHA_REGISTRO_ART", result.getFecha_registro_art());
+
+                array.add(item);
+
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return array.toString();
+    }
+
     /**
      * Returns a short description of the servlet.
      *
@@ -340,7 +376,7 @@ public class Registros extends HttpServlet {
         final Part filePart = request.getPart("Img_art-0");
         String SRC;
         if (filePart == null) {
-             return SRC = "../../img/male.png";
+            return SRC = "../../img/male.png";
         }
         final String fileName = getFileName(filePart);
         SRC = "../../img/Icons_art/" + fileName;

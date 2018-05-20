@@ -121,7 +121,7 @@ public class DAO_Empresa implements IEmpresa_DAO {
             con.close();
 
         } catch (SQLException e) {
-            System.out.println("Error: Clase DAO_Empresa, método eliminar");
+            System.out.println("Error: Clase DAO_Empresa, método eliminar: "+ e);
             return false;
         }
         return true;

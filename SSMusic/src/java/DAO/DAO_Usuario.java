@@ -31,7 +31,7 @@ import java.util.logging.Logger;
 public class DAO_Usuario implements IUsuario_DAO {
 
     @Override
-    public Boolean setUser(Usuario user) {
+    public boolean setUser(Usuario user) {
         Connection con;
         String sql = "INSERT INTO USUARIO"
                 + "("

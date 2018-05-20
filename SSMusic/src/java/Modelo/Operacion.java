@@ -17,6 +17,9 @@ public class Operacion {
     private Integer CANTIDAD_OPERACIONES; 
     private Long VALOR_VENTA;
     private String FECHA_VENTA;
+
+    public Operacion() {
+    }
     
     
     public Operacion(Integer ID_VENTAS, Integer ID_ARTISTA_VE, Integer CANTIDAD_OPERACIONES, Long VALOR_VENTA, String FECHA_VENTA) {

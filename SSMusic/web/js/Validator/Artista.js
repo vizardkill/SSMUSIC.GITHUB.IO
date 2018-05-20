@@ -131,15 +131,13 @@ $(document).ready(function () {
                     success: function (result) {
                         if (result) {
                             $('#table_Artistas').DataTable().ajax.reload();
-                            document.getElementById("NOM_ARTISTA").value = "";
-                            document.getElementById("NOM_REPRESENTANTE").value = "";
-                            document.getElementById("DOC_REPRESENTANTE").value = "";
-                            document.getElementById("");
                             $('#Error_ReArt').text('Artista registrado con Exito');
+                            document.getElementById("Reg_Artistas").reset();
                         } else {
                             $('#Error_ReArt').text('Hubo problemas con el Registro');
                         }
                         setTimeout(function () {
+                             document.getElementById("Error_ReArt").value = "";
                             $('#Modal_RegistrarArt').modal('hide');
                         }, 2000);
                     }

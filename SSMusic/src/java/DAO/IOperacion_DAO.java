@@ -6,6 +6,7 @@
 package DAO;
 
 import Modelo.Operacion;
+import java.util.List;
 
 /**
  *
@@ -13,4 +14,5 @@ import Modelo.Operacion;
  */
 public interface IOperacion_DAO {
     public boolean setOperacion(Operacion Operaciones);
+    public List<Operacion> getOperacion();
 }

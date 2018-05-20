@@ -123,8 +123,9 @@ $(document).ready(function () {
 
                 // Use Ajax to submit form data
                 $.post($form.attr('action'), $form.serialize(), function (result) {
-                    if (result) {
+                    if (result === true) {
                         $('#table_Empresas').DataTable().ajax.reload();
+                        document.getElementById("Modal_RegistrarEmp").reset();
                         $('#Error_ReEmp').text('Empresa registrada con Exito');
                     } else {
                         $('#Error_ReEmp').text('Hubo problemas con el Registro');

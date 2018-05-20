@@ -6,7 +6,6 @@
 package DAO;
 
 import Modelo.Log;
-import java.text.ParseException;
 
 /**
  *

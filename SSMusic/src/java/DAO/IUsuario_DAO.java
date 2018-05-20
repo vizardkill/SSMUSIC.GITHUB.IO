@@ -5,7 +5,6 @@
  */
 package DAO;
 
-import Modelo.Log;
 import Modelo.Usuario;
 import java.util.List;
 
@@ -15,7 +14,7 @@ import java.util.List;
  */
 public interface IUsuario_DAO {
     
-    public Boolean setUser(Usuario user);
+    public boolean setUser(Usuario user);
 
     public List<Usuario> getUser();
 
