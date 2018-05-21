@@ -141,6 +141,26 @@ public class Json_Datos {
             return json.toString();
 
         }
+        
+        if (tipo.equals("informeFecha")) {
+            Informes infos = new Informes();
+            infos.setFecha_inicial("20/05/2018");
+            infos.setFecha_final("22/05/2018");
+            List<Informes> list = info.getInformeVentasArtistasRangoFecha(infos);
+            JsonArray array = new JsonArray();
+            for (Informes x : list) {
+                JsonObject item = new JsonObject();
+                item.addProperty("NOM_ART", x.getNOM_ART());
+                item.addProperty("EMP", x.getEMP());
+                item.addProperty("FECHA_DE_VENTA", x.getFECHA_DE_VENTA());
+                item.addProperty("VALOR_VENTA", x.getVALOR_VENTA());
+                array.add(item);
+            }
+            json.add("TOperaciones", array);
+            System.out.println("Json informe: "+json.toString());
+            return json.toString();
+
+        }
 
         if (tipo.equals("TVentasxEmpresa")) {
             List<Informes> list = info.getInformeVentasTEmpresa();

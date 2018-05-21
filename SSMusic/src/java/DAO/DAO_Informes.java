@@ -8,6 +8,7 @@ package DAO;
 import Conexion.DBUtil;
 import Modelo.Informes;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -150,6 +151,49 @@ public class DAO_Informes implements IInformes_DAO{
                 ListInforme.add(u);
             }
             stm.close();
+            rs.close();
+            co.close();
+        } catch (SQLException e) {
+            System.out.println("Error: Clase DAO_Informes, método getInformeVentasEmpresa: " +e);
+        }
+        return ListInforme;
+    }
+    
+    @Override
+    public ArrayList<Informes> getInformeVentasArtistasRangoFecha(Informes info) {
+        Connection co;
+        Statement stm;
+        ResultSet rs;
+System.out.println("Valores en dao: "+info.getFecha_inicial()+" ::"+ info.getFecha_final());
+        String sql = "SELECT  ARTISTA.NOM_ARTISTA AS NOM_ART,\n" +
+"        EMPRESA_DIFUSORA.NOM_EMPRESA_D AS EMP,\n" +
+"        VENTAS.VALOR_VENTA AS VALOR_VENTA,\n" +
+"        VENTAS.FECHA_VENTA AS FECHA_DE_VENTA\n" +
+"        \n" +
+"        FROM ARTISTA\n" +
+"        INNER JOIN VENTAS ON ID_ARTISTA = ID_ARTISTA_VE\n" +
+"        INNER JOIN EMPRESA_DIFUSORA ON ID_EMPRESA_D_ART = ID_EMPRESA_D\n" +
+"WHERE VENTAS.FECHA_VENTA >= TO_DATE(?,'DD/MM/YYYY')\n" +
+"AND VENTAS.FECHA_VENTA <= TO_DATE(?,'DD/MM/YYYY')";
+
+        ArrayList<Informes> ListInforme = new ArrayList();
+
+        try {
+            co = DBUtil.getConexion();
+            
+            PreparedStatement ps = co.prepareStatement(sql);
+            ps.setString(1, info.getFecha_inicial());
+            ps.setString(2, info.getFecha_final());
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Informes u = new Informes();
+                u.setNOM_ART(rs.getString("NOM_ART"));
+                u.setEMP(rs.getString("EMP"));
+                u.setFECHA_DE_VENTA(rs.getString("FECHA_DE_VENTA"));
+                u.setVALOR_VENTA(rs.getLong("VALOR_VENTA"));
+                ListInforme.add(u);
+            }
+            
             rs.close();
             co.close();
         } catch (SQLException e) {

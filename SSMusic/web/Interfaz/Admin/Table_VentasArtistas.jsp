@@ -1,7 +1,8 @@
 <div id="table-responsive">
     <p id="date_filter">
-        <span id="date-label-from" class="date-label">Fecha Inicial: </span><input class="date_range_filter date" type="text" id="datepicker_from" />
-        <span id="date-label-to" class="date-label">Fecha Final: <input class="date_range_filter date" type="text" id="datepicker_to" />
+        <span id="date-label-from" class="date-label">Fecha Inicial: <input class="date_range_filter date" type="text" id="datepicker_from" />
+        <span id="date-label-to" class="date-label">Fecha Final: </span><input class="date_range_filter date" type="text" id="datepicker_to" />
+         <button id="buscar_rangofecha" onclick="generarInformeRangoFecha();" class="btn btn-default" name="buscar_rangofecha">Buscar</button>
     </p>
     <table id="table_VentasArtistas" class="table table-striped table-advance table-hover">
         <thead>

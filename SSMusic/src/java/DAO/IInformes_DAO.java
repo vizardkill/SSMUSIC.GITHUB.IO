@@ -18,5 +18,5 @@ public interface IInformes_DAO {
     public ArrayList<Informes> getInformeVentasTArtista();
     public ArrayList<Informes> getInformeVentasTEmpresa();
     public ArrayList<Informes> getInformeVentasEmpresa();
-    
+    public ArrayList<Informes> getInformeVentasArtistasRangoFecha(Informes info);
 }

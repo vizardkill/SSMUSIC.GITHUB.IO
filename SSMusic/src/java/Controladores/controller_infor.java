@@ -39,4 +39,9 @@ public class controller_infor {
         List<Informes> emps = edao.getInformeVentasEmpresa();
         return emps;
     }
+      public List<Informes> getInformeVentasArtistasRangoFecha(Informes info) {
+        IInformes_DAO edao = new DAO_Informes();
+        List<Informes> emps = edao.getInformeVentasArtistasRangoFecha(info);
+        return emps;
+    }
 }

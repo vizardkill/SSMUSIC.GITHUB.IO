@@ -264,3 +264,19 @@ function operacionventa(){
     
 }
 
+function generarInformeRangoFecha() {
+    var date_start = document.getElementById("date-label-from");
+    var date_end = document.getElementById("date-label-to");
+    xMLHttpRequest.open("Get", "../../Datos?date_start="+date_start+"&date_end="+date_end+"&peticion=informeFecha", true);
+    xMLHttpRequest.onreadystatechange = PostgenerarInformeRangoFecha;
+    xMLHttpRequest.send(null);
+
+}
+
+function PostgenerarInformeRangoFecha() {
+    if (xMLHttpRequest.readyState == 4 && xMLHttpRequest.status == 200) {
+        var resp = eval('(' + xMLHttpRequest.responseText + ')');
+        
+    }
+}
+

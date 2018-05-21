@@ -19,6 +19,24 @@ public class Informes {
     private long VALOR_VENTA;
     private String FECHA_DE_VENTA;
     private long CANTIDAD;
+    private String FECHA_INICIAL;
+    private String FECHA_FINAL;
+
+    public String getFecha_inicial() {
+        return FECHA_INICIAL;
+    }
+
+    public void setFecha_inicial(String fecha_inicial) {
+        this.FECHA_INICIAL = fecha_inicial;
+    }
+
+    public String getFecha_final() {
+        return FECHA_FINAL;
+    }
+
+    public void setFecha_final(String fecha_final) {
+        this.FECHA_FINAL = fecha_final;
+    }
 
     public long getCANTIDAD() {
         return CANTIDAD;
@@ -96,7 +114,7 @@ public class Informes {
         this.FECHA_DE_VENTA = FECHA_DE_VENTA;
     }
 
-    public Informes(int ID_EMP, String EMP, int ID_ART, String NOM_ART, long TOTAL_OPERACIONES, long TOTAL_VENTAS, long VALOR_VENTA, String FECHA_DE_VENTA, long CANTIDAD) {
+    public Informes(int ID_EMP, String EMP, int ID_ART, String NOM_ART, long TOTAL_OPERACIONES, long TOTAL_VENTAS, long VALOR_VENTA, String FECHA_DE_VENTA, long CANTIDAD, String FECHA_INICIAL, String FECHA_FINAL) {
         this.ID_EMP = ID_EMP;
         this.EMP = EMP;
         this.ID_ART = ID_ART;
@@ -106,6 +124,8 @@ public class Informes {
         this.VALOR_VENTA = VALOR_VENTA;
         this.FECHA_DE_VENTA = FECHA_DE_VENTA;
         this.CANTIDAD = CANTIDAD;
+        this.FECHA_INICIAL = FECHA_INICIAL;
+        this.FECHA_FINAL = FECHA_FINAL;
     }
     
 }
