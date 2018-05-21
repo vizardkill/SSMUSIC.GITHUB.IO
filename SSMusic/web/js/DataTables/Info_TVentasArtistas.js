@@ -47,16 +47,7 @@ $(document).ready(function () {
             {data: "NOM_ART"},
             {data: "EMP"},
             {data: "TOTAL_VENTA"},
-            {
-                title: "Fecha de Venta",
-                data: "VENTA_FECHA",
-                type: "date ",
-                render: function (value) {
-                    if (value === null)
-                        return "";
-                    return moment(value).format('DD/MM/YYYY');
-                }
-            }
+            {data: "VENTA_FECHA"}
         ],
         order: [[1, 'asc']],
         dom: 'fBrtip',
@@ -114,7 +105,7 @@ $(document).ready(function () {
 
     $("#datepicker_from").datepicker({
         showOn: "button",
-        buttonImage: "images/calendar.gif",
+        buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
         buttonImageOnly: false,
         onSelect: function (date) {
             var minDateFilter = new Date(date).getTime();
@@ -127,7 +118,7 @@ $(document).ready(function () {
 
     $("#datepicker_to").datepicker({
         showOn: "button",
-        buttonImage: "images/calendar.gif",
+        buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
         buttonImageOnly: false,
         onSelect: function (date) {
             var maxDateFilter = new Date(date).getTime();
