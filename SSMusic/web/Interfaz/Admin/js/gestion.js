@@ -188,6 +188,8 @@ function PostListarEmpresa() {
 
 
 function ListarArtista(id) {
+    
+    
     xMLHttpRequest.open("Post", "../../Registros?ID_EMPRESA_D="+id+"&peticion=listarArt", true);
     xMLHttpRequest.onreadystatechange = PostListarArtista;
     xMLHttpRequest.send(null);
@@ -265,9 +267,11 @@ function operacionventa(){
 }
 
 function generarInformeRangoFecha() {
-    var date_start = document.getElementById("date-label-from");
-    var date_end = document.getElementById("date-label-to");
-    xMLHttpRequest.open("Get", "../../Datos?date_start="+date_start+"&date_end="+date_end+"&peticion=informeFecha", true);
+    var date_start = document.getElementById("datepicker_from").value;
+    console.log(date_start);
+    var date_end = document.getElementById("datepicker_to").value;
+    console.log(date_end);
+    xMLHttpRequest.open("Get", "../../Datos?date_start="+date_start+"&date_end="+date_end+"&peticion=informeArtistasPorFecha", true);
     xMLHttpRequest.onreadystatechange = PostgenerarInformeRangoFecha;
     xMLHttpRequest.send(null);
 
@@ -276,7 +280,7 @@ function generarInformeRangoFecha() {
 function PostgenerarInformeRangoFecha() {
     if (xMLHttpRequest.readyState == 4 && xMLHttpRequest.status == 200) {
         var resp = eval('(' + xMLHttpRequest.responseText + ')');
-        
+        console.log(resp);
     }
 }
 

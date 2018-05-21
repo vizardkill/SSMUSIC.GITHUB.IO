@@ -100,7 +100,7 @@ public class DAO_Informes implements IInformes_DAO{
         Connection co;
         Statement stm;
         ResultSet rs;
-
+System.out.println("Entro a ventast empresa");
         String sql = "SELECT * FROM VENTAS_TOTALES_EMPRESAS";
 
         ArrayList<Informes> ListInforme = new ArrayList();
@@ -134,7 +134,7 @@ public class DAO_Informes implements IInformes_DAO{
         Connection co;
         Statement stm;
         ResultSet rs;
-
+        
         String sql = "SELECT * FROM VENTAS_EMPRESAS";
 
         ArrayList<Informes> ListInforme = new ArrayList();
@@ -173,8 +173,8 @@ System.out.println("Valores en dao: "+info.getFecha_inicial()+" ::"+ info.getFec
 "        FROM ARTISTA\n" +
 "        INNER JOIN VENTAS ON ID_ARTISTA = ID_ARTISTA_VE\n" +
 "        INNER JOIN EMPRESA_DIFUSORA ON ID_EMPRESA_D_ART = ID_EMPRESA_D\n" +
-"WHERE VENTAS.FECHA_VENTA >= TO_DATE(?,'DD/MM/YYYY')\n" +
-"AND VENTAS.FECHA_VENTA <= TO_DATE(?,'DD/MM/YYYY')";
+"WHERE VENTAS.FECHA_VENTA >= TO_DATE(?,'MM/DD/YYYY')\n" +
+"AND VENTAS.FECHA_VENTA <= TO_DATE(?,'MM/DD/YYYY')";
 
         ArrayList<Informes> ListInforme = new ArrayList();
 

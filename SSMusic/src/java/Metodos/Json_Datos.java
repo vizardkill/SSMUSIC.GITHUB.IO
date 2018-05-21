@@ -121,6 +121,29 @@ public class Json_Datos {
         json.add("Operarios", array);
         return json.toString();
     }
+    
+    public String jsonInformePorFecha(String tipo, Informes informe){
+        controller_infor info = new controller_infor();
+        com.google.gson.JsonObject json = new JsonObject();
+        
+        if (tipo.equals("informeArtistasPorFecha")) {
+            List<Informes> list = info.getInformeVentasArtistasRangoFecha(informe);
+            JsonArray array = new JsonArray();
+            for (Informes x : list) {
+                JsonObject item = new JsonObject();
+                item.addProperty("NOM_ART", x.getNOM_ART());
+                item.addProperty("EMP", x.getEMP());
+                item.addProperty("FECHA_DE_VENTA", x.getFECHA_DE_VENTA());
+                item.addProperty("VALOR_VENTA", x.getVALOR_VENTA());
+                array.add(item);
+            }
+            json.add("InformePorFecha", array);
+            System.out.println("Json informe: "+json.toString());
+            return json.toString();
+
+        }
+        return null;
+    }
 
     public String jsonInforme(String tipo) {
         controller_infor info = new controller_infor();

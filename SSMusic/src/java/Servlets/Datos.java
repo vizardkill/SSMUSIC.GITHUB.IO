@@ -10,6 +10,7 @@ import Controladores.controller_emp;
 import Metodos.Json_Datos;
 import Modelo.Artista;
 import Modelo.Empresa;
+import Modelo.Informes;
 import com.google.gson.JsonObject;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -78,9 +79,12 @@ public class Datos extends HttpServlet {
             String tipo = request.getParameter("tipo");
             response.getWriter().write(data.jsonInforme(tipo));        
         }
-        if (peticion.equals("informeFecha")) {
+        if (peticion.equals("informeArtistasPorFecha")) {
+            Informes informe = new Informes();
+            informe.setFecha_inicial(request.getParameter("date_start"));
+            informe.setFecha_final(request.getParameter("date_end"));
             String tipo = request.getParameter("peticion");
-            response.getWriter().write(data.jsonInforme(tipo));        
+            response.getWriter().write(data.jsonInformePorFecha(tipo, informe));        
         }
     }
 
