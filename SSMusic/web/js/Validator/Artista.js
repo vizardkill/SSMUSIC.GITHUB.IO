@@ -129,7 +129,7 @@ $(document).ready(function () {
                     processData: false,
                     type: 'POST',
                     success: function (result) {
-                        if (result) {
+                        if (result.result) {
                             $('#table_Artistas').DataTable().ajax.reload();
                             $('#Error_ReArt').text('Artista registrado con Exito');
                             document.getElementById("Reg_Artistas").reset();

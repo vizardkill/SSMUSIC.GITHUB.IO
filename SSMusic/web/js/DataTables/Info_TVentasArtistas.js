@@ -1,5 +1,3 @@
-var minDateFilter = "";
-var maxDateFilter = "";
 
 $(document).ready(function () {
     var table = $('#table_VentasArtistas').DataTable({
@@ -78,6 +76,7 @@ $(document).ready(function () {
             }
         ]
     });
+   
     $('#table_VentasArtistas tbody').on('click', 'td.details-control', function () {
         var tr = $(this).closest('tr');
         var tdi = tr.find('i.fa');
@@ -108,12 +107,12 @@ $(document).ready(function () {
         buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
         buttonImageOnly: false,
         onSelect: function (date) {
-            var minDateFilter = new Date(date).getTime();
-            table.fnDraw();
+            minDateFilter = new Date(date).getTime();
+            table.draw();
         }
     }).keyup(function () {
-        var minDateFilter = new Date(this.value).getTime();
-        table.fnDraw();
+        minDateFilter = new Date(this.value).getTime();
+        table.draw();
     });
 
     $("#datepicker_to").datepicker({
@@ -121,15 +120,48 @@ $(document).ready(function () {
         buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
         buttonImageOnly: false,
         onSelect: function (date) {
-            var maxDateFilter = new Date(date).getTime();
-            table.fnDraw();
+            maxDateFilter = new Date(date).getTime();
+            table.draw();
         }
     }).keyup(function () {
-        var maxDateFilter = new Date(this.value).getTime();
-        table.fnDraw();
+        maxDateFilter = new Date(this.value).getTime();
+        table.draw();
     });
-
+    
+$.fn.dataTableExt.afnFiltering.push(
+    function( oSettings, aData, iDataIndex ) {
+        var iFini = document.getElementById('datepicker_from').value;
+        var iFfin = document.getElementById('datepicker_to').value;
+        var iStartDateCol = 4;
+        var iEndDateCol = 4;
+ 
+        iFini=iFini.substring(6,10) + iFini.substring(3,5)+ iFini.substring(0,2);
+        iFfin=iFfin.substring(6,10) + iFfin.substring(3,5)+ iFfin.substring(0,2);
+ 
+        var datofini=aData[iStartDateCol].substring(6,10) + aData[iStartDateCol].substring(3,5)+ aData[iStartDateCol].substring(0,2);
+        var datoffin=aData[iEndDateCol].substring(6,10) + aData[iEndDateCol].substring(3,5)+ aData[iEndDateCol].substring(0,2);
+ 
+        if ( iFini === "" && iFfin === "" )
+        {
+            return true;
+        }
+        else if ( iFini <= datofini && iFfin === "")
+        {
+            return true;
+        }
+        else if ( iFfin >= datoffin && iFini === "")
+        {
+            return true;
+        }
+        else if (iFini <= datofini && iFfin >= datoffin)
+        {
+            return true;
+        }
+        return false;
+    }
+);
 });
+
 function table_VentasArtistasFormat(d) {
     // `d` is the original data object for the row
     return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
@@ -164,27 +196,7 @@ function table_VentasArtistasFormat(d) {
 // Date range filter
 
 
-$.fn.dataTableExt.afnFiltering.push(
-        function (oSettings, aData, iDataIndex) {
-            if (typeof aData._date === 'undefined') {
-                aData._date = new Date(aData[0]).getTime();
-            }
 
-            if (minDateFilter && !isNaN(minDateFilter)) {
-                if (aData._date < minDateFilter) {
-                    return false;
-                }
-            }
-
-            if (maxDateFilter && !isNaN(maxDateFilter)) {
-                if (aData._date > maxDateFilter) {
-                    return false;
-                }
-            }
-
-            return true;
-        }
-);
 
 
 

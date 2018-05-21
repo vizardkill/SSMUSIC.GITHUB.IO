@@ -37,7 +37,7 @@ $(document).ready(function () {
 
                 // Use Ajax to submit form data
                 $.post($form.attr('action'), $form.serialize(), function (result) {
-                    if (result.result === true) {
+                    if (result.result) {
                        // $('#table_Empresas').DataTable().ajax.reload();
                        document.getElementById("Re_Venta").reset(); 
                        $('#Error_Venta').text('Venta registrada con exito');              
