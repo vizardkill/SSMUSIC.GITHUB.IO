@@ -44,14 +44,18 @@
                                         </select>
                                         <button type="button" class="btn btn-xs btn-success BTN_Accion" onclick="ListarArtistaPorEmpresa();" role="button" data-toggle="modal" data-target="#Modal_Venta" data-id="1" data-accion="Registrar Venta">Registrar Venta</button>
                                     </header>
-                                    <lable id="tipo_informe" style="visibility: hidden">Tipo de Informe:</lable><select id="informe" style="visibility: hidden" class="simple" onchange="return mostrarInforme()">
+                                    <div class="col-md-2 col-md-offset-5"><span id="no_hay">Por favor Seleccione una Opcion</span></div>
+                                    <div class="col-lg-12"><lable id="tipo_informe" style="visibility: hidden">Tipo de Informe: </lable><select id="informe" style="visibility: hidden" class="simple" onchange="return mostrarInforme()">
                                         <option value="">Ninguno</option>
-                                        <option>Ventas por Empresa</option>
-                                        <option>Total de Ventas por Empresa</option> 
-                                        <option>Artistas con mas Ventas</option>
+                                        <option value="Total_Operaciones">Total de Operaciones</option>
+                                        <option value="VentasTotalxEmpresa">Ventas por Empresa</option>
+                                        <option value="VentasEmpresa">Total de Ventas por Empresa</option> 
+                                        <option value="VentasArtista">Artistas con mas Ventas</option>
                                         <option>Artistas con Premios</option>
                                     </select>
-                                    <span id="no_hay">Por favor Seleccione una Opcion</span>
+                                          
+                                    </div>
+                                  
                                     <div id="table"> 
                                     </div>
                                 </form>

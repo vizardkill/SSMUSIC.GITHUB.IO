@@ -82,38 +82,5 @@ public class DAO_Operacion implements IOperacion_DAO {
             System.out.println("Error: Clase DAO_Empresa, método obtener");
         }
         return listaOperacion;
-    }
-    
-    @Override
-    public List<Operacion> getTotalOperacion() {
-        Connection co;
-        Statement stm;
-        ResultSet rs;
-        
-        String sql = "SELECT * FROM OPERACIONES ORDER BY EMP";
-        
-        ArrayList<Operacion> listaOperacion = new ArrayList();
-        
-        try {
-            co = DBUtil.getConexion();
-            stm = co.createStatement();
-            rs = stm.executeQuery(sql);
-            while (rs.next()) {
-                Operacion o = new Operacion();
-                o.setID_EMP(rs.getInt("ID_EMP"));
-                o.setEMP(rs.getString("EMP"));
-                o.setID_ARTISTA_VE(rs.getInt("ID_ART"));
-                o.setNOM_ART(rs.getString("NOM_ART"));
-                o.setCANTIDAD_OPERACIONES(rs.getInt("TOTAL_OPERACIONES"));
-                listaOperacion.add(o);
-            }
-            stm.close();
-            rs.close();
-            co.close();
-        } catch (SQLException e) {
-            System.out.println("Error: Clase DAO_Empresa, método obtener");
-        }
-        return listaOperacion;
-    }
-    
+    } 
 }

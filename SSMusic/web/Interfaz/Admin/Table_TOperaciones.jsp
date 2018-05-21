@@ -1,5 +1,5 @@
 <div id="table-responsive">
-    <table id="table_Operacion" class="table table-striped table-advance table-hover">
+    <table id="table_TOperaciones" class="table table-striped table-advance table-hover">
         <thead>
             <tr>                                            
                 <th></th>
@@ -25,4 +25,4 @@
         </tbody>
     </table>
 </div>
-<script src="../../js/DataTables/Operacion.js" type="text/javascript"></script>
+<script src="../../js/DataTables/Info_TOperaciones.js" type="text/javascript"></script>

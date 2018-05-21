@@ -7,7 +7,6 @@
 <!DOCTYPE html>
 
 <script src="js/gestion.js" type="text/javascript"></script>
-<script src="js/gestion_operarios.js" type="text/javascript"></script>
 <link href="../../css/interfaz.css" rel="stylesheet" type="text/css"/>
 
 

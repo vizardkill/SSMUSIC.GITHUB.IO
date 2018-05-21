@@ -7,9 +7,11 @@ package Metodos;
 
 import Controladores.controller_art;
 import Controladores.controller_emp;
+import Controladores.controller_infor;
 import Controladores.controller_oper;
 import Controladores.controller_user;
 import Modelo.Empresa;
+import Modelo.Informes;
 import Modelo.Operacion;
 import Modelo.Usuario;
 import com.google.gson.JsonArray;
@@ -120,41 +122,69 @@ public class Json_Datos {
         return json.toString();
     }
 
-    public String jsonOperaciones(String tipo) {
-        controller_oper coper = new controller_oper();
+    public String jsonInforme(String tipo) {
+        controller_infor info = new controller_infor();
         com.google.gson.JsonObject json = new JsonObject();
-
-        if (tipo.equals("total_operaciones")) {
-            List<Operacion> list = coper.getTotalOperaciones();
+        if (tipo.equals("TOperaciones")) {
+            List<Informes> list = info.getInformeOperaciones();
             JsonArray array = new JsonArray();
-            for (Operacion x : list) {
+            for (Informes x : list) {
                 JsonObject item = new JsonObject();
                 item.addProperty("ID_EMP", x.getID_EMP());
                 item.addProperty("EMP", x.getEMP());
-                item.addProperty("ID_ART", x.getID_ARTISTA_VE());
+                item.addProperty("ID_ART", x.getID_ART());
                 item.addProperty("NOM_ART", x.getNOM_ART());
-                item.addProperty("TOTAL_OPERACIONES", x.getCANTIDAD_OPERACIONES());
+                item.addProperty("TOTAL_OPERACIONES", x.getTOTAL_OPERACIONES());
                 array.add(item);
             }
-            json.add("Total_Operaciones", array);
+            json.add("TOperaciones", array);
+            return json.toString();
+
+        }
+
+        if (tipo.equals("TVentasxEmpresa")) {
+            List<Informes> list = info.getInformeVentasTEmpresa();
+            JsonArray array = new JsonArray();
+            for (Informes x : list) {
+                JsonObject item = new JsonObject();
+                item.addProperty("EMP", x.getEMP());
+                item.addProperty("TOTAL_VENTAS", x.getTOTAL_VENTAS());
+                item.addProperty("TOTAL_OPERACIONES", x.getTOTAL_OPERACIONES());
+                array.add(item);
+            }
+            json.add("TVentasxEmpresa", array);
             return json.toString();
         }
 
-        if (tipo.equals("operaciones")) {
-            List<Operacion> list = coper.getOperaciones();
+        if (tipo.equals("VentasxEmpresa")) {
+            List<Informes> list = info.getInformeVentasEmpresa();
             JsonArray array = new JsonArray();
-            for (Operacion x : list) {
+            for (Informes x : list) {
                 JsonObject item = new JsonObject();
-                item.addProperty("Id", x.getID_VENTAS());
-                item.addProperty("ID_ARTISTA_VE", x.getID_ARTISTA_VE());
-                item.addProperty("CANTIDAD_OPERACIONES", x.getCANTIDAD_OPERACIONES());
+                item.addProperty("EMP", x.getEMP());
                 item.addProperty("VALOR_VENTA", x.getVALOR_VENTA());
-                item.addProperty("FECHA_VENTA", x.getFECHA_VENTA());
+                item.addProperty("FECHA_DE_VENTA", x.getFECHA_DE_VENTA());
                 array.add(item);
             }
-            json.add("Operaciones", array);
+            json.add("VentasxEmpresa", array);
             return json.toString();
         }
+
+        if (tipo.equals("VentasArtistas")) {
+            List<Informes> list = info.getInformeVentasTArtista();
+            JsonArray array = new JsonArray();
+            for (Informes x : list) {
+                JsonObject item = new JsonObject();
+                item.addProperty("NOM_ART", x.getNOM_ART());
+                item.addProperty("EMP", x.getEMP());
+                item.addProperty("TOTAL_VENTA", x.getTOTAL_VENTAS());
+                item.addProperty("VENTA_FECHA", x.getFECHA_DE_VENTA());
+                array.add(item);
+            }
+            json.add("VentasArtistas", array);
+            return json.toString();
+        }
+
         return "null";
     }
 

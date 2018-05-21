@@ -77,7 +77,8 @@ public class DAO_Informes implements IInformes_DAO{
                 Informes u = new Informes();
                 u.setNOM_ART(rs.getString("NOM_ART"));
                 u.setEMP(rs.getString("EMP"));
-                u.setTOTAL_VENTAS(rs.getLong("TOTAL_VENTAS"));
+                u.setTOTAL_VENTAS(rs.getLong("TOTAL_VENTA"));
+                u.setFECHA_DE_VENTA(rs.getString("VENTA_FECHA"));
                 ListInforme.add(u);
             }
             stm.close();
@@ -99,7 +100,7 @@ public class DAO_Informes implements IInformes_DAO{
         Statement stm;
         ResultSet rs;
 
-        String sql = "SELECT *FROM VENTAS_TOTALES_EMPRESAS";
+        String sql = "SELECT * FROM VENTAS_TOTALES_EMPRESAS";
 
         ArrayList<Informes> ListInforme = new ArrayList();
 
@@ -118,7 +119,7 @@ public class DAO_Informes implements IInformes_DAO{
             rs.close();
             co.close();
         } catch (SQLException e) {
-            System.out.println("Error: Clase DAO_Informes, método getInformeVentasTEmpresa");
+            System.out.println("Error: Clase DAO_Informes, método getInformeVentasTEmpresa: "+ e);
         }
         return ListInforme;
     }
@@ -133,7 +134,7 @@ public class DAO_Informes implements IInformes_DAO{
         Statement stm;
         ResultSet rs;
 
-        String sql = "SELECT *FROM VENTAS_EMPRESAS";
+        String sql = "SELECT * FROM VENTAS_EMPRESAS";
 
         ArrayList<Informes> ListInforme = new ArrayList();
 
@@ -152,7 +153,7 @@ public class DAO_Informes implements IInformes_DAO{
             rs.close();
             co.close();
         } catch (SQLException e) {
-            System.out.println("Error: Clase DAO_Informes, método getInformeVentasEmpresa");
+            System.out.println("Error: Clase DAO_Informes, método getInformeVentasEmpresa: " +e);
         }
         return ListInforme;
     }

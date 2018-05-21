@@ -1,11 +1,8 @@
-/* 
- * Este Script sirve para manipular los datos de la tabla
- * @author Santiago Cardona Saldarriaga
- * @version 28/03/2018
- * @see https://datatables.net/
- */
+var minDateFilter = "";
+var maxDateFilter = "";
+
 $(document).ready(function () {
-    var table = $('#table_Operacion').DataTable({
+    var table = $('#table_VentasArtistas').DataTable({
         language: {
             sProcessing: "Procesando...",
             sLengthMenu: "Mostrar _MENU_  Registros",
@@ -32,12 +29,12 @@ $(document).ready(function () {
         },
         ajax: {
             method: "GET",
-            url: "../../Datos?peticion=data_operacion&tipo=total_operaciones",
-            dataSrc: "Total_Operaciones"
+            url: "../../Datos?peticion=data_Informe&tipo=VentasArtistas",
+            dataSrc: "VentasArtistas"
         },
         select: "single",
         columns: [
-             {
+            {
                 className: 'details-control',
                 orderable: false,
                 data: null,
@@ -47,11 +44,19 @@ $(document).ready(function () {
                 },
                 width: '15px'
             },
-            {data: "ID_EMP"},
-            {data: "EMP"},
-            {data: "ID_ART"},
             {data: "NOM_ART"},
-            {data: "TOTAL_OPERACIONES"}
+            {data: "EMP"},
+            {data: "TOTAL_VENTA"},
+            {
+                title: "Fecha de Venta",
+                data: "VENTA_FECHA",
+                type: "date ",
+                render: function (value) {
+                    if (value === null)
+                        return "";
+                    return moment(value).format('DD/MM/YYYY');
+                }
+            }
         ],
         order: [[1, 'asc']],
         dom: 'fBrtip',
@@ -82,7 +87,7 @@ $(document).ready(function () {
             }
         ]
     });
-    $('#table_Operacion tbody').on('click', 'td.details-control', function () {
+    $('#table_VentasArtistas tbody').on('click', 'td.details-control', function () {
         var tr = $(this).closest('tr');
         var tdi = tr.find('i.fa');
         var row = table.row(tr);
@@ -94,7 +99,7 @@ $(document).ready(function () {
             tdi.first().addClass('fa-plus-square');
         } else {
 // Open this row
-            row.child(Empresasformat(row.data())).show();
+            row.child(table_VentasArtistasFormat(row.data())).show();
             tr.addClass('shown');
             tdi.first().removeClass('fa-plus-square');
             tdi.first().addClass('fa-minus-square');
@@ -105,25 +110,36 @@ $(document).ready(function () {
             e.preventDefault();
         }
     });
-    $(document).on('click', '.btn_delete', function () {
-        if (confirm("Desea eliminar al usuario?")) {
-            var data = table.row($(this).parents('tr')).data();
-            data = data.Id;
-            $.post("../../Datos?peticion=EliminarEmpresa", {Id: data}, function (result) {
-                if (result === true) {
-                    $('#table_Empresas').DataTable().ajax.reload();
-                    alert("La empresa fue eliminada con exito!");
-                } else {
-                    alert("No se puede eliminar, la empresa tiene asociado varios artistas");
-                }
-            }, 'json');
 
-        } else {
-            alert("presiono cancelar");
+
+    $("#datepicker_from").datepicker({
+        showOn: "button",
+        buttonImage: "images/calendar.gif",
+        buttonImageOnly: false,
+        onSelect: function (date) {
+            var minDateFilter = new Date(date).getTime();
+            table.fnDraw();
         }
+    }).keyup(function () {
+        var minDateFilter = new Date(this.value).getTime();
+        table.fnDraw();
     });
+
+    $("#datepicker_to").datepicker({
+        showOn: "button",
+        buttonImage: "images/calendar.gif",
+        buttonImageOnly: false,
+        onSelect: function (date) {
+            var maxDateFilter = new Date(date).getTime();
+            table.fnDraw();
+        }
+    }).keyup(function () {
+        var maxDateFilter = new Date(this.value).getTime();
+        table.fnDraw();
+    });
+
 });
-function Empresasformat(d) {
+function table_VentasArtistasFormat(d) {
     // `d` is the original data object for the row
     return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
             '<tr>' +
@@ -132,15 +148,15 @@ function Empresasformat(d) {
             '</tr>' +
             '<tr>' +
             '<td><b>Nombre del Encargado:</b></td>' +
-            '<td>'  + '</td>' +
+            '<td>' + '</td>' +
             '</tr>' +
             '<tr>' +
             '<td><b>Documento del Encargo:</b></td>' +
-            '<td>'  + '</td>' +
+            '<td>' + '</td>' +
             '</tr>' +
             '<tr>' +
             '<td><b>Telefono del Encargado:</b></td>' +
-            '<td>'  + '</td>' +
+            '<td>' + '</td>' +
             '</tr>' +
             '<tr>' +
             '<td><b>Correo del Encargado:</b></td>' +
@@ -152,4 +168,32 @@ function Empresasformat(d) {
             '</tr>' +
             '</table>';
 }
+
+
+// Date range filter
+
+
+$.fn.dataTableExt.afnFiltering.push(
+        function (oSettings, aData, iDataIndex) {
+            if (typeof aData._date === 'undefined') {
+                aData._date = new Date(aData[0]).getTime();
+            }
+
+            if (minDateFilter && !isNaN(minDateFilter)) {
+                if (aData._date < minDateFilter) {
+                    return false;
+                }
+            }
+
+            if (maxDateFilter && !isNaN(maxDateFilter)) {
+                if (aData._date > maxDateFilter) {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+);
+
+
 

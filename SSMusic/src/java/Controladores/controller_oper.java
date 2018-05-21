@@ -30,14 +30,5 @@ public class controller_oper {
         IOperacion_DAO odao = new DAO_Operacion();
         List<Operacion> loperacion = odao.getOperacion();
         return loperacion;
-    }
-    
-      public List<Operacion> getTotalOperaciones() {
-        IOperacion_DAO odao = new DAO_Operacion();
-        List<Operacion> loperacion = odao.getTotalOperacion();
-        return loperacion;
-    }
-    
-    
-    
+    }   
 }
