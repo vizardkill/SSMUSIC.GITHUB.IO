@@ -104,7 +104,7 @@ $(document).ready(function () {
 
     $("#datepicker_from").datepicker({
         showOn: "button",
-        buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
+        buttonImage: "../../img/Calendar.png",
         buttonImageOnly: false,
         onSelect: function (date) {
             minDateFilter = new Date(date).getTime();
@@ -117,7 +117,7 @@ $(document).ready(function () {
 
     $("#datepicker_to").datepicker({
         showOn: "button",
-        buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
+        buttonImage: "../../img/Calendar.png",
         buttonImageOnly: false,
         onSelect: function (date) {
             maxDateFilter = new Date(date).getTime();
@@ -127,6 +127,13 @@ $(document).ready(function () {
         maxDateFilter = new Date(this.value).getTime();
         table.draw();
     });
+    
+    $(".date-picker").on("change", function () {
+    var id = $(this).attr("id");
+    var val = $("label[for='" + id + "']").text();
+    $("#msg").text(val + " changed");
+});
+
     
 $.fn.dataTableExt.afnFiltering.push(
     function( oSettings, aData, iDataIndex ) {
