@@ -9,12 +9,14 @@ import Controladores.controller_art;
 import Controladores.controller_emp;
 import Controladores.controller_log;
 import Controladores.controller_oper;
+import Controladores.controller_regalias;
 import Controladores.controller_user;
 import Metodos.Calendario;
 import Modelo.Artista;
 import Modelo.Empresa;
 import Modelo.Log;
 import Modelo.Operacion;
+import Modelo.Regalias;
 import Modelo.Usuario;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -117,7 +119,50 @@ public class Registros extends HttpServlet {
             response.setContentType("text/html");
             response.getWriter().write(listarArtPorEmpresa(request, response));
         }
+        
+        if (peticion.equals("generar")) {
+            response.setContentType("text/html");
+            response.getWriter().write(generarRegalias(request, response));
+        }
+        
+        
 
+    }
+    
+    public String generarRegalias(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        HttpSession session = request.getSession(true);
+        com.google.gson.JsonObject json = new JsonObject();
+        JsonObject item = new JsonObject();
+        try {
+
+            Calendario fechaR = new Calendario();
+            String FECHA_REGISTRO = fechaR.Fecha_Registro();
+
+            Log log = new Log();
+            Regalias reg = new Regalias();
+            reg.setFecha_ini("05/10/2018");
+            reg.setFecha_fin("05/25/2018");
+
+            //Datos log
+            int id_user = (Integer) session.getAttribute("ID_USUARIO");
+            log.setId_usuario_log(id_user);
+            log.setTipo_de_gestion("Generar Regalias");
+            log.setFecha_log(FECHA_REGISTRO);
+
+            controller_regalias edao = new controller_regalias();
+            controller_log logdao = new controller_log();
+            boolean result = edao.getCandidatosRegalias(reg);
+            if (result) {
+                logdao.registerLog(log);
+            }
+            item.addProperty("result", result);
+
+        } catch (NumberFormatException e) {
+            System.out.println(e);
+        }
+        return item.toString();
     }
 
     public String RegistroEmpresa(HttpServletRequest request, HttpServletResponse response)

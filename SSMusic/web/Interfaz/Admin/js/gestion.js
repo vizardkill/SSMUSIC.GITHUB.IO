@@ -283,4 +283,19 @@ function PostgenerarInformeRangoFecha() {
         console.log(resp);
     }
 }
+function generarReg() {
+    
+    xMLHttpRequest.open("Post", "../../Registros?peticion=generar", true);
+    xMLHttpRequest.onreadystatechange = PostgenerarRegalias;
+    xMLHttpRequest.send(null);
+
+}
+
+function PostgenerarRegalias() {
+    if (xMLHttpRequest.readyState == 4 && xMLHttpRequest.status == 200) {
+        var resp = eval('(' + xMLHttpRequest.responseText + ')');
+        
+        console.log(resp);
+    }
+}
 

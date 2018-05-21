@@ -43,6 +43,7 @@
                                             <option value="informes">Informes</option>
                                         </select>
                                         <button type="button" class="btn btn-xs btn-success BTN_Accion" onclick="ListarArtistaPorEmpresa();" role="button" data-toggle="modal" data-target="#Modal_Venta" data-id="1" data-accion="Registrar Venta">Registrar Venta</button>
+                                        <button type="button" id="btn" onclick="generarReg();" >Regalias</button>
                                     </header>
                                     <div class="col-md-2 col-md-offset-5"><span id="no_hay">Por favor Seleccione una Opcion</span></div>
                                     <div class="col-lg-12"><lable id="tipo_informe" style="visibility: hidden">Tipo de Informe: </lable><select id="informe" style="visibility: hidden" class="simple" onchange="return mostrarInforme()">

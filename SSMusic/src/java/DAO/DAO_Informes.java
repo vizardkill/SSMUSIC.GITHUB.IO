@@ -165,16 +165,16 @@ System.out.println("Entro a ventast empresa");
         Statement stm;
         ResultSet rs;
 System.out.println("Valores en dao: "+info.getFecha_inicial()+" ::"+ info.getFecha_final());
-        String sql = "SELECT  ARTISTA.NOM_ARTISTA AS NOM_ART,\n" +
-"        EMPRESA_DIFUSORA.NOM_EMPRESA_D AS EMP,\n" +
+        String sql = "SELECT  EMPRESA_DIFUSORA.NOM_EMPRESA_D AS EMP,\n" +
+"        ARTISTA.NOM_ARTISTA AS NOM_ART,\n" +
 "        VENTAS.VALOR_VENTA AS VALOR_VENTA,\n" +
 "        VENTAS.FECHA_VENTA AS FECHA_DE_VENTA\n" +
-"        \n" +
+"\n" +
 "        FROM ARTISTA\n" +
 "        INNER JOIN VENTAS ON ID_ARTISTA = ID_ARTISTA_VE\n" +
 "        INNER JOIN EMPRESA_DIFUSORA ON ID_EMPRESA_D_ART = ID_EMPRESA_D\n" +
 "WHERE VENTAS.FECHA_VENTA >= TO_DATE(?,'MM/DD/YYYY')\n" +
-"AND VENTAS.FECHA_VENTA <= TO_DATE(?,'MM/DD/YYYY')";
+"AND VENTAS.FECHA_VENTA <= TO_DATE(?,'MM/DD/YYYY') ORDER BY EMP,VENTAS.VALOR_VENTA DESC";
 
         ArrayList<Informes> ListInforme = new ArrayList();
 

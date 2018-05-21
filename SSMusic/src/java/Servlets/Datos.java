@@ -80,9 +80,12 @@ public class Datos extends HttpServlet {
             response.getWriter().write(data.jsonInforme(tipo));        
         }
         if (peticion.equals("informeArtistasPorFecha")) {
+            System.out.println("Entro aqui");
             Informes informe = new Informes();
-            informe.setFecha_inicial(request.getParameter("date_start"));
-            informe.setFecha_final(request.getParameter("date_end"));
+            //informe.setFecha_inicial(request.getParameter("datepicker_from"));
+            //informe.setFecha_final(request.getParameter("datepicker_to"));
+            informe.setFecha_inicial("05/16/2018");
+            informe.setFecha_final("05/25/2018");
             String tipo = request.getParameter("peticion");
             response.getWriter().write(data.jsonInformePorFecha(tipo, informe));        
         }
