@@ -247,7 +247,7 @@
                     </div> 
                 </div>
                 <div class="modal-body" >
-                     <span id="Error_Venta" name="Error_Venta" style="color: #ff0000"></span>
+                    <span id="Error_Venta" name="Error_Venta" style="color: #ff0000"></span>
                     <div class="container-fluid">
                         <div class="col-sm-12">    
                             <div class="form-group col-md-6">
@@ -257,13 +257,13 @@
                                 </select>
                             </div>
                             <div class="form-group col-sm-6">  
-                               <label class="control-label">Artista: </label>
+                                <label class="control-label">Artista: </label>
                                 <select id="select_artista_venta" name="select_artista_venta" class="form-control input select" >
                                     <option value=" ">Seleccione un Artista</option>
                                 </select>
                             </div>
                         </div>
-                        
+
                         <div class="col-md-12">
                             <div class="form-group col-md-6">
                                 <label for="CANTIDAD_OPERACIONES" class="control-label">Cantidad de Operaciones:</label>
@@ -281,6 +281,47 @@
                     <button id="btn_ope_close" type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                 </div>
             </form>
+        </div>
+
+    </div>
+</div>
+
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="Modal_Regalias" >
+    <div class="modal-dialog modal-lg" role="document">
+
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <div class="form_top">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h2>Generar  <span>Recompensas</span></h2>
+                </div> 
+            </div>
+            <div class="modal-body" >
+                <span id="Error_Venta" name="Error_Venta" style="color: #ff0000"></span>
+                <div class="container-fluid">
+                    <div class="col-sm-12  toolbar">    
+                        <div id="date_filter_regalias" class="col-md-6"> 
+                            <span id="date-label-inicio" class="date-label">Fecha Inicial: </span> <input class="input-sm date_range_filter date" type="text" id="datepicker_inicio" />
+
+                        </div><div class="col-md-6">
+                            <span id="date-label-final" class="date-label"> Fecha Final: </span> <input class="input-sm date_range_filter date" type="text" id="datepicker_final" />
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-12">
+
+                    </div>                   
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-xs btn-primary" id="btn" onclick="generarReg();" >Generar Regalias</button>
+
+
+            </div>
+
         </div>
 
     </div>

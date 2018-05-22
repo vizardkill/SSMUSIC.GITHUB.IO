@@ -97,7 +97,8 @@ public class DAO_Regalias implements IRegalias_DAO{
 "       INNER JOIN ARTISTA ON VENTAS.ID_ARTISTA_VE = ARTISTA.ID_ARTISTA\n" +
 "WHERE VENTAS.FECHA_VENTA >= ?\n" +
 "AND VENTAS.FECHA_VENTA <= ?\n" +
-"GROUP BY ID_ARTISTA_VE, ID_EMPRESA_D_ART\n" +
+"\n" +
+"GROUP BY   VENTAS.ID_ARTISTA_VE, ARTISTA.ID_EMPRESA_D_ART\n" +
 "HAVING COUNT(*) >= 1";
 
         ArrayList<Regalias> ListInforme = new ArrayList();

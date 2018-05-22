@@ -30,7 +30,7 @@
                                 <li><i class="fa fa-laptop"></i> Gestion de Ventas</li>  
                             </ol>    
                             <button type="button" class="btn btn-xs btn-success BTN_Accion" onclick="ListarArtistaPorEmpresa();" role="button" data-toggle="modal" data-target="#Modal_Venta" data-id="1" data-accion="Registrar Venta">Registrar Operación</button>
-                            <button type="button" class="btn btn-xs btn-primary" id="btn" onclick="generarReg();" >Regalias</button>
+                            <button type="button" class="btn btn-xs btn-success BTN_Accion" role="button" data-toggle="modal" data-target="#Modal_Regalias" data-id="1" data-accion="Generar Regalia">Generar Regalia </button>
                         </div>
                     </div> 
                     <div class="row">                    
@@ -71,6 +71,7 @@
                 </div>
             </div>
             <script src="js/Serialize_Tables.js" type="text/javascript"></script>
-            <script src="../js/Validator/Venta.js" type="text/javascript"></script>
+            
+            <script src="../../js/Validator/Venta.js" type="text/javascript"></script>
     </body>
 </html>

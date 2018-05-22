@@ -142,8 +142,8 @@ public class Registros extends HttpServlet {
 
             Log log = new Log();
             Regalias reg = new Regalias();
-            reg.setFecha_ini("05/10/2018");
-            reg.setFecha_fin("05/25/2018");
+            reg.setFecha_ini(request.getParameter("datepicker_from"));
+            reg.setFecha_fin(request.getParameter("datepicker_to"));
 
             //Datos log
             int id_user = (Integer) session.getAttribute("ID_USUARIO");

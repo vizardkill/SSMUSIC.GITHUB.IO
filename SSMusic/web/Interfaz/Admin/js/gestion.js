@@ -285,7 +285,9 @@ function PostgenerarInformeRangoFecha() {
 }
 function generarReg() {
     
-    xMLHttpRequest.open("Post", "../../Registros?peticion=generar", true);
+    var date_inicio = document.getElementById("datepicker_inicio").value;
+    var date_final = document.getElementById("datepicker_final").value;
+    xMLHttpRequest.open("Post", "../../Registros?datepicker_from="+date_inicio+"&datepicker_to="+date_final+"&peticion=generar", true);
     xMLHttpRequest.onreadystatechange = PostgenerarRegalias;
     xMLHttpRequest.send(null);
 
