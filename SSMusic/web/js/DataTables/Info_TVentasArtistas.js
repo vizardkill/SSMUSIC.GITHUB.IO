@@ -1,5 +1,6 @@
 
 $(document).ready(function () {
+    $('#table_VentasArtistas').dataTable().fnDestroy();
     var table = $('#table_VentasArtistas').DataTable({
         language: {
             sProcessing: "Procesando...",
@@ -127,36 +128,52 @@ $(document).ready(function () {
         $("#msg").text(val + " changed");
     });
 
+    $.ajaxSetup({
+        cache: false
+    });
 
-    $.fn.dataTableExt.afnFiltering.push(
-            function (oSettings, aData, iDataIndex) {
-                var iFini = document.getElementById('datepicker_from').value;
-                var iFfin = document.getElementById('datepicker_to').value;
-                var iStartDateCol = 4;
-                var iEndDateCol = 4;
+    if ($.fn.DataTable.isDataTable("#table_VentasArtistas")) {
 
-                iFini = iFini.substring(6, 10) + iFini.substring(3, 5) + iFini.substring(0, 2);
-                iFfin = iFfin.substring(6, 10) + iFfin.substring(3, 5) + iFfin.substring(0, 2);
 
-                var datofini = aData[iStartDateCol].substring(6, 10) + aData[iStartDateCol].substring(3, 5) + aData[iStartDateCol].substring(0, 2);
-                var datoffin = aData[iEndDateCol].substring(6, 10) + aData[iEndDateCol].substring(3, 5) + aData[iEndDateCol].substring(0, 2);
+        $.fn.dataTableExt.afnFiltering.push(
+                function (oSettings, aData, iDataIndex) {
+                    var iFini;
+                    var iFfin;
+                    if (document.getElementById('datepicker_from') !== null && document.getElementById('datepicker_to') !== null) {
+                        iFini = document.getElementById('datepicker_from').value;
+                        iFfin = document.getElementById('datepicker_to').value;
+                    }
 
-                if (iFini === "" && iFfin === "")
-                {
-                    return true;
-                } else if (iFini <= datofini && iFfin === "")
-                {
-                    return true;
-                } else if (iFfin >= datoffin && iFini === "")
-                {
-                    return true;
-                } else if (iFini <= datofini && iFfin >= datoffin)
-                {
-                    return true;
+                    var iStartDateCol = 4;
+                    var iEndDateCol = 4;
+
+                    if (document.getElementById('datepicker_from') === 'undefined' || document.getElementById('datepicker_to') === 'undefined') {
+                        return false;
+                    }
+
+                    iFini = iFini.substring(6, 10) + iFini.substring(3, 5) + iFini.substring(0, 2);
+                    iFfin = iFfin.substring(6, 10) + iFfin.substring(3, 5) + iFfin.substring(0, 2);
+
+                    var datofini = aData[iStartDateCol].substring(6, 10) + aData[iStartDateCol].substring(3, 5) + aData[iStartDateCol].substring(0, 2);
+                    var datoffin = aData[iEndDateCol].substring(6, 10) + aData[iEndDateCol].substring(3, 5) + aData[iEndDateCol].substring(0, 2);
+
+                    if (iFini === "" && iFfin === "")
+                    {
+                        return true;
+                    } else if (iFini <= datofini && iFfin === "")
+                    {
+                        return true;
+                    } else if (iFfin >= datoffin && iFini === "")
+                    {
+                        return true;
+                    } else if (iFini <= datofini && iFfin >= datoffin)
+                    {
+                        return true;
+                    }
+                    return false;
                 }
-                return false;
-            }
-    );
+        );
+    }
 });
 
 function table_VentasArtistasFormat(d) {

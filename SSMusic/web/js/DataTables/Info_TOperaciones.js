@@ -5,6 +5,7 @@
  * @see https://datatables.net/
  */
 $(document).ready(function () {
+    $('#table_TOperaciones').dataTable().fnDestroy();
     var table = $('#table_TOperaciones').DataTable({
         language: {
             sProcessing: "Procesando...",

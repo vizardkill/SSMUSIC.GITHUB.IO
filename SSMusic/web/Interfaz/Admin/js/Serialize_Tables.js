@@ -49,6 +49,7 @@ function mostrarInforme() {
     }
 }
 function TablaTotalOperaciones() {
+     $('#table_VentasArtistas').dataTable().fnDestroy();
     $("#table").empty();
     $.post("Table_TOperaciones.jsp", $("#data").serialize(), function (data) {
         $("#table").html(data);
@@ -56,6 +57,7 @@ function TablaTotalOperaciones() {
 }
 
 function VentasTotalxEmpresa() {
+     $('#table_VentasArtistas').dataTable().fnDestroy();
     $("#table").empty();
     $.post("Table_VentasTotalxEmpresa.jsp", $("#data").serialize(), function (data) {
         $("#table").html(data);
@@ -63,6 +65,7 @@ function VentasTotalxEmpresa() {
 }
 
 function VentasxEmpresa() {
+     $('#table_VentasArtistas').dataTable().fnDestroy();
     $("#table").empty();
     $.post("Table_VentasxEmpresa.jsp", $("#data").serialize(), function (data) {
         $("#table").html(data);

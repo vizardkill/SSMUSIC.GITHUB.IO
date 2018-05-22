@@ -5,6 +5,7 @@
  * @see https://datatables.net/
  */
 $(document).ready(function () {
+         $('#table_VentasxEmpresa').dataTable().fnDestroy();
     var table = $('#table_VentasxEmpresa').DataTable({
         language: {
             sProcessing: "Procesando...",

@@ -12,7 +12,6 @@
     <head>
         <script src="js/gestion.js" type="text/javascript"></script>
         <link rel="shortcut icon" href="../../favicon.ico">
-
         <title>S&SMusic - Gestión</title>
     </head>
     <body>
@@ -72,6 +71,6 @@
                 </div>
             </div>
             <script src="js/Serialize_Tables.js" type="text/javascript"></script>
-            <script src="../../js/Validator/Venta.js" type="text/javascript"></script>
+            <script src="../js/Validator/Venta.js" type="text/javascript"></script>
     </body>
 </html>
