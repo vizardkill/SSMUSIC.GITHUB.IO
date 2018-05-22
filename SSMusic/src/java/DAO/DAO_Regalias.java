@@ -35,11 +35,11 @@ public class DAO_Regalias implements IRegalias_DAO{
         try {
             con = DBUtil.getConexion();
             try (PreparedStatement ps = con.prepareStatement(sql)) {
-                System.out.println("id reg"+reg.getId_reg()+"id art: "+reg.getId_art()+"tipo reg:"+reg.getTipo_reg());
-                ps.setInt(1, reg.getId_reg());
+                System.out.println("id reg: "+reg.getId_reg()+" id art: "+reg.getId_art()+" tipo reg: "+reg.getId_reg());
+                ps.setInt(1, 1);
                 ps.setInt(2,reg.getId_art());
                  ps.setInt(3, 5);
-                ps.setString(4, reg.getTipo_reg());
+                ps.setInt(4, reg.getId_reg());
                 
                 ps.executeUpdate();
                 ps.close();
@@ -94,9 +94,9 @@ public class DAO_Regalias implements IRegalias_DAO{
 "        ARTISTA.ID_EMPRESA_D_ART as ID_EMP,\n" +
 "        SUM(VENTAS.CANTIDAD_OPERACIONES) AS TOTAL_OPERACIONES\n" +
 "        FROM VENTAS\n" +
-"        INNER JOIN ARTISTA ON VENTAS.ID_ARTISTA_VE = ARTISTA.ID_ARTISTA\n" +
-"WHERE VENTAS.FECHA_VENTA >= TO_DATE(?,'MM/DD/YYYY')\n" +
-"AND VENTAS.FECHA_VENTA <= TO_DATE(?,'MM/DD/YYYY') \n" +
+"       INNER JOIN ARTISTA ON VENTAS.ID_ARTISTA_VE = ARTISTA.ID_ARTISTA\n" +
+"WHERE VENTAS.FECHA_VENTA >= ?\n" +
+"AND VENTAS.FECHA_VENTA <= ?\n" +
 "GROUP BY ID_ARTISTA_VE, ID_EMPRESA_D_ART\n" +
 "HAVING COUNT(*) >= 1";
 
@@ -109,19 +109,22 @@ public class DAO_Regalias implements IRegalias_DAO{
             ps.setString(1, reg.getFecha_ini());
             ps.setString(2, reg.getFecha_fin());
             rs = ps.executeQuery();
+            
             while (rs.next()) {
                 Regalias u = new Regalias();
                 u.setId_emp(rs.getInt("ID_EMP"));
                 u.setId_art(rs.getInt("ID_ART"));
                 u.setTotal_operaciones(rs.getInt("TOTAL_OPERACIONES"));
+                System.out.println(u.getId_emp());
                 ListInforme.add(u);
             }
             
             rs.close();
             co.close();
         } catch (SQLException e) {
-            System.out.println("Error: Clase DAO_Regalias, método getInformeVentasEmpresa: " +e);
+            System.out.println("Error: Clase DAO_Regalias, método getCandidatosRegalias: " +e);
         }
+        
         return ListInforme;
     }
     
@@ -130,7 +133,7 @@ public class DAO_Regalias implements IRegalias_DAO{
         Connection co;
         Statement stm;
         ResultSet rs;
-
+        System.out.println("entro a parametros get");
         String sql = "SELECT * FROM TIPO_REGALIA";
         ArrayList<Regalias> listaReg = new ArrayList();
 
@@ -142,6 +145,8 @@ public class DAO_Regalias implements IRegalias_DAO{
                 Regalias reg = new Regalias();
                reg.setCondicion_reg(rs.getInt("CONDICION_REG"));
                reg.setNom_condicion(rs.getString("NOM_TREG"));
+               reg.setId_reg(rs.getInt("ID_TREG"));
+               System.out.println(reg.getNom_condicion());
                 listaReg.add(reg);
             }
             stm.close();

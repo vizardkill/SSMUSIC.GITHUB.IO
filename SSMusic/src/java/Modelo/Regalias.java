@@ -21,7 +21,47 @@ public class Regalias {
     private String fecha_actual;
     private int condicion_reg;
     private String nom_condicion;
+    private int id_param_oro;
+    private int id_param_platino;
+    private int condicion_oro;
+    private int condicion_platino;
 
+    public int getCondicion_oro() {
+        return condicion_oro;
+    }
+
+    public void setCondicion_oro(int condicion_oro) {
+        this.condicion_oro = condicion_oro;
+    }
+
+    public int getCondicion_platino() {
+        return condicion_platino;
+    }
+
+    public void setCondicion_platino(int condicion_platino) {
+        this.condicion_platino = condicion_platino;
+    }
+    
+    
+
+    public int getId_param_oro() {
+        return id_param_oro;
+    }
+
+    public void setId_param_oro(int id_param_oro) {
+        this.id_param_oro = id_param_oro;
+    }
+
+    public int getId_param_platino() {
+        return id_param_platino;
+    }
+
+    public void setId_param_platino(int id_param_platino) {
+        this.id_param_platino = id_param_platino;
+    }
+    
+    
+    
     public int getCondicion_reg() {
         return condicion_reg;
     }
@@ -104,7 +144,7 @@ public class Regalias {
         this.tipo_reg = tipo_reg;
     }
 
-    public Regalias(int id_reg, int id_art, int id_emp, String tipo_reg, String fecha_ini, String fecha_fin, int total_operaciones, String fecha_actual) {
+    public Regalias(int id_reg, int id_art, int id_emp, String tipo_reg, String fecha_ini, String fecha_fin, int total_operaciones, String fecha_actual, int condicion_reg, String nom_condicion, int id_param_oro, int id_param_platino, int condicion_oro, int condicion_platino) {
         this.id_reg = id_reg;
         this.id_art = id_art;
         this.id_emp = id_emp;
@@ -113,7 +153,16 @@ public class Regalias {
         this.fecha_fin = fecha_fin;
         this.total_operaciones = total_operaciones;
         this.fecha_actual = fecha_actual;
+        this.condicion_reg = condicion_reg;
+        this.nom_condicion = nom_condicion;
+        this.id_param_oro = id_param_oro;
+        this.id_param_platino = id_param_platino;
+        this.condicion_oro = condicion_oro;
+        this.condicion_platino = condicion_platino;
     }
+
+    
+    
 
    
   

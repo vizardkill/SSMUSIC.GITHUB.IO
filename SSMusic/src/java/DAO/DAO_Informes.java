@@ -86,7 +86,7 @@ public class DAO_Informes implements IInformes_DAO{
             rs.close();
             co.close();
         } catch (SQLException e) {
-            System.out.println("Error: Clase DAO_Informes, método getInformeVentasTArtista");
+            System.out.println("Error: Clase DAO_Informes, método getInformeVentasTArtista"+e);
         }
         return ListInforme;
     }
@@ -113,7 +113,7 @@ System.out.println("Entro a ventast empresa");
                 Informes u = new Informes();
                 u.setEMP(rs.getString("EMP"));
                 u.setTOTAL_VENTAS(rs.getLong("TOTAL_VENTAS"));
-                u.setTOTAL_OPERACIONES(rs.getLong("TOTAL_OPERACIONES"));
+                u.setTOTAL_OPERACIONES(rs.getLong("CANTIDAD"));
                 ListInforme.add(u);
             }
             stm.close();
