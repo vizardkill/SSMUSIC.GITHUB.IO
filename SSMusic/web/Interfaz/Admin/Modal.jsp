@@ -301,12 +301,12 @@
             <div class="modal-body" >
                 <span id="Error_Venta" name="Error_Venta" style="color: #ff0000"></span>
                 <div class="container-fluid">
-                    <div class="col-sm-12  toolbar">    
-                        <div id="date_filter_regalias" class="col-md-6"> 
-                            <span id="date-label-inicio" class="date-label">Fecha Inicial: </span> <input class="input-sm date_range_filter date" type="text" id="datepicker_inicio" />
+                    <div class="date_filter col-sm-12">    
+                        <div id="" class="col-md-6"> 
+                            <span id="date-label-from" class="date-label">Fecha Inicial: </span> <input class="input-sm date_range_filter date" type="text" id="from" />
 
                         </div><div class="col-md-6">
-                            <span id="date-label-final" class="date-label"> Fecha Final: </span> <input class="input-sm date_range_filter date" type="text" id="datepicker_final" />
+                            <span id="date-label-to" class="date-label"> Fecha Final: </span> <input class="input-sm date_range_filter date" type="text" id="to" />
                         </div>
 
                     </div>
@@ -318,11 +318,44 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-xs btn-primary" id="btn" onclick="generarReg();" >Generar Regalias</button>
-
-
             </div>
-
         </div>
-
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+        $("#from").datepicker({
+            showOn: "button",
+            buttonImage: "../../img/Calendar.png",
+            buttonImageOnly: false,
+            onSelect: function (date) {
+                minDateFilter = new Date(date).getTime();
+                table.draw();
+            }
+        }).keyup(function () {
+            minDateFilter = new Date(this.value).getTime();
+            table.draw();
+        });
+
+        $("#to").datepicker({
+            showOn: "button",
+            buttonImage: "../../img/Calendar.png",
+            buttonImageOnly: false,
+            onSelect: function (date) {
+                maxDateFilter = new Date(date).getTime();
+                table.draw();
+            }
+        }).keyup(function () {
+            maxDateFilter = new Date(this.value).getTime();
+            table.draw();
+        });
+
+        $(".date-picker").on("change", function () {
+            var id = $(this).attr("id");
+            var val = $("label[for='" + id + "']").text();
+            $("#msg").text(val + " changed");
+        });
+    });
+
+
+</script>
