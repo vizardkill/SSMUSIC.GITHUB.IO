@@ -29,7 +29,9 @@
                             <ol class="breadcrumb">
                                 <li><i class="fa fa-home"></i><a href="Estudiante.jsp">Inicio</a></li>
                                 <li><i class="fa fa-laptop"></i> Gestion de Ventas</li>  
-                            </ol>             
+                            </ol>    
+                            <button type="button" class="btn btn-xs btn-success BTN_Accion" onclick="ListarArtistaPorEmpresa();" role="button" data-toggle="modal" data-target="#Modal_Venta" data-id="1" data-accion="Registrar Venta">Registrar Operación</button>
+                            <button type="button" class="btn btn-xs btn-primary" id="btn" onclick="generarReg();" >Regalias</button>
                         </div>
                     </div> 
                     <div class="row">                    
@@ -37,27 +39,24 @@
                             <section class="panel">
                                 <form action="" method="get" id="data">
                                     <header class="panel-heading">
-                                        Tipo de Gestión: <select id="gestion" class="simple" onchange="return mostrarSelect()">
+                                        Tipo de Gestión: <select id="gestion" class="input-sm" onchange="return mostrarSelect()">
                                             <option value="">Ninguno</option>
                                             <option value="ventas">Ventas</option>
                                             <option value="informes">Informes</option>
                                         </select>
-                                        <button type="button" class="btn btn-xs btn-success BTN_Accion" onclick="ListarArtistaPorEmpresa();" role="button" data-toggle="modal" data-target="#Modal_Venta" data-id="1" data-accion="Registrar Venta">Registrar Venta</button>
-                                        <button type="button" id="btn" onclick="generarReg();" >Regalias</button>
+                                        <label id="tipo_informe" style="visibility: hidden"> Tipo de Informe: </label> <select class="input-sm" id="informe" style="visibility: hidden" class="simple" onchange="return mostrarInforme()">
+                                            <option value="">Ninguno</option>
+                                            <option value="Total_Operaciones">Total de Operaciones</option>
+                                            <option value="VentasTotalxEmpresa">Ventas por Empresa</option>
+                                            <option value="VentasEmpresa">Total de Ventas por Empresa</option> 
+                                            <option value="VentasArtista">Artistas con mas Ventas</option>
+                                            <option>Artistas con Premios</option>
+                                        </select>
                                     </header>
-                                    <div class="col-md-2 col-md-offset-5"><span id="no_hay">Por favor Seleccione una Opcion</span></div>
-                                    <div class="col-lg-12"><lable id="tipo_informe" style="visibility: hidden">Tipo de Informe: </lable><select id="informe" style="visibility: hidden" class="simple" onchange="return mostrarInforme()">
-                                        <option value="">Ninguno</option>
-                                        <option value="Total_Operaciones">Total de Operaciones</option>
-                                        <option value="VentasTotalxEmpresa">Ventas por Empresa</option>
-                                        <option value="VentasEmpresa">Total de Ventas por Empresa</option> 
-                                        <option value="VentasArtista">Artistas con mas Ventas</option>
-                                        <option>Artistas con Premios</option>
-                                    </select>
-                                          
+                                    <div class="container">
+                                        <div class="col-md-2 col-md-offset-5"><span id="no_hay">Por favor Seleccione una Opcion</span></div>
                                     </div>
-                                  
-                                    <div id="table"> 
+                                    <div id="table" class="container-fluid"> 
                                     </div>
                                 </form>
                             </section>

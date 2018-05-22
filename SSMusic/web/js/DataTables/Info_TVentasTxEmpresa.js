@@ -56,7 +56,7 @@ $(document).ready(function () {
         buttons: [
             {
                 extend: 'excelHtml5',
-                text: '<i class="fa fa-file-excel-o"></i>',
+                text: '<i class="fa fa-file-excel"></i>',
                 titleAttr: 'Excel',
                 className: 'btn btn-success btn-sm m-5 width-140 assets-select-btn export-print',
                 action: function (e, dt, node, config) {
@@ -64,18 +64,6 @@ $(document).ready(function () {
 
 
                     $.fn.DataTable.ext.buttons.excelHtml5.action.call(this, e, dt, node, config);
-                }
-            },
-            {
-                extend: 'csvHtml5',
-                text: '<i class="fa fa-file-text-o"></i>',
-                titleAttr: 'CSV',
-                className: 'btn btn-info btn-sm m-5 width-140 assets-select-btn export-print',
-                action: function (e, dt, node, config) {
-                    alert("llego aki");
-
-
-                    $.fn.DataTable.ext.buttons.csvHtml5.action.call(this, e, dt, node, config);
                 }
             }
         ]

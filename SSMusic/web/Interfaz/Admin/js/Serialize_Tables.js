@@ -49,24 +49,28 @@ function mostrarInforme() {
     }
 }
 function TablaTotalOperaciones() {
+    $("#table").empty();
     $.post("Table_TOperaciones.jsp", $("#data").serialize(), function (data) {
         $("#table").html(data);
     });
 }
 
 function VentasTotalxEmpresa() {
+    $("#table").empty();
     $.post("Table_VentasTotalxEmpresa.jsp", $("#data").serialize(), function (data) {
         $("#table").html(data);
     });
 }
 
 function VentasxEmpresa() {
+    $("#table").empty();
     $.post("Table_VentasxEmpresa.jsp", $("#data").serialize(), function (data) {
         $("#table").html(data);
     });
 }
 
 function VentasxArtista() {
+    $("#table").empty();
     $.post("Table_VentasArtistas.jsp", $("#data").serialize(), function (data) {
         $("#table").html(data);
     });
