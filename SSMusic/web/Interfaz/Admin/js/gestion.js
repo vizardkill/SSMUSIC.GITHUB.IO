@@ -283,10 +283,24 @@ function PostgenerarInformeRangoFecha() {
         console.log(resp);
     }
 }
+
+function validatorRegalias(){
+    document.getElementById("Error_Regalia").innerHTML = "";
+    var date_inicio = document.getElementById("from").value;
+    var date_final = document.getElementById("to").value;
+    
+    if(date_inicio === "" || date_final === ""){
+        document.getElementById("Error_Regalia").innerHTML = "Porfavor diligencie todos los campos.";
+        myVar = setTimeout(clean, 4000);
+    }else{
+        generarReg();
+    }
+        
+}
 function generarReg() {
     
-    var date_inicio = document.getElementById("datepicker_inicio").value;
-    var date_final = document.getElementById("datepicker_final").value;
+    var date_inicio = document.getElementById("from").value;
+    var date_final = document.getElementById("to").value;
     xMLHttpRequest.open("Post", "../../Registros?datepicker_from="+date_inicio+"&datepicker_to="+date_final+"&peticion=generar", true);
     xMLHttpRequest.onreadystatechange = PostgenerarRegalias;
     xMLHttpRequest.send(null);
@@ -296,8 +310,25 @@ function generarReg() {
 function PostgenerarRegalias() {
     if (xMLHttpRequest.readyState == 4 && xMLHttpRequest.status == 200) {
         var resp = eval('(' + xMLHttpRequest.responseText + ')');
-        
         console.log(resp);
+        if(resp.result){
+            
+             document.getElementById("Error_Regalia").innerHTML = "Recompensas generadas correctamente";
+             
+             myVar = setTimeout(clean, 3000);
+             
+        }else{
+            document.getElementById("Error_Regalia").innerHTML = "Ups ocurrio un problema";
+            myVar = setTimeout(clean, 3000);
+        }
+        
+        
     }
+}
+
+function clean(){
+    document.getElementById("Error_Regalia").innerHTML="";
+    document.getElementById("from").value="";
+    document.getElementById("to").value="";
 }
 

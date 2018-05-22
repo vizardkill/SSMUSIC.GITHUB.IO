@@ -9,10 +9,12 @@ import Controladores.controller_art;
 import Controladores.controller_emp;
 import Controladores.controller_infor;
 import Controladores.controller_oper;
+import Controladores.controller_regalias;
 import Controladores.controller_user;
 import Modelo.Empresa;
 import Modelo.Informes;
 import Modelo.Operacion;
+import Modelo.Regalias;
 import Modelo.Usuario;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -147,6 +149,7 @@ public class Json_Datos {
 
     public String jsonInforme(String tipo) {
         controller_infor info = new controller_infor();
+        controller_regalias reg = new controller_regalias();
         com.google.gson.JsonObject json = new JsonObject();
         if (tipo.equals("TOperaciones")) {
             List<Informes> list = info.getInformeOperaciones();
@@ -225,6 +228,22 @@ public class Json_Datos {
                 array.add(item);
             }
             json.add("VentasArtistas", array);
+            return json.toString();
+        }
+        
+        if (tipo.equals("ArtistasConDisco")) {
+            List<Regalias> list = reg.getArtistasConRegalias();
+            JsonArray array = new JsonArray();
+            for (Regalias x : list) {
+                JsonObject item = new JsonObject();
+                item.addProperty("ID_ARTISTA_REG", x.getId_art());
+                item.addProperty("NOM_ARTISTA", x.getNom_art());
+                item.addProperty("TIPO_DE_REGALIA", x.getId_reg());
+                item.addProperty("NOM_TREG", x.getNom_condicion());
+                item.addProperty("FECHA_REGALIA", x.getFecha_actual());
+                array.add(item);
+            }
+            json.add("ArtistasPremiados", array);
             return json.toString();
         }
 

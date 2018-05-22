@@ -25,6 +25,15 @@ public class Regalias {
     private int id_param_platino;
     private int condicion_oro;
     private int condicion_platino;
+    private String nom_art;
+
+    public String getNom_art() {
+        return nom_art;
+    }
+
+    public void setNom_art(String nom_art) {
+        this.nom_art = nom_art;
+    }
 
     public int getCondicion_oro() {
         return condicion_oro;
@@ -144,7 +153,7 @@ public class Regalias {
         this.tipo_reg = tipo_reg;
     }
 
-    public Regalias(int id_reg, int id_art, int id_emp, String tipo_reg, String fecha_ini, String fecha_fin, int total_operaciones, String fecha_actual, int condicion_reg, String nom_condicion, int id_param_oro, int id_param_platino, int condicion_oro, int condicion_platino) {
+    public Regalias(int id_reg, int id_art, int id_emp, String tipo_reg, String fecha_ini, String fecha_fin, int total_operaciones, String fecha_actual, int condicion_reg, String nom_condicion, int id_param_oro, int id_param_platino, int condicion_oro, int condicion_platino, String nom_art) {
         this.id_reg = id_reg;
         this.id_art = id_art;
         this.id_emp = id_emp;
@@ -159,7 +168,10 @@ public class Regalias {
         this.id_param_platino = id_param_platino;
         this.condicion_oro = condicion_oro;
         this.condicion_platino = condicion_platino;
+        this.nom_art = nom_art;
     }
+
+ 
 
     
     

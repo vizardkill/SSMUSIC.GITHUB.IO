@@ -294,12 +294,12 @@
 
             <div class="modal-header">
                 <div class="form_top">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <button id="btn_close_reg" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h2>Generar  <span>Recompensas</span></h2>
                 </div> 
             </div>
             <div class="modal-body" >
-                <span id="Error_Venta" name="Error_Venta" style="color: #ff0000"></span>
+                <label id="Error_Regalia" name="Error_Regalia" style="color: #ff0000"></label>
                 <div class="container-fluid">
                     <div class="date_filter col-sm-12">    
                         <div id="" class="col-md-6"> 
@@ -317,7 +317,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-xs btn-primary" id="btn" onclick="generarReg();" >Generar Regalias</button>
+                <button type="button" class="btn btn-xs btn-primary" id="btn" onclick="validatorRegalias();" >Generar Regalias</button>
             </div>
         </div>
     </div>

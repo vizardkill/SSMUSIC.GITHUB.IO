@@ -81,5 +81,11 @@ public class controller_regalias {
         }
         return result;
     }
+    
+    public List<Regalias> getArtistasConRegalias() {
+        IRegalias_DAO edao = new DAO_Regalias();
+        List<Regalias> reg = edao.getArtistasGanadores();
+        return reg;
+    }
 
 }

@@ -27,8 +27,8 @@ public class DAO_Regalias implements IRegalias_DAO{
                 + "("
                 + "ID_REG, "
                 + "ID_ARTISTA_REG, "
-                + "VALOR_TOTAL, "
-                + "TIPO_DE_REGALIA "
+                + "TIPO_DE_REGALIA, "
+                + "FECHA_REGALIA "
                 + ") "
                 + "VALUES(?,?,?,?)";
 
@@ -38,8 +38,8 @@ public class DAO_Regalias implements IRegalias_DAO{
                 System.out.println("id reg: "+reg.getId_reg()+" id art: "+reg.getId_art()+" tipo reg: "+reg.getId_reg());
                 ps.setInt(1, 1);
                 ps.setInt(2,reg.getId_art());
-                 ps.setInt(3, 5);
-                ps.setInt(4, reg.getId_reg());
+                ps.setInt(3, reg.getId_reg());
+                ps.setString(4, reg.getFecha_actual());
                 
                 ps.executeUpdate();
                 ps.close();
@@ -69,7 +69,7 @@ public class DAO_Regalias implements IRegalias_DAO{
             rs = stm.executeQuery(sql);
             while (rs.next()) {
                 Regalias reg = new Regalias();
-                reg.setId_art(rs.getInt("ID_REG"));
+                reg.setId_reg(rs.getInt("ID_REG"));
                 reg.setId_art(rs.getInt("ID_ART"));
                 reg.setTipo_reg(rs.getString("TIPO_DE_REGALIA"));
                 listaReg.add(reg);
@@ -156,6 +156,47 @@ public class DAO_Regalias implements IRegalias_DAO{
 
         } catch (SQLException ex) {
             System.out.println("Error: Clase DAO_Regalias, método getParametros");
+        }
+        return listaReg;
+    }
+    
+    
+    @Override
+    public ArrayList<Regalias> getArtistasGanadores() {
+        Connection co;
+        Statement stm;
+        ResultSet rs;
+        
+        String sql = "SELECT  REGALIAS.ID_ARTISTA_REG,\n" +
+"                ARTISTA.NOM_ARTISTA,\n" +
+"                REGALIAS.TIPO_DE_REGALIA,\n" +
+"                TIPO_REGALIA.NOM_TREG,\n" +
+"                REGALIAS.FECHA_REGALIA\n" +
+"                FROM REGALIAS\n" +
+"                INNER JOIN ARTISTA ON REGALIAS.ID_ARTISTA_REG = ARTISTA.ID_ARTISTA\n" +
+"                INNER JOIN TIPO_REGALIA ON REGALIAS.TIPO_DE_REGALIA = TIPO_REGALIA.ID_TREG";
+        ArrayList<Regalias> listaReg = new ArrayList();
+
+        try {
+            co = DBUtil.getConexion();
+            stm = co.createStatement();
+            rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                Regalias reg = new Regalias();
+              reg.setId_art(rs.getInt("ID_ART"));
+              reg.setNom_art(rs.getString("NOM_ARTISTA"));
+              reg.setId_reg(rs.getInt("TIPO_DE_REGALIA"));
+              reg.setNom_condicion(rs.getString("NOM_TREG"));
+              reg.setFecha_actual(rs.getString("FECHA_REGALIA"));
+               
+                listaReg.add(reg);
+            }
+            stm.close();
+            rs.close();
+            co.close();
+
+        } catch (SQLException ex) {
+            System.out.println("Error: Clase DAO_Regalias, método getArtistasGanadores");
         }
         return listaReg;
     }
