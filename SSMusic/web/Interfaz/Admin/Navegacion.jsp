@@ -97,6 +97,18 @@
                     <li><a onclick="" class="" href="Operarios.jsp">Gestión Operarios</a></li>
                 </ul>
             </li>
+            <li class="sub-menu">
+                <a href="javascript:;" class="">
+                    <i class="icon_calendar"></i>
+                    <span>Informes</span>
+                    <span class="menu-arrow arrow_carrot-right"></span>
+                </a>
+                <ul class="sub">
+                    <li><a class="" href="Informe_VentasArtista.jsp">Ganancias Artistas</a></li>
+                    <li><a class="" href="Informe_GananciasEmpresa.jsp">Ganancias Empresas</a></li>
+                </ul>
+            </li>
+            
         </ul>
         <!-- sidebar menu end-->
     </div>

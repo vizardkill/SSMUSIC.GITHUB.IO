@@ -38,13 +38,17 @@ $(document).ready(function () {
                 // Use Ajax to submit form data
                 $.post($form.attr('action'), $form.serialize(), function (result) {
                     if (result.result) {
-                       // $('#table_Empresas').DataTable().ajax.reload();
-                       document.getElementById("Re_Venta").reset(); 
-                       $('#Error_Venta').text('Venta registrada con exito');              
+                        // $('#table_Empresas').DataTable().ajax.reload();
+                        document.getElementById("Re_Venta").reset();
+                        $('#Error_Venta').text('Venta registrada con exito');
+                        $('#table_VentasTxEmpresa').DataTable().ajax.reload();
+                        $('#table_VentasxEmpresa').DataTable().ajax.reload();
+                        $('#table_VentasxEmpresa').DataTable().ajax.reload();
+                        $('#table_VentasArtistas').DataTable().ajax.reload();
                     } else {
                         $('#Error_Venta').text('Hubo problemas con el Registro');
                     }
-                    setTimeout(function () {                        
+                    setTimeout(function () {
                         document.getElementById("Error_Venta").innerHTML = "";
                         $('#Modal_Venta').modal('hide');
                     }, 2000);

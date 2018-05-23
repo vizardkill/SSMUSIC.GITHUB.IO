@@ -25,42 +25,30 @@
                 <section class="wrapper">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h3 class="page-header"><i class="fa fa-laptop"></i> Lista de Artistas</h3>
+                            <h3 class="page-header"><i class="fa fa-laptop"></i>Gestión de Artistas</h3>
                             <ol class="breadcrumb">
                                 <li><i class="fa fa-home"></i><a href="Estudiante.jsp">Inicio</a></li>
                                 <li><i class="fa fa-laptop"></i>Artistas</li>  
-                            </ol>             
+                            </ol>     
+                            <button type="button" class="btn btn-xs btn-primary BTN_Accion" role="button" onclick="ListarEmpresa();" data-toggle="modal" data-target="#Modal_RegistrarArt" data-id="2" data-accion="Registrar Artista">Registrar Artista</button>
+                            <button type="button" class="btn btn-xs btn-primary BTN_Accion" role="button" data-toggle="modal" data-target="#Modal_Regalias" data-id="1" data-accion="Generar Regalia">Generar Premios </button>
+
                         </div>
                     </div> 
                     <div class="row">                    
                         <div class="col-lg-12">
                             <section class="panel">
                                 <header class="panel-heading">
-                                    <button type="button" class="btn btn-xs btn-primary BTN_Accion" role="button" onclick="ListarEmpresa();" data-toggle="modal" data-target="#Modal_RegistrarArt" data-id="2" data-accion="Registrar Artista">Registrar Artista</button>
+                                    Mostrar: <select id="cbx_Artista" class="input-sm" onchange="return mostrarSelectArtistas()">
+                                        <option value="">Ninguno</option>
+                                        <option value="Table_Artistas">Artistas Registrados</option>
+                                        <option value="Table_TOperaciones">Total de Operaciones</option>
+                                    </select>
                                 </header>                      
-                                <div id="table-responsive">
-                                    <table id="table_Artistas" class="table table-striped table-advance table-hover" >
-                                        <thead>
-                                            <tr>                                            
-                                                <th></th>
-                                                <th>Poster</th>
-                                                <th>Banda o Artista</th>
-                                                <th>Fecha de Registro</th>
-                                                <th>Acciones</th>
-                                            </tr>
-                                        </thead>
-                                        <tfoot>
-                                            <tr>
-                                                <th></th>
-                                                <th>Poster</th>
-                                                <th>Banda o Artista</th>
-                                                <th>Fecha de Registro</th>
-                                                <th>Acciones</th>
-                                            </tr>
-                                        </tfoot>
-                                        <tbody id="employee_data" >
-                                        </tbody>
-                                    </table>
+                                <div class="container">
+                                    <div class="col-md-2 col-md-offset-5"><span id="no_hay">Por favor Seleccione una Opcion</span></div>
+                                </div>
+                                <div id="table" class="container-fluid"> 
                                 </div>
                             </section>
                         </div>
@@ -74,7 +62,7 @@
                     <a href="http://www.politecnicojic.edu.co/">Politécnico Colombiano Jaime Isaza Cadavid</a> desarrollado por <a href="">Santiago Cardona & Santiago Arbelaez</a>
                 </div>
             </div>
-            <script src="../../js/DataTables/Artistas.js" type="text/javascript"></script>
+            <script src="js/Serialize_Tables.js" type="text/javascript"></script>
             <script src="../../js/Validator/Artista.js" type="text/javascript"></script>
     </body>
 </html>

@@ -57,7 +57,7 @@ $(document).ready(function () {
         buttons: [
             {
                 extend: 'excelHtml5',
-                text: '<i class="fa fa-file-excel"></i>',
+                text: '<i class="fa fa-file-excel"> Generar Informe</i>',
                 titleAttr: 'Excel',
                 className: 'btn btn-success btn-sm m-5 width-140 assets-select-btn export-print',
                 action: function (e, dt, node, config) {
