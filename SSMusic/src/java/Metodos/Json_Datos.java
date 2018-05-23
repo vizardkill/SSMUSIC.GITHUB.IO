@@ -8,11 +8,13 @@ package Metodos;
 import Controladores.controller_art;
 import Controladores.controller_emp;
 import Controladores.controller_infor;
+import Controladores.controller_log;
 import Controladores.controller_oper;
 import Controladores.controller_regalias;
 import Controladores.controller_user;
 import Modelo.Empresa;
 import Modelo.Informes;
+import Modelo.Log;
 import Modelo.Operacion;
 import Modelo.Regalias;
 import Modelo.Usuario;
@@ -95,6 +97,22 @@ public class Json_Datos {
             array.add(item);
         }
         json.add("Artistas", array);
+        return json.toString();
+    }
+    
+    public String jsonLog(){
+        controller_log log = new controller_log();
+        com.google.gson.JsonObject json = new JsonObject();
+        List<Log> list = log.getUsers();
+        JsonArray array = new JsonArray();
+        for(Log auditoria: list){
+            JsonObject item = new JsonObject();
+            item.addProperty("USERNAME", auditoria.getUsername());
+            item.addProperty("TIPO_DE_GESTION", auditoria.getTipo_de_gestion());
+            item.addProperty("FECHA_LOG", auditoria.getFecha_log());
+            array.add(item);
+        }
+        json.add("logAuditoria", array);
         return json.toString();
     }
 
@@ -216,7 +234,7 @@ public class Json_Datos {
             JsonArray array = new JsonArray();
             for (Regalias x : list) {
                 JsonObject item = new JsonObject();
-                item.addProperty("ID_ARTISTA_REG", x.getId_art());
+                item.addProperty("USERNAME", x.getId_art());
                 item.addProperty("NOM_ARTISTA", x.getNom_art());
                 item.addProperty("TIPO_DE_REGALIA", x.getId_reg());
                 item.addProperty("NOM_TREG", x.getNom_condicion());
