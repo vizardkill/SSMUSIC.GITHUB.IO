@@ -6,6 +6,8 @@
 package DAO;
 
 import Modelo.Log;
+import Modelo.Usuario;
+import java.util.List;
 
 /**
  *
@@ -13,4 +15,5 @@ import Modelo.Log;
  */
 public interface ILog_DAO {
     public boolean setLog(Log log);
+    public List<Log> getLog();
 }

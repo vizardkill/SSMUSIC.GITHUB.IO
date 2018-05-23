@@ -6,8 +6,12 @@
 package Controladores;
 
 import DAO.DAO_Log;
+import DAO.DAO_Usuario;
 import DAO.ILog_DAO;
+import DAO.IUsuario_DAO;
 import Modelo.Log;
+import Modelo.Usuario;
+import java.util.List;
 
 /**
  *
@@ -22,5 +26,11 @@ public class controller_log {
         ILog_DAO udao = new DAO_Log();
         boolean result = udao.setLog(log);
         return result;
+    }
+    
+    public List<Log> getUsers() {
+        ILog_DAO udao = new DAO_Log();
+        List<Log> logs = udao.getLog();
+        return logs;
     }
 }

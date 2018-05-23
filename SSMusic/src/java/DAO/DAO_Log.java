@@ -7,13 +7,18 @@ package DAO;
 
 import Conexion.DBUtil;
 import Modelo.Log;
+import Modelo.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 /**
@@ -47,10 +52,45 @@ public class DAO_Log implements ILog_DAO {
             }
             con.close();
         } catch (SQLException ex) {
-            System.out.println("Error: Clase DAO_Empresa, método registrar");
+            System.out.println("Error: Clase DAO_Log, método SETlOG");
             return false;
         }
         return true;
 
+    }
+    
+    @Override
+    public List<Log> getLog() {
+        Connection co;
+        Statement stm ;
+        ResultSet rs;
+
+        String sql = "SELECT USUARIO.USERNAME,\n" +
+"        LOG.TIPO_DE_GESTION,\n" +
+"        LOG.FECHA_LOG\n" +
+"        FROM LOG\n" +
+"        INNER JOIN USUARIO ON ID_USUARIO_LOG = ID_USUARIO";
+
+        List<Log> listaLog = new ArrayList<>();
+
+        try {
+            co = DBUtil.getConexion();
+            stm = co.createStatement();
+            rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                Log u = new Log();
+                u.setUsername(rs.getString("USERNAME"));
+                u.setTipo_de_gestion(rs.getString("TIPO_DE_GESTION"));
+                u.setFecha_log(rs.getString("FECHA_LOG"));
+                listaLog.add(u);
+            }
+            stm.close();
+            rs.close();
+            co.close();
+        } catch (SQLException e) {
+            System.out.println("Error: Clase DAO_Log, método getLog");
+        }
+
+        return listaLog;
     }
 }

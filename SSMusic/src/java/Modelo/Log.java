@@ -14,15 +14,28 @@ public class Log {
     private int id_usuario_log;
     private String tipo_de_gestion;
     private String fecha_log;
+    private String username;
+    
 
     public Log() {
     }
 
-    public Log(int id_log, int id_usuario_log, String tipo_de_gestion, String fecha_log) {
+    public Log(int id_log, int id_usuario_log, String tipo_de_gestion, String fecha_log, String username) {
         this.id_log = id_log;
         this.id_usuario_log = id_usuario_log;
         this.tipo_de_gestion = tipo_de_gestion;
         this.fecha_log = fecha_log;
+        this.username = username;
+    }
+
+    
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     
