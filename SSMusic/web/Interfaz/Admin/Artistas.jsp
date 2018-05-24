@@ -30,7 +30,7 @@
                                 <li><i class="fa fa-home"></i><a href="Estudiante.jsp">Inicio</a></li>
                                 <li><i class="fa fa-laptop"></i>Artistas</li>  
                             </ol>     
-                            <button type="button" class="btn btn-xs btn-primary BTN_Accion" role="button" onclick="ListarEmpresa();" data-toggle="modal" data-target="#Modal_RegistrarArt" data-id="2" data-accion="Registrar Artista">Registrar Artista</button>
+                            <button type="button" class="btn btn-xs btn-primary BTN_Accion" role="button" onclick="ListarEmpresas();" data-toggle="modal" data-target="#Modal_RegistrarArt" data-id="2" data-accion="Registrar Artista">Registrar Artista</button>
                             <button type="button" class="btn btn-xs btn-primary BTN_Accion" role="button" data-toggle="modal" data-target="#Modal_Regalias" data-id="1" data-accion="Generar Regalia">Generar Premios </button>
 
                         </div>

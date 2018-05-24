@@ -172,7 +172,7 @@ function PostGuardarArtista() {
     }
 }
 
-function ListarEmpresa() {
+function ListarEmpresas() {
     xMLHttpRequest.open("Post", "../../Registros?peticion=listarEmpresa", true);
     xMLHttpRequest.onreadystatechange = PostListarEmpresa;
     xMLHttpRequest.send(null);

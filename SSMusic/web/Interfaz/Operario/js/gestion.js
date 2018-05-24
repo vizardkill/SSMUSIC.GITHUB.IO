@@ -161,17 +161,4 @@ function PostGuardarArtista() {
     }
 }
 
-function ListarEmpresa() {
-    xMLHttpRequest.open("Post", "../../Registros?listarEmpresa=true", true);
-    xMLHttpRequest.onreadystatechange = PostListarEmpresa;
-    xMLHttpRequest.send(null);
-
-}
-
-function PostListarEmpresa() {
-    if (xMLHttpRequest.readyState == 4 && xMLHttpRequest.status == 200) {
-        var resp = eval('(' + xMLHttpRequest.responseText + ')');
-        cargarSelectEmpresa(resp);
-    }
-}
 
