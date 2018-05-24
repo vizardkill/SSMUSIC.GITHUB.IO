@@ -167,7 +167,7 @@ public class DAO_Regalias implements IRegalias_DAO{
         Statement stm;
         ResultSet rs;
         
-        String sql = "SELECT  REGALIAS.ID_ARTISTA_REG,\n" +
+        String sql = "SELECT  REGALIAS.ID_ARTISTA_REG AS ID_ART,\n" +
 "                ARTISTA.NOM_ARTISTA,\n" +
 "                REGALIAS.TIPO_DE_REGALIA,\n" +
 "                TIPO_REGALIA.NOM_TREG,\n" +

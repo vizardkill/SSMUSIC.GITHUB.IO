@@ -285,12 +285,12 @@ function PostgenerarInformeRangoFecha() {
 }
 
 function validatorRegalias(){
-    document.getElementById("Error_Regalia").innerHTML = "";
+    document.getElementById("Error_Regala").innerHTML = "";
     var date_inicio = document.getElementById("from").value;
     var date_final = document.getElementById("to").value;
     
     if(date_inicio === "" || date_final === ""){
-        document.getElementById("Error_Regalia").innerHTML = "Porfavor diligencie todos los campos.";
+        document.getElementById("Error_Regala").innerHTML = "Porfavor diligencie todos los campos.";
         myVar = setTimeout(clean, 4000);
     }else{
         generarReg();
@@ -313,12 +313,12 @@ function PostgenerarRegalias() {
         console.log(resp);
         if(resp.result){
             
-             document.getElementById("Error_Regalia").innerHTML = "Recompensas generadas correctamente";
+             document.getElementById("Error_Regala").innerHTML = "Recompensas generadas correctamente";
              
              myVar = setTimeout(clean, 3000);
              
         }else{
-            document.getElementById("Error_Regalia").innerHTML = "Ups ocurrio un problema";
+            document.getElementById("Error_Regala").innerHTML = "Ups ocurrio un problema";
             myVar = setTimeout(clean, 3000);
         }
         
@@ -327,7 +327,7 @@ function PostgenerarRegalias() {
 }
 
 function clean(){
-    document.getElementById("Error_Regalia").innerHTML="";
+    document.getElementById("Error_Regala").innerHTML="";
     document.getElementById("from").value="";
     document.getElementById("to").value="";
 }
