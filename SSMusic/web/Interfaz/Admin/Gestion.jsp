@@ -24,31 +24,54 @@
                 <section class="wrapper">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h3 class="page-header"><i class="fa fa-laptop"></i> Gestion de Ventas</h3>
+                            <h3 class="page-header"><i class="fa fa-laptop"></i> Gestion de la Aplicación</h3>
                             <ol class="breadcrumb">
                                 <li><i class="fa fa-home"></i><a href="Estudiante.jsp">Inicio</a></li>
-                                <li><i class="fa fa-laptop"></i> Gestion de Ventas</li>  
+                                <li><i class="fa fa-laptop"></i> Gestión</li>  
                             </ol>    
                         </div>
                     </div> 
                     <div class="row">                    
                         <div class="col-lg-12">
                             <section class="panel">
-                                
+                                <div id="table-responsive">
+                                    <table id="table_logs" class="table table-striped table-advance table-hover" >
+                                        <thead>
+                                            <tr>                                            
+                                                <th></th>
+                                                <th>Usuario</th>
+                                                <th>Tipo de Gestion</th>
+                                                <th>Fecha de Gestion</th>
+                                            </tr>
+                                        </thead>
+                                        <tfoot>
+                                            <tr>
+                                                <th></th>
+                                                <th>Usuario</th>
+                                                <th>Tipo de Gestion</th>
+                                                <th>Fecha de Gestion</th>
+                                            </tr>
+                                        </tfoot>
+                                        <tbody id="employee_data" >
+                                        </tbody>
+                                    </table>
+                                </div>
                             </section>
                         </div>
                     </div>
                     <!-- page end-->
                 </section>
             </section>
-            <!--main content end-->
-            <div class="text-right">
-                <div class="credits">    
-                    <a href="http://www.politecnicojic.edu.co/">Politécnico Colombiano Jaime Isaza Cadavid</a> desarrollado por <a href="">Santiago Cardona & Santiago Arbelaez</a>
-                </div>
+        </section>
+        <!--main content end-->
+        <div class="text-right">
+            <div class="credits">    
+                <a href="http://www.politecnicojic.edu.co/">Politécnico Colombiano Jaime Isaza Cadavid</a> desarrollado por <a href="">Santiago Cardona & Santiago Arbelaez</a>
             </div>
-            <script src="js/Serialize_Tables.js" type="text/javascript"></script>
-            
-            <script src="../../js/Validator/Venta.js" type="text/javascript"></script>
+        </div>
+
+        <script src="js/Serialize_Tables.js" type="text/javascript"></script>
+        <script src="../../js/DataTables/Logs.js" type="text/javascript"></script>
     </body>
+
 </html>

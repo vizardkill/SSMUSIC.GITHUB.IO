@@ -79,6 +79,9 @@ public class Datos extends HttpServlet {
             String tipo = request.getParameter("tipo");
             response.getWriter().write(data.jsonInforme(tipo));        
         }
+        if (peticion.equals("data_logs")) {
+            response.getWriter().write(data.jsonLog());    
+        }
     }
 
     /**

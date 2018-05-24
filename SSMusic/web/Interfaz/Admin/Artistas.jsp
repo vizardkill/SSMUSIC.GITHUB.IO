@@ -42,6 +42,7 @@
                                     Mostrar: <select id="cbx_Artista" class="input-sm" onchange="return mostrarSelectArtistas()">
                                         <option value="">Ninguno</option>
                                         <option value="Table_Artistas">Artistas Registrados</option>
+                                        <option value="Table_ArtistasPremios">Artistas Premiados</option>
                                         <option value="Table_TOperaciones">Total de Operaciones</option>
                                     </select>
                                 </header>                      
@@ -57,6 +58,7 @@
                 </section>
             </section>
             <!--main content end-->
+            </section>
             <div class="text-right">
                 <div class="credits">    
                     <a href="http://www.politecnicojic.edu.co/">Politécnico Colombiano Jaime Isaza Cadavid</a> desarrollado por <a href="">Santiago Cardona & Santiago Arbelaez</a>
@@ -64,5 +66,6 @@
             </div>
             <script src="js/Serialize_Tables.js" type="text/javascript"></script>
             <script src="../../js/Validator/Artista.js" type="text/javascript"></script>
+        
     </body>
 </html>

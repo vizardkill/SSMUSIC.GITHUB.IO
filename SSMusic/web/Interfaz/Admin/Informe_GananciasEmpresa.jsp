@@ -50,6 +50,7 @@
                     <!-- page end-->
                 </section>
             </section>
+        </section>
             <!--main content end-->
             <div class="text-right">
                 <div class="credits">    

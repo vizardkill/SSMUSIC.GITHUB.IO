@@ -67,8 +67,8 @@ $(document).ready(function () {
     });
 
     $("div.toolbar").html('<div id="date_filter" class="col-md-6">' +
-            '<span id="date-label-from" class="date-label">Fecha Inicial: </span> <input class="input-sm date_range_filter date" type="text" id="datepicker_from" />' +
-            '<span id="date-label-to" class="date-label"> Fecha Final: <input class="input-sm date_range_filter date" type="text" id="datepicker_to" />' +
+            '<span id="date-label-from" class="date-label">Fecha Inicial: </span> <input style="width: 25%" class="input-sm date_range_filter date" type="text" id="datepicker_from" />' +
+            '<span id="date-label-to" class="date-label"> Fecha Final: <input style="width: 25%" class="input-sm date_range_filter date" type="text" id="datepicker_to" />' +
             '</div>');
 
     $('#table_VentasArtistas tbody').on('click', 'td.details-control', function () {

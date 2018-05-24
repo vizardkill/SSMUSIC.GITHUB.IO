@@ -196,7 +196,7 @@ public class DAO_Regalias implements IRegalias_DAO{
             co.close();
 
         } catch (SQLException ex) {
-            System.out.println("Error: Clase DAO_Regalias, método getArtistasGanadores");
+            System.out.println("Error: Clase DAO_Regalias, método getArtistasGanadores" + ex);
         }
         return listaReg;
     }

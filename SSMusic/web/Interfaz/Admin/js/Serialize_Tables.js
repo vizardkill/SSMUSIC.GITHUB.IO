@@ -11,6 +11,12 @@ function mostrarSelectArtistas() {
         document.getElementById('table').style.visibility = 'visible';
         TablaTotalOperaciones();
     }
+    if (userInput === 'Table_ArtistasPremios') {
+        document.getElementById('no_hay').style.visibility = 'hidden';
+        document.getElementById('table').style.visibility = 'visible';
+        Table_ArtistasPremios();
+    }
+    
     if (userInput === '') {
         document.getElementById('no_hay').style.visibility = 'visible';
         document.getElementById('table').style.visibility = 'hidden';
@@ -70,6 +76,13 @@ function VentasxArtista() {
 function Table_Artista() {
     $("#table").empty();
     $.post("Table_Artistas.jsp", $("#data").serialize(), function (data) {
+        $("#table").html(data);
+    });
+}
+
+function Table_ArtistasPremios() {
+    $("#table").empty();
+    $.post("Table_ArtistasPremios.jsp", $("#data").serialize(), function (data) {
         $("#table").html(data);
     });
 }

@@ -52,7 +52,7 @@ public class DAO_Log implements ILog_DAO {
             }
             con.close();
         } catch (SQLException ex) {
-            System.out.println("Error: Clase DAO_Log, método SETlOG");
+            System.out.println("Error: Clase DAO_Log, método SETlOG: +" + ex);
             return false;
         }
         return true;

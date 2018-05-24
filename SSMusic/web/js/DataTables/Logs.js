@@ -5,7 +5,7 @@
  * @see https://datatables.net/
  */
 $(document).ready(function () {
-    var table = $('#table_Artistas').DataTable({
+    var table = $('#table_logs').DataTable({
         language: {
             sProcessing: "Procesando...",
             sLengthMenu: "Mostrar _MENU_  Registros",
@@ -32,8 +32,8 @@ $(document).ready(function () {
         },
         ajax: {
             method: "GET",
-            url: "../../Datos?peticion=data_art",
-            dataSrc: "Artistas"
+            url: "../../Datos?peticion=data_logs",
+            dataSrc: "logAuditoria"
         },
         select: "single",
         columns: [
@@ -47,15 +47,40 @@ $(document).ready(function () {
                 },
                 width: '15px'
             },
-            {data: "img_artista"},
-            {data: "NOM_ARTISTA"},
-            {data: "FECHA_REGISTRO_ART"},
-            {data: "acciones"}
+            {data: "USERNAME"},
+            {data: "TIPO_DE_GESTION"},
+            {data: "FECHA_LOG"}
         ],
         order: [[1, 'asc']],
-        dom: 'frtlip'
+        dom: 'frtlip',
+        buttons: [
+            {
+                extend: 'excelHtml5',
+                text: '<i class="fa fa-file-excel-o"></i>',
+                titleAttr: 'Excel',
+                className: 'btn btn-success btn-sm m-5 width-140 assets-select-btn export-print',
+                action: function (e, dt, node, config) {
+                    alert("llego aki");
+
+
+                    $.fn.DataTable.ext.buttons.excelHtml5.action.call(this, e, dt, node, config);
+                }
+            },
+            {
+                extend: 'csvHtml5',
+                text: '<i class="fa fa-file-text-o"></i>',
+                titleAttr: 'CSV',
+                className: 'btn btn-info btn-sm m-5 width-140 assets-select-btn export-print',
+                action: function (e, dt, node, config) {
+                    alert("llego aki");
+
+
+                    $.fn.DataTable.ext.buttons.csvHtml5.action.call(this, e, dt, node, config);
+                }
+            }
+        ]
     });
-    $('#table_Artistas tbody').on('click', 'td.details-control', function () {
+    $('#table_logs tbody').on('click', 'td.details-control', function () {
         var tr = $(this).closest('tr');
         var tdi = tr.find('i.fa');
         var row = table.row(tr);
@@ -67,7 +92,7 @@ $(document).ready(function () {
             tdi.first().addClass('fa-plus-square');
         } else {
 // Open this row
-            row.child(Artistasformat(row.data())).show();
+            row.child(Empresasformat(row.data())).show();
             tr.addClass('shown');
             tdi.first().removeClass('fa-plus-square');
             tdi.first().addClass('fa-minus-square');
@@ -82,13 +107,13 @@ $(document).ready(function () {
         if (confirm("Desea eliminar al usuario?")) {
             var data = table.row($(this).parents('tr')).data();
             data = data.Id;
-            $.post("../../Datos?peticion=EliminarArtista", {Id: data}, function (result) {
+            $.post("../../Datos?peticion=EliminarEmpresa", {Id: data}, function (result) {
                 var json = $.parseJSON(result);
                 if (json.result) {
-                    $('#table_Artistas').DataTable().ajax.reload();
-                    alert("El usuario fue eliminado con exito!");
+                    $('#table_logs').DataTable().ajax.reload();
+                    alert("La empresa fue eliminada con exito!");
                 } else {
-                    alert("No funciono");
+                    alert("No se puede eliminar, la empresa tiene asociado varios artistas");
                 }
             }, 'json');
 
@@ -97,28 +122,28 @@ $(document).ready(function () {
         }
     });
 });
-function Artistasformat(d) {
+function Empresasformat(d) {
     // `d` is the original data object for the row
     return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
             '<tr>' +
-            '<td><b>Nombre del Representante:</b></td>' +
-            '<td>' + d.NOM_REPRESENTANTE + '</td>' +
+            '<td><b>Fecha de Registro:</b></td>' +
+            '<td>' + d.FECHA_REGISTRO_D + '</td>' +
             '</tr>' +
             '<tr>' +
-            '<td><b>Documento del Representante:</b></td>' +
-            '<td>' + d.DOC_REPRESENTANTE + '</td>' +
+            '<td><b>Nombre del Encargado:</b></td>' +
+            '<td>' + d.NOM_ENCARGADO_D + '</td>' +
             '</tr>' +
             '<tr>' +
-            '<td><b>Telefono del Representante:</b></td>' +
-            '<td>' + d.TEL_REPRESENTANTE + '</td>' +
+            '<td><b>Documento del Encargo:</b></td>' +
+            '<td>' + d.DOC_ENCARGADO_D + '</td>' +
             '</tr>' +
             '<tr>' +
-            '<td><b>Correo del Representante:</b></td>' +
-            '<td>' + d.COR_REPRESENTANTE + '</td>' +
+            '<td><b>Telefono del Encargado:</b></td>' +
+            '<td>' + d.TEL_ENCARGADO_D + '</td>' +
             '</tr>' +
             '<tr>' +
-            '<td><b>Empresa:</b></td>' +
-            '<td>' + d.ID_EMPRESA_D_ART + '</td>' +
+            '<td><b>Correo del Encargado:</b></td>' +
+            '<td>' + d.COR_ENCARGADO_D + '</td>' +
             '</tr>' +
             '<tr>' +
             '<td><b>Informacion Adicional:</b></td>' +
@@ -126,5 +151,3 @@ function Artistasformat(d) {
             '</tr>' +
             '</table>';
 }
-
-

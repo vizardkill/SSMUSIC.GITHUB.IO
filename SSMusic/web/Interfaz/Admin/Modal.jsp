@@ -181,7 +181,7 @@
 
                             <div class="form-group col-md-6">
                                 <label for="PASS" class="control-label">Contraseña: </label>
-                                <input name="PASS" id='PASS' type='text'placeholder="Contraseña" class="form-control input"/>
+                                <input name="PASS" id='PASS' type='text' placeholder="Contraseña" class="form-control input"/>
                             </div>
                         </div>
 
@@ -299,10 +299,10 @@
                 </div> 
             </div>
             <div class="modal-body" >
-                <label id="Error_Regalia" name="Error_Regalia" style="color: #ff0000"></label>
+                <label id="Error_Regala" name="Error_Regala" style="color: #ff0000"></label>
                 <div class="container-fluid">
                     <div class="date_filter col-sm-12">    
-                        <div id="" class="col-md-6"> 
+                        <div class="col-md-6"> 
                             <span id="date-label-from" class="date-label">Fecha Inicial: </span> <input class="input-sm date_range_filter date" type="text" id="from" />
 
                         </div><div class="col-md-6">
@@ -330,11 +330,7 @@
             buttonImageOnly: false,
             onSelect: function (date) {
                 minDateFilter = new Date(date).getTime();
-                table.draw();
             }
-        }).keyup(function () {
-            minDateFilter = new Date(this.value).getTime();
-            table.draw();
         });
 
         $("#to").datepicker({
@@ -343,11 +339,7 @@
             buttonImageOnly: false,
             onSelect: function (date) {
                 maxDateFilter = new Date(date).getTime();
-                table.draw();
             }
-        }).keyup(function () {
-            maxDateFilter = new Date(this.value).getTime();
-            table.draw();
         });
 
         $(".date-picker").on("change", function () {

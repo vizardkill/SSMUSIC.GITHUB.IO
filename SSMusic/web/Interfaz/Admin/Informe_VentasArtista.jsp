@@ -72,6 +72,7 @@
                 </section>
             </section>
             <!--main content end-->
+        </section>
             <div class="text-right">
                 <div class="credits">    
                     <a href="http://www.politecnicojic.edu.co/">Politécnico Colombiano Jaime Isaza Cadavid</a> desarrollado por <a href="">Santiago Cardona & Santiago Arbelaez</a>

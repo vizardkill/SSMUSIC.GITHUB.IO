@@ -1,11 +1,7 @@
-/* 
- * Este Script sirve para manipular los datos de la tabla
- * @author Santiago Cardona Saldarriaga
- * @version 28/03/2018
- * @see https://datatables.net/
- */
+
 $(document).ready(function () {
-    var table = $('#table_Artistas').DataTable({
+    $('#table_premios').dataTable().fnDestroy();
+    var table = $('#table_premios').DataTable({
         language: {
             sProcessing: "Procesando...",
             sLengthMenu: "Mostrar _MENU_  Registros",
@@ -32,8 +28,8 @@ $(document).ready(function () {
         },
         ajax: {
             method: "GET",
-            url: "../../Datos?peticion=data_art",
-            dataSrc: "Artistas"
+            url: "../../Datos?peticion=data_Informe&tipo=ArtistasConDisco",
+            dataSrc: "ArtistasPremiados"
         },
         select: "single",
         columns: [
@@ -47,15 +43,29 @@ $(document).ready(function () {
                 },
                 width: '15px'
             },
-            {data: "img_artista"},
+            {data: "USERNAME"},
             {data: "NOM_ARTISTA"},
-            {data: "FECHA_REGISTRO_ART"},
-            {data: "acciones"}
+            {data: "NOM_TREG"}, 
+            {data: "FECHA_REGALIA"}
         ],
         order: [[1, 'asc']],
-        dom: 'frtlip'
+        dom: 'fBrtip',
+        buttons: [
+            {
+                extend: 'excelHtml5',
+                text: '<i class="fa fa-file-excel"> Generar Informe</i>',
+                titleAttr: 'Excel',
+                className: 'btn btn-success btn-sm m-5 width-140 assets-select-btn export-print',
+                action: function (e, dt, node, config) {
+                    alert("llego aki");
+
+
+                    $.fn.DataTable.ext.buttons.excelHtml5.action.call(this, e, dt, node, config);
+                }
+            }
+        ]
     });
-    $('#table_Artistas tbody').on('click', 'td.details-control', function () {
+    $('#table_premios tbody').on('click', 'td.details-control', function () {
         var tr = $(this).closest('tr');
         var tdi = tr.find('i.fa');
         var row = table.row(tr);
@@ -67,7 +77,7 @@ $(document).ready(function () {
             tdi.first().addClass('fa-plus-square');
         } else {
 // Open this row
-            row.child(Artistasformat(row.data())).show();
+            row.child(table_premiosFormat(row.data())).show();
             tr.addClass('shown');
             tdi.first().removeClass('fa-plus-square');
             tdi.first().addClass('fa-minus-square');
@@ -78,47 +88,31 @@ $(document).ready(function () {
             e.preventDefault();
         }
     });
-    $(document).on('click', '.btn_delete', function () {
-        if (confirm("Desea eliminar al usuario?")) {
-            var data = table.row($(this).parents('tr')).data();
-            data = data.Id;
-            $.post("../../Datos?peticion=EliminarArtista", {Id: data}, function (result) {
-                var json = $.parseJSON(result);
-                if (json.result) {
-                    $('#table_Artistas').DataTable().ajax.reload();
-                    alert("El usuario fue eliminado con exito!");
-                } else {
-                    alert("No funciono");
-                }
-            }, 'json');
 
-        } else {
-            alert("presiono cancelar");
-        }
-    });
 });
-function Artistasformat(d) {
+
+function table_premiosFormat(d) {
     // `d` is the original data object for the row
     return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
             '<tr>' +
-            '<td><b>Nombre del Representante:</b></td>' +
-            '<td>' + d.NOM_REPRESENTANTE + '</td>' +
+            '<td><b>Fecha de Registro:</b></td>' +
+            '<td>' + '</td>' +
             '</tr>' +
             '<tr>' +
-            '<td><b>Documento del Representante:</b></td>' +
-            '<td>' + d.DOC_REPRESENTANTE + '</td>' +
+            '<td><b>Nombre del Encargado:</b></td>' +
+            '<td>' + '</td>' +
             '</tr>' +
             '<tr>' +
-            '<td><b>Telefono del Representante:</b></td>' +
-            '<td>' + d.TEL_REPRESENTANTE + '</td>' +
+            '<td><b>Documento del Encargo:</b></td>' +
+            '<td>' + '</td>' +
             '</tr>' +
             '<tr>' +
-            '<td><b>Correo del Representante:</b></td>' +
-            '<td>' + d.COR_REPRESENTANTE + '</td>' +
+            '<td><b>Telefono del Encargado:</b></td>' +
+            '<td>' + '</td>' +
             '</tr>' +
             '<tr>' +
-            '<td><b>Empresa:</b></td>' +
-            '<td>' + d.ID_EMPRESA_D_ART + '</td>' +
+            '<td><b>Correo del Encargado:</b></td>' +
+            '<td>' + '</td>' +
             '</tr>' +
             '<tr>' +
             '<td><b>Informacion Adicional:</b></td>' +
@@ -126,5 +120,13 @@ function Artistasformat(d) {
             '</tr>' +
             '</table>';
 }
+
+
+// Date range filter
+
+
+
+
+
 
 
