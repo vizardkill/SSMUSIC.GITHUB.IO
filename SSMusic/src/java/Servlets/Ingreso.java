@@ -5,7 +5,10 @@
  */
 package Servlets;
 
+import Controladores.controller_log;
 import Controladores.controller_user;
+import Metodos.Calendario;
+import Modelo.Log;
 import Modelo.Usuario;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -77,6 +80,9 @@ public class Ingreso extends HttpServlet {
     public String processLogin(String nick, String pass, HttpSession session) {
         com.google.gson.JsonObject json = new JsonObject();
         Usuario user = new Usuario();
+          Log log = new Log();
+          Calendario fechaR = new Calendario();
+            String FECHA_REGISTRO = fechaR.Fecha_Registro();
         Usuario resultado;
         user.setUsername(nick);
         user.setPass(pass);
@@ -112,6 +118,17 @@ public class Ingreso extends HttpServlet {
         session.setAttribute("DIRECCION", resultado.getDireccion());
         session.setAttribute("ID_EMPRESA_U", resultado.getFecha_registro());
         json.add("respuesta", array);
+        
+         controller_log logdao = new controller_log();
+            
+          int id_user = (Integer) session.getAttribute("ID_USUARIO");
+            log.setId_usuario_log(id_user);
+            log.setTipo_de_gestion("Inicio Sesion");
+            log.setFecha_log(FECHA_REGISTRO);
+         
+            if (resultado.getId() != 0) {
+                logdao.registerLog(log);
+            }
         return json.toString();
     }
 
