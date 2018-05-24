@@ -55,33 +55,7 @@ $(document).ready(function () {
             {data: "TOTAL_OPERACIONES"}
         ],
         order: [[1, 'asc']],
-        dom: 'fBrtip',
-        buttons: [
-            {
-                extend: 'excelHtml5',
-                text: '<i class="fa fa-file-excel-o"></i>',
-                titleAttr: 'Excel',
-                className: 'btn btn-success btn-sm m-5 width-140 assets-select-btn export-print',
-                action: function (e, dt, node, config) {
-                    alert("llego aki");
-
-
-                    $.fn.DataTable.ext.buttons.excelHtml5.action.call(this, e, dt, node, config);
-                }
-            },
-            {
-                extend: 'csvHtml5',
-                text: '<i class="fa fa-file-text-o"></i>',
-                titleAttr: 'CSV',
-                className: 'btn btn-info btn-sm m-5 width-140 assets-select-btn export-print',
-                action: function (e, dt, node, config) {
-                    alert("llego aki");
-
-
-                    $.fn.DataTable.ext.buttons.csvHtml5.action.call(this, e, dt, node, config);
-                }
-            }
-        ]
+        dom: 'frtlip'
     });
     $('#table_TOperaciones tbody').on('click', 'td.details-control', function () {
         var tr = $(this).closest('tr');

@@ -87,8 +87,7 @@ $(document).ready(function () {
             var data = table.row($(this).parents('tr')).data();
             data = data.Id;
             $.post("../../Datos?peticion=EliminarEmpresa", {Id: data}, function (result) {
-                var json = $.parseJSON(result);
-                if (json.result) {
+                if (result.result) {
                     $('#table_Empresas').DataTable().ajax.reload();
                     alert("La empresa fue eliminada con exito!");
                 } else {

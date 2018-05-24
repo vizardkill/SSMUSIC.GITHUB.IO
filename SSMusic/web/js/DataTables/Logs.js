@@ -92,7 +92,7 @@ $(document).ready(function () {
             tdi.first().addClass('fa-plus-square');
         } else {
 // Open this row
-            row.child(Empresasformat(row.data())).show();
+            row.child(table_logsFormat(row.data())).show();
             tr.addClass('shown');
             tdi.first().removeClass('fa-plus-square');
             tdi.first().addClass('fa-minus-square');
@@ -108,12 +108,11 @@ $(document).ready(function () {
             var data = table.row($(this).parents('tr')).data();
             data = data.Id;
             $.post("../../Datos?peticion=EliminarEmpresa", {Id: data}, function (result) {
-                var json = $.parseJSON(result);
-                if (json.result) {
+                if (result.result) {
                     $('#table_logs').DataTable().ajax.reload();
-                    alert("La empresa fue eliminada con exito!");
+                    alert("Log eliminado con exito!");
                 } else {
-                    alert("No se puede eliminar, la empresa tiene asociado varios artistas");
+                    alert("El Log no pudo ser eliminado");
                 }
             }, 'json');
 
@@ -122,7 +121,7 @@ $(document).ready(function () {
         }
     });
 });
-function Empresasformat(d) {
+function table_logsFormat(d) {
     // `d` is the original data object for the row
     return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
             '<tr>' +

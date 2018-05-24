@@ -123,8 +123,7 @@ $(document).ready(function () {
 
                 // Use Ajax to submit form data
                 $.post($form.attr('action'), $form.serialize(), function (result) {
-                    var json = $.parseJSON(result);
-                    if (json.result === true) {
+                    if (result.result === true) {
                         $('#table_Operarios').DataTable().ajax.reload();
                         $('#ErrorRegistroOp').text('Operario Registrado con exito');
                          document.getElementById("Modal_RegistrarOp").reset();

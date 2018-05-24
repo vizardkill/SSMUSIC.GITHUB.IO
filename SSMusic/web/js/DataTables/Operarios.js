@@ -56,7 +56,7 @@ $(document).ready(function () {
         order: [[1, 'asc']],
         dom: 'frtlip'
     });
-    $('#table_Empresas tbody').on('click', 'td.details-control', function () {
+    $('#table_Operarios tbody').on('click', 'td.details-control', function () {
         var tr = $(this).closest('tr');
         var tdi = tr.find('i.fa');
         var row = table.row(tr);
@@ -68,7 +68,7 @@ $(document).ready(function () {
             tdi.first().addClass('fa-plus-square');
         } else {
 // Open this row
-            row.child(Empresasformat(row.data())).show();
+            row.child(table_OperariosFormat(row.data())).show();
             tr.addClass('shown');
             tdi.first().removeClass('fa-plus-square');
             tdi.first().addClass('fa-minus-square');
@@ -84,11 +84,11 @@ $(document).ready(function () {
             var data = table.row($(this).parents('tr')).data();
             data = data.Id;
             $.post("../../Datos?peticion=EliminarOperario", {Id: data}, function (result) {
-                if (result) {
-                    $('#table_Empresas').DataTable().ajax.reload();
+                if (result.result) {
+                    $('#table_Operarios').DataTable().ajax.reload();
                     alert("El usuario fue eliminado con exito!");
                 } else {
-                    alert("No funciono");
+                    alert("El usuario no pudo ser eliminado");
                 }
             }, 'json');
 
@@ -97,7 +97,7 @@ $(document).ready(function () {
         }
     });
 });
-function Empresasformat(d) {
+function table_OperariosFormat(d) {
     // `d` is the original data object for the row
     return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
             '<tr>' +

@@ -83,8 +83,7 @@ $(document).ready(function () {
             var data = table.row($(this).parents('tr')).data();
             data = data.Id;
             $.post("../../Datos?peticion=EliminarArtista", {Id: data}, function (result) {
-                var json = $.parseJSON(result);
-                if (json.result) {
+                if (result.result) {
                     $('#table_Artistas').DataTable().ajax.reload();
                     alert("El usuario fue eliminado con exito!");
                 } else {
