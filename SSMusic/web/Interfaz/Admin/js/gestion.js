@@ -39,7 +39,7 @@ function PostGuardarEmpresa() {
 }
 
 function cargarSelectEmpresa(respuesta) {
-
+document.getElementById("select_empresas").length=1;
     var select = document.getElementById("select_empresas");
     for (var i = 0; i < respuesta.length; i++) {
         var obj = respuesta[i];
