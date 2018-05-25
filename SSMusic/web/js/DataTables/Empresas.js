@@ -99,7 +99,38 @@ $(document).ready(function () {
             alert("presiono cancelar");
         }
     });
+    $(document).on('click', '.UpdateEmpresa', function () {
+            
+            var data = table.row($(this).parents('tr')).data();
+            
+            data = data.Id;
+            $.post("../../Registros?peticion=upd_Empresa", {Id: data}, function (result) {
+                if (result.result) {
+                    $('#table_Empresas').DataTable().ajax.reload();
+                    alert("La empresa fue eliminada con exito!");
+                } else {
+                    alert("No se puede eliminar, la empresa tiene asociado varios artistas");
+                }
+            }, 'json');
+
+        
+    });
 });
+
+
+
+function loadModalUpdate(){
+    var data = table.row($(this).parents('tr')).data();
+            document.getElementById("NIT_EMPRESA_D_UP").value=data.NIT_Empresa;
+            document.getElementById("NOM_EMPRESA_D_UP").value=data.Nom_Empresa;
+            document.getElementById("NOM_ENCARGADO_D_UP").value=data.NOM_ENCARGADO_D;
+            document.getElementById("DOC_ENCARGADO_D_UP").value=data.DOC_ENCARGADO_D;
+            document.getElementById("TEL_ENCARGADO_D_UP").value=data.TEL_ENCARGADO_D;
+            document.getElementById("COR_ENCARGADO_D_UP").value=data.COR_ENCARGADO_D;
+            document.getElementById("TIPO_OPERACION_D_UP").value=data.Tipo_operacion;
+            document.getElementById("VALOR_OPERACION_D_UP").value=data.Valor_operacion;
+}
+
 function Empresasformat(d) {
     // `d` is the original data object for the row
     return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +

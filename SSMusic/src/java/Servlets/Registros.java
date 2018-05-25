@@ -124,6 +124,10 @@ public class Registros extends HttpServlet {
             response.setContentType("text/html");
             response.getWriter().write(generarRegalias(request, response));
         }
+        if (peticion.equals("upd_Empresa")) {
+            response.setContentType("text/html");
+            response.getWriter().write(updateEmpresa(request, response));
+        }
         
         
 
@@ -200,6 +204,50 @@ public class Registros extends HttpServlet {
             controller_emp edao = new controller_emp();
             controller_log logdao = new controller_log();
             boolean result = edao.registerEmpresa(emp);
+            if (result) {
+                logdao.registerLog(log);
+            }
+            item.addProperty("result", result);
+
+        } catch (NumberFormatException e) {
+            System.out.println(e);
+        }
+        return item.toString();
+    }
+    
+    public String updateEmpresa(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        HttpSession session = request.getSession(true);
+        com.google.gson.JsonObject json = new JsonObject();
+        JsonObject item = new JsonObject();
+        try {
+
+            Calendario fechaR = new Calendario();
+            String FECHA_REGISTRO = fechaR.Fecha_Registro();
+
+            Log log = new Log();
+            Empresa emp = new Empresa();
+            emp.setId_emp(Integer.parseInt(request.getParameter("Id")));
+            emp.setNIT_emp(request.getParameter("NIT_EMPRESA_D"));
+            emp.setNom_emp(request.getParameter("NOM_EMPRESA_D"));
+            emp.setNom_encargado(request.getParameter("NOM_ENCARGADO_D"));
+            emp.setDoc_encargado(request.getParameter("DOC_ENCARGADO_D"));
+            emp.setTel_encargado(request.getParameter("TEL_ENCARGADO_D"));
+            emp.setCor_encargado(request.getParameter("COR_ENCARGADO_D"));
+            emp.setTipo_operacion(request.getParameter("TIPO_OPERACION_D"));
+            emp.setValor_operacion(Double.parseDouble(request.getParameter("VALOR_OPERACION_D")));
+            
+
+            //Datos log
+            int id_user = (Integer) session.getAttribute("ID_USUARIO");
+            log.setId_usuario_log(id_user);
+            log.setTipo_de_gestion("Update Empresa");
+            log.setFecha_log(FECHA_REGISTRO);
+
+            controller_emp edao = new controller_emp();
+            controller_log logdao = new controller_log();
+            boolean result = edao.updateEmpresa(emp);
             if (result) {
                 logdao.registerLog(log);
             }

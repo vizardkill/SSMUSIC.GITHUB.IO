@@ -130,7 +130,7 @@ public class DAO_Empresa implements IEmpresa_DAO {
     @Override
     public boolean updateEmpresa(Empresa emp) {
         Connection con;
-        String sql = "UPDATE INTO EMPRESA_DIFUSORA SET "
+        String sql = "UPDATE EMPRESA_DIFUSORA SET "
                 + "NIT_EMPRESA_D = ?, "
                 + "NOM_EMPRESA_D = ?, "
                 + "NOM_ENCARGADO_D = ?, "
@@ -139,7 +139,7 @@ public class DAO_Empresa implements IEmpresa_DAO {
                 + "COR_ENCARGADO_D = ?, "
                 + "TIPO_OPERACION_D = ?, "
                 + "VALOR_OPERACION_D = ? "
-                + "WHERE ID_EMPRESA_D = ?";
+                + "WHERE ID_EMPRESA_D = ? ";
         try {
             con = DBUtil.getConexion();
             try (PreparedStatement ps = con.prepareStatement(sql)) {
@@ -151,7 +151,7 @@ public class DAO_Empresa implements IEmpresa_DAO {
                 ps.setString(6, emp.getCor_encargado());
                 ps.setString(7, emp.getTipo_operacion());
                 ps.setDouble(8, emp.getValor_operacion());
-                ps.setInt(9, emp.getId_emp());
+                ps.setInt(9, emp.getId_emp()); 
 
                 ps.executeUpdate();
                 ps.close();

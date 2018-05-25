@@ -84,6 +84,80 @@
 
     </div>
 </div>
+<!--Modal update Empresa --> 
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="Modal_updateEmp" >
+    <div class="modal-dialog modal-lg" role="document">
+
+
+        <div class="modal-content">
+            <form id="Reg_Empresa" class="form form-inline" action="" >
+
+                <div class="modal-header">
+                    <div class="form_top">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h2>Actualizacion de <span>Empresa</span></h2>
+                    </div> 
+                </div>
+
+                <div class="modal-body" >
+                    <div class="container-fluid">
+                        <span id="Error_ReEmp" name="Error_upEmp" style="color: #ff0000"></span>
+
+                        <div class="col-md-12">
+                            <div class="form-group col-md-6">
+                                <label for="NIT_EMPRESA_D_UP" class="control-label">Nit: </label>
+                                <input name="NIT_EMPRESA_D_UP" id='NIT_EMPRESA_D_UP' type='text' placeholder="Nit" class="form-control input"/>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label for="NOM_EMPRESA_D_UP" class="control-label">Nombre: </label>
+                                <input name="NOM_EMPRESA_D_UP" id='NOM_EMPRESA_D_UP' type='text' placeholder="Nombre Empresa" class="form-control input"/>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group col-sm-6">
+                                <label for="NOM_ENCARGADO_D_UP" class="control-label">Nombre Encargado: </label>
+                                <input name="NOM_ENCARGADO_D_UP" id='NOM_ENCARGADO_D_UP'  type='text' placeholder="Nombre Encargado" class="form-control input"/>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label for="DOC_ENCARGADO_D_UP" class="control-label">Documento Encargado: </label>
+                                <input name="DOC_ENCARGADO_D_UP" id='DOC_ENCARGADO_D_UP'  type='text' placeholder="Documento Encargado" class="form-control input"/>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group col-sm-6">
+                                <label for="TEL_ENCARGADO_D_UP" class="control-label">Telefono: </label>
+                                <input name="TEL_ENCARGADO_D_UP" id='TEL_ENCARGADO_D_UP' type='text' placeholder="Telefono Encargado" class="form-control input"/>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label for="COR_ENCARGADO_D_UP" class="control-label">Correo: </label>
+                                <input name="COR_ENCARGADO_D_UP" id='COR_ENCARGADO_D_UP' type='text' placeholder="Correo Encargado" class="form-control input"/>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group col-sm-6">
+                                <label for="TIPO_OPERACION_D_UP" class="control-label">Tipo Operacion </label>
+                                <input name="TIPO_OPERACION_D_UP" id='TIPO_OPERACION_D_UP' type='text' placeholder="Tipo de Operacion" class="form-control input"/>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label for="VALOR_OPERACION_D_UP" class="control-label">Valor Operacion </label>
+                                <input name="VALOR_OPERACION_D_UP" id='VALOR_OPERACION_D_UP' type='text' placeholder="Valor Operacion" class="form-control input"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button id="UpdateEmpresa" type="submit" class="btn btn-default" name="RegistroEmpresa">Actualizar</button>
+                    <button id="btn_emp_close" type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
 <!--Modal Registro Artista -->                     
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="Modal_RegistrarArt" >
     <div class="modal-dialog modal-lg" role="document">
