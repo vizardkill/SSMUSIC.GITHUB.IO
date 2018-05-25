@@ -38,16 +38,6 @@ $(document).ready(function () {
         },
         select: "single",
         columns: [
-            {
-                className: 'details-control',
-                orderable: false,
-                data: null,
-                defaultContent: '',
-                render: function () {
-                    return '<i class="fa fa-plus-square" aria-hidden="true"></i>';
-                },
-                width: '15px'
-            },
             {data: "ID_EMP"},
             {data: "EMP"},
             {data: "ID_ART"},
@@ -57,57 +47,5 @@ $(document).ready(function () {
         order: [[1, 'asc']],
         dom: 'frtlip'
     });
-    $('#table_TOperaciones tbody').on('click', 'td.details-control', function () {
-        var tr = $(this).closest('tr');
-        var tdi = tr.find('i.fa');
-        var row = table.row(tr);
-        if (row.child.isShown()) {
-// This row is already open - close it
-            row.child.hide();
-            tr.removeClass('shown');
-            tdi.first().removeClass('fa-minus-square');
-            tdi.first().addClass('fa-plus-square');
-        } else {
-// Open this row
-            row.child(table_TOperacionesFormat(row.data())).show();
-            tr.addClass('shown');
-            tdi.first().removeClass('fa-plus-square');
-            tdi.first().addClass('fa-minus-square');
-        }
-    });
-    table.on('user-select', function (e, dt, type, cell, originalEvent) {
-        if ($(cell.node()).hasClass('details-control')) {
-            e.preventDefault();
-        }
-    });
 });
-function table_TOperacionesFormat(d) {
-    // `d` is the original data object for the row
-    return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
-            '<tr>' +
-            '<td><b>Fecha de Registro:</b></td>' +
-            '<td>' + '</td>' +
-            '</tr>' +
-            '<tr>' +
-            '<td><b>Nombre del Encargado:</b></td>' +
-            '<td>'  + '</td>' +
-            '</tr>' +
-            '<tr>' +
-            '<td><b>Documento del Encargo:</b></td>' +
-            '<td>'  + '</td>' +
-            '</tr>' +
-            '<tr>' +
-            '<td><b>Telefono del Encargado:</b></td>' +
-            '<td>'  + '</td>' +
-            '</tr>' +
-            '<tr>' +
-            '<td><b>Correo del Encargado:</b></td>' +
-            '<td>' + '</td>' +
-            '</tr>' +
-            '<tr>' +
-            '<td><b>Informacion Adicional:</b></td>' +
-            '<td>Descripcion de la empresa...</td>' +
-            '</tr>' +
-            '</table>';
-}
 

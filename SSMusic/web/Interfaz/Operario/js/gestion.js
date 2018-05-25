@@ -1,5 +1,5 @@
 var xMLHttpRequest = new XMLHttpRequest();
-var id_user = document.getElementById("iduser").innerHTML;
+
 
 
 
@@ -21,8 +21,9 @@ function GuardarEmpresa() {
 function PostGuardarEmpresa() {
     if (xMLHttpRequest.readyState == 4 && xMLHttpRequest.status == 200) {
         var resp = eval('(' + xMLHttpRequest.responseText + ')');
-        console.log(resp);
+        
         if (resp.result === true) {
+            document.getElementById("mensaje_Remp").innerHTML = "";
             document.getElementById("mensaje_Remp").innerHTML = "Almacenado con Exito";
             document.getElementById("NIT_EMPRESA_D").value = "";
             document.getElementById("NOM_EMPRESA_D").value = "";
@@ -38,7 +39,7 @@ function PostGuardarEmpresa() {
 }
 
 function cargarSelectEmpresa(respuesta) {
-
+document.getElementById("select_empresas").length=1;
     var select = document.getElementById("select_empresas");
     for (var i = 0; i < respuesta.length; i++) {
         var obj = respuesta[i];
@@ -48,17 +49,26 @@ function cargarSelectEmpresa(respuesta) {
         select.appendChild(option);
         option.appendChild(contenido);
     }
-
 }
 
-function validarInput() {
-    var padreId = document.getElementById("div_registro_empresa");
+function validarEmpresa(){
+   var error = document.getElementById("mensaje_Remp");
+   var resultado = validarInput("Modal_RegistrarEmp",error);
+   if(!resultado){
+       GuardarEmpresa();
+   }
+};
+
+function validarInput(pad, lbl_error) {
+    document.getElementById("mensaje_Remp").innerHTML = "";
+    console.log(pad);
     var valido = false;
     var mensaje = "";
     try {
         expr_email = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 
-        var padre = document.getElementById(padreId);
+        var padre = document.getElementById(pad);
+        console.log(padre);
         var inputs = padre.getElementsByTagName("input");
         var selects = padre.getElementsByTagName("select");
         if (inputs != undefined && inputs.length > 0) {
@@ -113,6 +123,7 @@ function validarInput() {
             }
         }
         if (valido) {
+             document.getElementById("mensaje_Remp").innerHTML = mensaje;
             console.log(mensaje);
         }
         return valido;
@@ -148,7 +159,7 @@ function GuardarArtista() {
 function PostGuardarArtista() {
     if (xMLHttpRequest.readyState == 4 && xMLHttpRequest.status == 200) {
         var resp = eval('(' + xMLHttpRequest.responseText + ')');
-        console.log(resp);
+        
         if (resp.result === true) {
             document.getElementById("select_empresas").value = "";
             document.getElementById("mensaje_Rart").innerHTML = "Almacenado con Exito";
@@ -161,4 +172,163 @@ function PostGuardarArtista() {
     }
 }
 
+function ListarEmpresas() {
+    xMLHttpRequest.open("Post", "../../Registros?peticion=listarEmpresa", true);
+    xMLHttpRequest.onreadystatechange = PostListarEmpresa;
+    xMLHttpRequest.send(null);
+
+}
+
+function PostListarEmpresa() {
+    if (xMLHttpRequest.readyState == 4 && xMLHttpRequest.status == 200) {
+        var resp = eval('(' + xMLHttpRequest.responseText + ')');
+        cargarSelectEmpresa(resp);
+    }
+}
+
+
+function ListarArtista(id) {
+    
+    
+    xMLHttpRequest.open("Post", "../../Registros?ID_EMPRESA_D="+id+"&peticion=listarArt", true);
+    xMLHttpRequest.onreadystatechange = PostListarArtista;
+    xMLHttpRequest.send(null);
+
+}
+
+function PostListarArtista() {
+    if (xMLHttpRequest.readyState == 4 && xMLHttpRequest.status == 200) {
+        var resp = eval('(' + xMLHttpRequest.responseText + ')');
+        
+        var select = document.getElementById("select_artista_venta");
+        cargarSelectArtistaVenta(resp,select);
+        
+    }
+}
+
+function ListarArtistaPorEmpresa() {
+    xMLHttpRequest.open("Post", "../../Registros?peticion=listarEmpresa", true);
+    xMLHttpRequest.onreadystatechange = PostListarArtistaPorEmpresa;
+    xMLHttpRequest.send(null);
+
+}
+
+function PostListarArtistaPorEmpresa() {
+    if (xMLHttpRequest.readyState == 4 && xMLHttpRequest.status == 200) {
+        var resp = eval('(' + xMLHttpRequest.responseText + ')');
+        
+        var select = document.getElementById("select_empresas_venta");
+        cargarSelectEmpresaVenta(resp,select);
+    }
+}
+
+function cargarSelectEmpresaVenta(respuesta, select) {
+
+    document.getElementById("select_empresas_venta").length=1;
+    for (var i = 0; i < respuesta.length; i++) {
+        var obj = respuesta[i];
+        var option = document.createElement("option");
+        option.setAttribute("value", obj.ID_EMPRESA_D);
+        option.setAttribute("valor", obj.VALOR_OPERACION_D);
+        var contenido = document.createTextNode(obj.NOM_EMPRESA_D);
+        select.appendChild(option);
+        option.appendChild(contenido);
+    }
+
+}
+function cargarSelectArtistaVenta(respuesta, select) {
+
+    document.getElementById("select_artista_venta").length=1;
+    for (var i = 0; i < respuesta.length; i++) {
+        var obj = respuesta[i];
+        var option = document.createElement("option");
+        option.setAttribute("value", obj.ID_ARTISTA);
+        var contenido = document.createTextNode(obj.NOM_ARTISTA);
+        select.appendChild(option);
+        option.appendChild(contenido);
+    }
+
+}
+
+function cargarSelectArtistaPorEmpresa(respuesta) {
+    ListarArtista(respuesta.value);
+ }
+
+function operacionventa(){
+    var select = document.getElementById("select_empresas_venta");
+    var selectedOption = select.options[select.selectedIndex];
+    
+    
+    var valor_venta = selectedOption.getAttribute("valor");
+    var cantidad = document.getElementById("CANTIDAD_OPERACIONES").value;
+    var total = valor_venta * cantidad;
+    document.getElementById("VALOR_VENTA").value=total;
+    
+}
+
+function generarInformeRangoFecha() {
+    var date_start = document.getElementById("datepicker_from").value;
+    console.log(date_start);
+    var date_end = document.getElementById("datepicker_to").value;
+    console.log(date_end);
+    xMLHttpRequest.open("Get", "../../Datos?date_start="+date_start+"&date_end="+date_end+"&peticion=informeArtistasPorFecha", true);
+    xMLHttpRequest.onreadystatechange = PostgenerarInformeRangoFecha;
+    xMLHttpRequest.send(null);
+
+}
+
+function PostgenerarInformeRangoFecha() {
+    if (xMLHttpRequest.readyState == 4 && xMLHttpRequest.status == 200) {
+        var resp = eval('(' + xMLHttpRequest.responseText + ')');
+        console.log(resp);
+    }
+}
+
+function validatorRegalias(){
+    document.getElementById("Error_Regala").innerHTML = "";
+    var date_inicio = document.getElementById("from").value;
+    var date_final = document.getElementById("to").value;
+    
+    if(date_inicio === "" || date_final === ""){
+        document.getElementById("Error_Regala").innerHTML = "Porfavor diligencie todos los campos.";
+        myVar = setTimeout(clean, 4000);
+    }else{
+        generarReg();
+    }
+        
+}
+function generarReg() {
+    
+    var date_inicio = document.getElementById("from").value;
+    var date_final = document.getElementById("to").value;
+    xMLHttpRequest.open("Post", "../../Registros?datepicker_from="+date_inicio+"&datepicker_to="+date_final+"&peticion=generar", true);
+    xMLHttpRequest.onreadystatechange = PostgenerarRegalias;
+    xMLHttpRequest.send(null);
+
+}
+
+function PostgenerarRegalias() {
+    if (xMLHttpRequest.readyState == 4 && xMLHttpRequest.status == 200) {
+        var resp = eval('(' + xMLHttpRequest.responseText + ')');
+        console.log(resp);
+        if(resp.result){
+            
+             document.getElementById("Error_Regala").innerHTML = "Recompensas generadas correctamente";
+             
+             myVar = setTimeout(clean, 3000);
+             
+        }else{
+            document.getElementById("Error_Regala").innerHTML = "Ups ocurrio un problema";
+            myVar = setTimeout(clean, 3000);
+        }
+        
+        
+    }
+}
+
+function clean(){
+    document.getElementById("Error_Regala").innerHTML="";
+    document.getElementById("from").value="";
+    document.getElementById("to").value="";
+}
 

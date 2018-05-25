@@ -2,6 +2,7 @@
     <table id="table_VentasTxEmpresa" class="table table-striped table-advance table-hover">
         <thead>
             <tr>                                            
+                <th></th>
                 <th>Empresa</th>
                 <th>Cantidad</th>
                 <th>Total Acumulado</th>
@@ -9,6 +10,7 @@
         </thead>
         <tfoot>
             <tr>
+                <th></th>
                 <th>Empresa</th>
                 <th>Cantidad</th>
                 <th>Total Acumulado</th>

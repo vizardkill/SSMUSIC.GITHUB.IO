@@ -32,80 +32,132 @@ public class Json_Datos {
     public Json_Datos() {
     }
 
-    public String jsonEmpresas() {
+    public String jsonEmpresas(String perfil) {
         controller_emp empresas = new controller_emp();
         List<Empresa> listEmp = empresas.getEmpresas();
         com.google.gson.JsonObject json = new JsonObject();
 
         JsonArray array = new JsonArray();
-        for (Empresa x : listEmp) {
-            JsonObject item = new JsonObject();
-            //Datos de la Tabla
-            item.addProperty("Id", x.getId_emp());
-            item.addProperty("NIT_Empresa", x.getNIT_emp());
-            item.addProperty("Nom_Empresa", x.getNom_emp());
-            item.addProperty("Tipo_operacion", x.getTipo_operacion());
-            item.addProperty("Valor_operacion", x.getValor_operacion());
-            item.addProperty("acciones", ""
-                    + "<div class='btn-group'>"
-                    + "<button type='button' name='btn_edit' id='" + "btn_edit" + "' style='width:40px; height:34px' title='Modificar Registro' class='btn btn-xs btn-primary btn_edit'> <i class='icon_pencil-edit'></i></button> "
-                    + "<button type='button' id='" + "btn_delete" + "' style='width:40px; height:34px' title='Eliminar Registro' class='btn btn-xs btn-danger btn_delete' name='btn_delete'><i class='icon_trash'></i></button>"
-                    + "</div>");
-            //Datos adicionales
-            item.addProperty("DOC_ENCARGADO_D", x.getDoc_encargado());
-            item.addProperty("NOM_ENCARGADO_D", x.getNom_encargado());
-            item.addProperty("TEL_ENCARGADO_D", x.getTel_encargado());
-            item.addProperty("COR_ENCARGADO_D", x.getCor_encargado());
-            item.addProperty("FECHA_REGISTRO_D", x.getFecha_registro());
-            array.add(item);
+        if (perfil.equals("Admin")) {
+            for (Empresa x : listEmp) {
+                JsonObject item = new JsonObject();
+                //Datos de la Tabla
+                item.addProperty("Id", x.getId_emp());
+                item.addProperty("NIT_Empresa", x.getNIT_emp());
+                item.addProperty("Nom_Empresa", x.getNom_emp());
+                item.addProperty("Tipo_operacion", x.getTipo_operacion());
+                item.addProperty("Valor_operacion", x.getValor_operacion());
+                item.addProperty("acciones", ""
+                        + "<div class='btn-group'>"
+                        + "<button type='button' name='btn_edit' id='" + "btn_edit" + "' style='width:40px; height:34px' title='Modificar Registro' class='btn btn-xs btn-primary btn_edit'> <i class='icon_pencil-edit'></i></button> "
+                        + "<button type='button' id='" + "btn_delete" + "' style='width:40px; height:34px' title='Eliminar Registro' class='btn btn-xs btn-danger btn_delete' name='btn_delete'><i class='icon_trash'></i></button>"
+                        + "</div>");
+                //Datos adicionales
+                item.addProperty("DOC_ENCARGADO_D", x.getDoc_encargado());
+                item.addProperty("NOM_ENCARGADO_D", x.getNom_encargado());
+                item.addProperty("TEL_ENCARGADO_D", x.getTel_encargado());
+                item.addProperty("COR_ENCARGADO_D", x.getCor_encargado());
+                item.addProperty("FECHA_REGISTRO_D", x.getFecha_registro());
+                array.add(item);
 
+            }
         }
+        if (perfil.equals("Oper")) {
+            for (Empresa x : listEmp) {
+                JsonObject item = new JsonObject();
+                //Datos de la Tabla
+                item.addProperty("Id", x.getId_emp());
+                item.addProperty("NIT_Empresa", x.getNIT_emp());
+                item.addProperty("Nom_Empresa", x.getNom_emp());
+                item.addProperty("Tipo_operacion", x.getTipo_operacion());
+                item.addProperty("Valor_operacion", x.getValor_operacion());
+                item.addProperty("acciones", ""
+                        + "<div class='btn-group'>"
+                        + "Sin permisos"
+                        + "</div>");
+                //Datos adicionales
+                item.addProperty("DOC_ENCARGADO_D", x.getDoc_encargado());
+                item.addProperty("NOM_ENCARGADO_D", x.getNom_encargado());
+                item.addProperty("TEL_ENCARGADO_D", x.getTel_encargado());
+                item.addProperty("COR_ENCARGADO_D", x.getCor_encargado());
+                item.addProperty("FECHA_REGISTRO_D", x.getFecha_registro());
+                array.add(item);
+            }
+        }
+
         json.add("Empresas", array);
         return json.toString();
     }
 
-    public String jsonArtistas() {
+    public String jsonArtistas(String perfil) {
         com.google.gson.JsonObject json = new JsonObject();
         ArrayList<Modelo.Artista> list;
 
         controller_art adao = new controller_art();
 
+        list = adao.getUsers();
         JsonArray array = new JsonArray();
 
-        list = adao.getUsers();
-        for (Modelo.Artista resultado : list) {
+        if (perfil.equals("Admin")) {
+            for (Modelo.Artista resultado : list) {
 
-            JsonObject item = new JsonObject();
+                JsonObject item = new JsonObject();
 
-            item.addProperty("Id", resultado.getId());
-            item.addProperty("img_artista", "<img src='" + resultado.getSrc() + "' class='img-responsive img-circle' style='height:30px; width:30px'>");
-            item.addProperty("FECHA_REGISTRO_ART", resultado.getFecha_registro_art());
-            item.addProperty("acciones", ""
-                    + "<div class='btn-group'>"
-                    + "<button type='button' id='" + resultado.getId() + "' style='width:40px; height:34px' title='Modificar Registro' class='btn btn-xs btn-primary' data-toggle='modal' data-target='#Modal_RegistrarEmp' data-id='1' data-accion='Observacion'> <i class='icon_pencil-edit'></i></button> "
-                    + "<button type='button' id='" + resultado.getId() + "' style='width:40px; height:34px' title='Eliminar Registro' class='btn btn-xs btn-danger btn_delete' name='btn_delete'><i class='icon_trash'></i></button>"
-                    + "</div>");
-            resultado.getSrc();
+                item.addProperty("Id", resultado.getId());
+                item.addProperty("img_artista", "<img src='" + resultado.getSrc() + "' class='img-responsive img-circle' style='height:30px; width:30px'>");
+                item.addProperty("FECHA_REGISTRO_ART", resultado.getFecha_registro_art());
+                item.addProperty("acciones", ""
+                        + "<div class='btn-group'>"
+                        + "<button type='button' id='" + resultado.getId() + "' style='width:40px; height:34px' title='Modificar Registro' class='btn btn-xs btn-primary btn_edit'> <i class='icon_pencil-edit'></i></button> "
+                        + "<button type='button' id='" + resultado.getId() + "' style='width:40px; height:34px' title='Eliminar Registro' class='btn btn-xs btn-danger btn_delete' name='btn_delete'><i class='icon_trash'></i></button>"
+                        + "</div>");
+                resultado.getSrc();
 
-            item.addProperty("NOM_ARTISTA", resultado.getNombre_art());
-            item.addProperty("NOM_REPRESENTANTE", resultado.getNom_representante());
-            item.addProperty("DOC_REPRESENTANTE", resultado.getDoc_representante());
-            item.addProperty("TEL_REPRESENTANTE", resultado.getTel_representante());
-            item.addProperty("COR_REPRESENTANTE", resultado.getCor_representante());
-            item.addProperty("ID_EMPRESA_D_ART", resultado.getId_empresa_d_art());
-            item.addProperty("src", resultado.getSrc());
-            array.add(item);
+                item.addProperty("NOM_ARTISTA", resultado.getNombre_art());
+                item.addProperty("NOM_REPRESENTANTE", resultado.getNom_representante());
+                item.addProperty("DOC_REPRESENTANTE", resultado.getDoc_representante());
+                item.addProperty("TEL_REPRESENTANTE", resultado.getTel_representante());
+                item.addProperty("COR_REPRESENTANTE", resultado.getCor_representante());
+                item.addProperty("ID_EMPRESA_D_ART", resultado.getId_empresa_d_art());
+                item.addProperty("src", resultado.getSrc());
+                array.add(item);
+            }
         }
+        if (perfil.equals("Oper")) {
+            for (Modelo.Artista resultado : list) {
+
+                JsonObject item = new JsonObject();
+
+                item.addProperty("Id", resultado.getId());
+                item.addProperty("img_artista", "<img src='" + resultado.getSrc() + "' class='img-responsive img-circle' style='height:30px; width:30px'>");
+                item.addProperty("FECHA_REGISTRO_ART", resultado.getFecha_registro_art());
+                item.addProperty("acciones", ""
+                        + "<div class='btn-group'>"
+                        + "Sin permisos"
+                        + "</div>");
+                resultado.getSrc();
+
+                item.addProperty("NOM_ARTISTA", resultado.getNombre_art());
+                item.addProperty("NOM_REPRESENTANTE", resultado.getNom_representante());
+                item.addProperty("DOC_REPRESENTANTE", resultado.getDoc_representante());
+                item.addProperty("TEL_REPRESENTANTE", resultado.getTel_representante());
+                item.addProperty("COR_REPRESENTANTE", resultado.getCor_representante());
+                item.addProperty("ID_EMPRESA_D_ART", resultado.getId_empresa_d_art());
+                item.addProperty("src", resultado.getSrc());
+                array.add(item);
+            }
+        }
+
         json.add("Artistas", array);
         return json.toString();
     }
-    
-    public String jsonLog(){
+
+    public String jsonLog() {
         controller_log log = new controller_log();
         com.google.gson.JsonObject json = new JsonObject();
         List<Log> list = log.getUsers();
         JsonArray array = new JsonArray();
-        for(Log auditoria: list){
+        for (Log auditoria : list) {
             JsonObject item = new JsonObject();
             item.addProperty("USERNAME", auditoria.getUsername());
             item.addProperty("TIPO_DE_GESTION", auditoria.getTipo_de_gestion());
@@ -116,37 +168,57 @@ public class Json_Datos {
         return json.toString();
     }
 
-    public String jsonOperarios() {
+    public String jsonOperarios(String perfil) {
         controller_user cuser = new controller_user();
         com.google.gson.JsonObject json = new JsonObject();
         List<Usuario> list = cuser.getUsers();
 
         JsonArray array = new JsonArray();
-        for (Usuario x : list) {
-            JsonObject item = new JsonObject();
-            if (x.getTipo_perfil().equals("Oper")) {
-                item.addProperty("Id", x.getId());
-                item.addProperty("DOCUMENTO", x.getDocumento());
-                item.addProperty("USERNAME", x.getUsername());
-                item.addProperty("TIPO_PERFIL", x.getTipo_perfil());
-                item.addProperty("FECHA_REGISTRO", x.getFecha_registro());
-                item.addProperty("acciones", ""
-                        + "<div class='btn-group'>"
-                        + "<button type='button' id='" + "btn_edit" + "' style='width:40px; height:34px' title='Modificar Registro' class='btn btn-xs btn-primary' data-toggle='modal' data-target='#Modal_RegistrarEmp' data-id='1' data-accion='Observacion'> <i class='icon_pencil-edit'></i></button> "
-                        + "<button type='button' id='" + "btn_delete" + "' style='width:40px; height:34px' title='Eliminar Registro' class='btn btn-xs btn-danger btn_delete' name='btn_delete'><i class='icon_trash'></i></button>"
-                        + "</div>");
-                array.add(item);
-            }
+        if (perfil.equals("Admin")) {
+            for (Usuario x : list) {
+                JsonObject item = new JsonObject();
+                if (x.getTipo_perfil().equals("Oper")) {
+                    item.addProperty("Id", x.getId());
+                    item.addProperty("DOCUMENTO", x.getDocumento());
+                    item.addProperty("USERNAME", x.getUsername());
+                    item.addProperty("TIPO_PERFIL", x.getTipo_perfil());
+                    item.addProperty("FECHA_REGISTRO", x.getFecha_registro());
+                    item.addProperty("acciones", ""
+                            + "<div class='btn-group'>"
+                            + "<button type='button' id='" + "btn_edit" + "' style='width:40px; height:34px' title='Modificar Registro' class='btn btn-xs btn-primary' data-toggle='modal' data-target='#Modal_RegistrarEmp' data-id='1' data-accion='Observacion'> <i class='icon_pencil-edit'></i></button> "
+                            + "<button type='button' id='" + "btn_delete" + "' style='width:40px; height:34px' title='Eliminar Registro' class='btn btn-xs btn-danger btn_delete' name='btn_delete'><i class='icon_trash'></i></button>"
+                            + "</div>");
+                    array.add(item);
+                }
 
+            }
         }
+        if (perfil.equals("Oper")) {
+            for (Usuario x : list) {
+                JsonObject item = new JsonObject();
+                if (x.getTipo_perfil().equals("Oper")) {
+                    item.addProperty("Id", x.getId());
+                    item.addProperty("DOCUMENTO", x.getDocumento());
+                    item.addProperty("USERNAME", x.getUsername());
+                    item.addProperty("TIPO_PERFIL", x.getTipo_perfil());
+                    item.addProperty("FECHA_REGISTRO", x.getFecha_registro());
+                    item.addProperty("acciones", ""
+                            + "<div class='btn-group'>"
+                            + "Sin permisos"
+                            + "</div>");
+                    array.add(item);
+                }
+            }
+        }
+
         json.add("Operarios", array);
         return json.toString();
     }
-    
-    public String jsonInformePorFecha(String tipo, Informes informe){
+
+    public String jsonInformePorFecha(String tipo, Informes informe) {
         controller_infor info = new controller_infor();
         com.google.gson.JsonObject json = new JsonObject();
-        
+
         if (tipo.equals("informeArtistasPorFecha")) {
             List<Informes> list = info.getInformeVentasArtistasRangoFecha(informe);
             JsonArray array = new JsonArray();
@@ -159,7 +231,7 @@ public class Json_Datos {
                 array.add(item);
             }
             json.add("InformePorFecha", array);
-            System.out.println("Json informe: "+json.toString());
+            System.out.println("Json informe: " + json.toString());
             return json.toString();
 
         }
@@ -186,7 +258,7 @@ public class Json_Datos {
             return json.toString();
 
         }
-        
+
         if (tipo.equals("TVentasxEmpresa")) {
             List<Informes> list = info.getInformeVentasTEmpresa();
             JsonArray array = new JsonArray();
@@ -229,7 +301,7 @@ public class Json_Datos {
             json.add("VentasArtistas", array);
             return json.toString();
         }
-        
+
         if (tipo.equals("ArtistasConDisco")) {
             List<Regalias> list = reg.getArtistasConRegalias();
             JsonArray array = new JsonArray();

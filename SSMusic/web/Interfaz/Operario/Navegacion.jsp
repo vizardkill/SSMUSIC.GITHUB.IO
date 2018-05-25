@@ -13,17 +13,17 @@
 <meta name="author" content="GeeksLabs">
 <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
 
-<link href="../../css/bootstrap.min.css" rel="stylesheet">
+
+<link href="../../css/bootstrap.css" rel="stylesheet" type="text/css"/>
 <link href="../../css/bootstrap-theme.css" rel="stylesheet">
-<link href="../../css/elegant-icons-style.css" rel="stylesheet" />
-<link href="../../css/font-awesome.min.css" rel="stylesheet" />
+<link href="../../css/fontawesome-all.css" rel="stylesheet" type="text/css"/>
+<link href="../../css/elegant-icons-style.css" rel="stylesheet" type="text/css"/>
 <link href="../../css/interfaz.css" rel="stylesheet">
 <link href="../../css/style-responsive.css" rel="stylesheet" />
 <link href="../../css/modal.css" rel="stylesheet" type="text/css"/>
 <link href="../../css/main.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Lato:400,900" rel="stylesheet">
-<link href="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.16/af-2.2.2/b-1.5.1/b-colvis-1.5.1/b-flash-1.5.1/b-html5-1.5.1/b-print-1.5.1/cr-1.4.1/fc-3.2.4/fh-3.1.3/kt-2.3.2/r-2.2.1/rg-1.0.2/sc-1.4.4/datatables.min.css" rel="stylesheet" type="text/css" />
-
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css"/>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 
 <header class="header dark-bg">
@@ -42,22 +42,17 @@
                 <a data-toggle="dropdown" class="dropdown-toggle" href="">
                     <span class="profile-ava">
                         <img alt="" src="../../img/avatar1_small.jpg">
-                        <p id="iduser">${sessionScope['ID_USUARIO']}</p>
-                        <script>document.getElementById("iduser").style="display:none";</script>
+                        <span class="username" id="id_usuario">${sessionScope['USERNAME']}</span>
                     </span>
-                    <span class="username">${sessionScope['sessionNombre']}</span>
-                    <% String usuario = String.valueOf(request.getSession().getAttribute("sessionNombre"));%>
                     <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu extended logout">
                     <div class="log-arrow-up"></div>
                     <li class="eborder-top">
-                        <a href="Perfil_op.jsp"><i class="icon_profile"></i> Mi perfil</a>
+                        <a href="Perfil.jsp"><i class="icon_profile"></i> Mi perfil</a>
                     </li>
-                    <li>
-                        <form action="../../Logout">
-                            <a style="font-size: large" href="../../Ingreso_Registro/Acceso.jsp" ><i class="icon_key_alt"></i> Salir</a>
-                        </form>
+                    <li class="eborder-top">
+                        <a href="../../Ingreso_Registro/Acceso.jsp" ><i class="icon_key_alt"></i> Salir</a>
                     </li>
                 </ul>
             </li>
@@ -65,7 +60,7 @@
         </ul>
         <!-- notificatoin dropdown end-->
     </div>
-                   
+
 </header>      
 <!--sidebar start-->
 <aside>
@@ -73,22 +68,11 @@
         <!-- sidebar menu start-->
         <ul class="sidebar-menu">                
             <li class="active">
-                <a class="" href="Inicio_op.jsp">
+                <a class="" href="Inicio.jsp">
                     <i class="icon_house_alt"></i>
                     <span>Inicio</span>
                 </a>
-            </li>
-            <li class="sub-menu">
-                <a href="javascript:;" class="">
-                    <i class="icon_document_alt"></i>
-                    <span>Contacto</span>
-                    <span class="menu-arrow arrow_carrot-right"></span>
-                </a>
-                <ul class="sub">
-                    <li><a class="" href="">Enviar Correo</a></li>                          
-                    <li><a class="" href="">Reportar Problemas</a></li>
-                </ul>
-            </li>                       
+            </li>                     
             <li class="sub-menu">
                 <a href="javascript:;" class="">
                     <i class="icon_table"></i>
@@ -96,23 +80,32 @@
                     <span class="menu-arrow arrow_carrot-right"></span>
                 </a>
                 <ul class="sub">   
-                    <li><a class="" href="Gestion_op.jsp">Gestión</a></li>
-                    <li><a class="" href="Empresas_op.jsp">Información Empresas</a></li>
-                    <li><a onclick="" class="" href="Artistas_op.jsp">Información Artistas</a></li>
+                    <li><a class="" href="Empresas.jsp">Información Empresas</a></li>
+                    <li><a onclick="" class="" href="Artistas.jsp">Información Artistas</a></li>
+                    <li><a onclick="" class="" href="Operarios.jsp">Información Operarios</a></li>
                 </ul>
             </li>
+            <li class="sub-menu">
+                <a href="javascript:;" class="">
+                    <i class="icon_calendar"></i>
+                    <span>Informes</span>
+                    <span class="menu-arrow arrow_carrot-right"></span>
+                </a>
+                <ul class="sub">
+                    <li><a class="" href="Informe_VentasArtista.jsp">Ganancias Artistas</a></li>
+                    <li><a class="" href="Informe_GananciasEmpresa.jsp">Ganancias Empresas</a></li>
+                </ul>
+            </li>
+
         </ul>
         <!-- sidebar menu end-->
     </div>
-     
+
 </aside>
 
 <!--sidebar end-->
 <script src="https://code.jquery.com/jquery-3.3.1.js" type="text/javascript" ></script>
-<script src="../../js/jquery-1.8.3.min.js" type="text/javascript"></script>
-<script src="../../js/jquery-ui-1.10.4.min.js" type="text/javascript" ></script>
-<script src="../../js/jquery-ui-1.9.2.custom.min.js" type="text/javascript" ></script>
-<script src="../../js/bootstrap.min.js" type="text/javascript" ></script>
+<script src="../../js/bootstrap.js" type="text/javascript"></script>
 <script src="../../js/jquery.scrollTo.min.js" type="text/javascript" ></script>
 <script src="../../js/jquery.nicescroll.js" type="text/javascript"></script>
 <script src="../../js/jquery.customSelect.min.js" type="text/javascript" ></script>
@@ -120,3 +113,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js" type="text/javascript"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js" type="text/javascript" ></script>
 <script src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.16/af-2.2.2/b-1.5.1/b-colvis-1.5.1/b-flash-1.5.1/b-html5-1.5.1/b-print-1.5.1/cr-1.4.1/fc-3.2.4/fh-3.1.3/kt-2.3.2/r-2.2.1/rg-1.0.2/sc-1.4.4/datatables.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/js/bootstrapValidator.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://momentjs.com/downloads/moment.js"></script>

@@ -46,6 +46,7 @@
                                     <table id="table_VentasArtistas" class="table table-striped table-advance table-hover">
                                         <thead>
                                             <tr>                                            
+                                                <th></th>
                                                 <th>Artista</th>
                                                 <th>Empresa</th>
                                                 <th>Total de Venta</th>
@@ -54,6 +55,7 @@
                                         </thead>
                                         <tfoot>
                                             <tr>
+                                                <th></th>
                                                 <th>Artista</th>
                                                 <th>Empresa</th>
                                                 <th>Total de Venta</th>

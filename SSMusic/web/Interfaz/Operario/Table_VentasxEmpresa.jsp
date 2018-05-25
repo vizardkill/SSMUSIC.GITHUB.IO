@@ -2,6 +2,7 @@
     <table id="table_VentasxEmpresa" class="table table-striped table-advance table-hover">
         <thead>
             <tr>                                            
+                <th></th>
                 <th>Empresa</th>
                 <th>Total Ganado</th>
                 <th>Fecha</th>
@@ -9,6 +10,7 @@
         </thead>
         <tfoot>
             <tr>
+                <th></th>
                 <th>Empresa</th>
                 <th>Total Ganado</th>
                 <th>Fecha</th>

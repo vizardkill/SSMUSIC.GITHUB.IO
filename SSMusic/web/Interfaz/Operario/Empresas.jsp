@@ -16,10 +16,10 @@
         <title>S&SMusic - Empresas</title>
     </head>
     <body>
-        <%@include file="Navegacion_op.jsp" %>
+        <%@include file="Navegacion.jsp" %>
         <!-- container section start -->
         
-            <%@include file="Modal_op.jsp" %>
+            <%@include file="Modal.jsp" %>
             <!--main content start-->   
             <section id="main-content">
                 <section class="wrapper">
@@ -35,8 +35,9 @@
                     <div class="row">                    
                         <div class="col-lg-12">
                             <section class="panel">
-                                <form action="" method="post" id="data">
-                                                          
+                                    <header class="panel-heading">
+                                        <button type="button" class="btn btn-xs btn-success BTN_Accion" role="button" data-toggle="modal" data-target="#Modal_RegistrarEmp" data-id="1" data-accion="Registrar Empresa">Registrar Empresa</button>
+                                    </header>                      
                                     <div id="table-responsive">
                                         <table id="table_Empresas" class="table table-striped table-advance table-hover" >
                                             <thead>
@@ -63,7 +64,6 @@
                                             </tbody>
                                         </table>
                                     </div>
-                                </form>
                             </section>
                         </div>
                     </div>
@@ -77,5 +77,6 @@
                 </div>
             </div>
             <script src="../../js/DataTables/Empresas.js" type="text/javascript"></script>
+            <script src="../../js/Validator/Empresa.js" type="text/javascript"></script>
     </body>
 </html>

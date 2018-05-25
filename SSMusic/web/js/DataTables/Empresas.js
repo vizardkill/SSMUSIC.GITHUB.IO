@@ -113,14 +113,14 @@ $(document).ready(function () {
         document.getElementById("VALOR_OPERACION_D_UP").value = data.Valor_operacion;
         $("#Modal_updateEmp").modal('show');
         $("#Up_Empresa").submit(function (e) {
-           
-        var nombre = document.getElementById("NOM_EMPRESA_D_UP").value;
-        var nom_enc = document.getElementById("NOM_ENCARGADO_D_UP").value;
-        var doc_enc = document.getElementById("DOC_ENCARGADO_D_UP").value;
-        var tel_enc = document.getElementById("TEL_ENCARGADO_D_UP").value;
-        var correo = document.getElementById("COR_ENCARGADO_D_UP").value;
-        var t_operacion =document.getElementById("TIPO_OPERACION_D_UP").value;
-         var valor_op =document.getElementById("VALOR_OPERACION_D_UP").value;
+
+            var nombre = document.getElementById("NOM_EMPRESA_D_UP").value;
+            var nom_enc = document.getElementById("NOM_ENCARGADO_D_UP").value;
+            var doc_enc = document.getElementById("DOC_ENCARGADO_D_UP").value;
+            var tel_enc = document.getElementById("TEL_ENCARGADO_D_UP").value;
+            var correo = document.getElementById("COR_ENCARGADO_D_UP").value;
+            var t_operacion = document.getElementById("TIPO_OPERACION_D_UP").value;
+            var valor_op = document.getElementById("VALOR_OPERACION_D_UP").value;
             e.preventDefault();
             $.post("../../Registros?peticion=upd_Empresa",
                     {
@@ -135,11 +135,16 @@ $(document).ready(function () {
                         Valor_operacion: valor_op
 
                     }, function (result) {
-                if (result) {
-                    $('#table_Empresas').DataTable().ajax.reload();
-                    alert("La empresa fue modificada con exito!");
-                } else {
-                    alert("No se pudieron efectuar los cambios");
+
+                if (result.result === true) {
+
+                    if (result) {
+
+                        $('#table_Empresas').DataTable().ajax.reload();
+                        alert("La empresa fue modificada con exito!");
+                    } else {
+                        alert("No se pudieron efectuar los cambios");
+                    }
                 }
             }, 'json');
         });

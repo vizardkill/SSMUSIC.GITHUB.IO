@@ -153,9 +153,7 @@ public class DAO_Empresa implements IEmpresa_DAO {
                 ps.setString(7, emp.getTipo_operacion());
                 ps.setDouble(8, emp.getValor_operacion());
                 ps.setInt(9, emp.getId_emp()); 
-
                 ps.executeUpdate();
-                ps.close();
             }
             con.close();
 

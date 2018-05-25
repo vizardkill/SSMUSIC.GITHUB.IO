@@ -80,7 +80,7 @@
                     <span class="menu-arrow arrow_carrot-right"></span>
                 </a>
                 <ul class="sub">   
-                    <li><a class="" href="Gestion.jsp">Gestión</a></li>
+                    <li><a class="" href="Gestion.jsp">Logs de Auditoria</a></li>
                     <li><a class="" href="Empresas.jsp">Información Empresas</a></li>
                     <li><a onclick="" class="" href="Artistas.jsp">Información Artistas</a></li>
                     <li><a onclick="" class="" href="Operarios.jsp">Información Operarios</a></li>

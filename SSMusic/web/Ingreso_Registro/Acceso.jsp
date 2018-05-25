@@ -104,7 +104,7 @@
                                 location.href = "/SSMusic/Interfaz/Admin/Inicio.jsp";
 
                             } else if (resp.respuesta[0].TIPO_PERFIL === "Oper") {
-                                location.href = "/SSMusic/Interfaz/Operario/Inicio_op.jsp";
+                                location.href = "/SSMusic/Interfaz/Operario/Inicio.jsp";
 
                             }
                         } else {

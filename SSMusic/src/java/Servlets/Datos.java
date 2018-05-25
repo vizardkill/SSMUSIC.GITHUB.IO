@@ -21,6 +21,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -67,16 +68,21 @@ public class Datos extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("application/json;charset=UTF-8");
+        
         String peticion = request.getParameter("peticion");
+        
+        HttpSession session = request.getSession(true);
+        
         Json_Datos data = new Json_Datos();
+        String perfil = session.getAttribute("TIPO_PERFIL").toString();
         if (peticion.equals("data_art")) {
-            response.getWriter().write(data.jsonArtistas());
+            response.getWriter().write(data.jsonArtistas(perfil));
         }
         if (peticion.equals("data_emp")) {
-            response.getWriter().write(data.jsonEmpresas());
+            response.getWriter().write(data.jsonEmpresas(perfil));
         }
         if (peticion.equals("data_ope")) {
-            response.getWriter().write(data.jsonOperarios());
+            response.getWriter().write(data.jsonOperarios(perfil));
         }
         if (peticion.equals("data_Informe")) {
             String tipo = request.getParameter("tipo");

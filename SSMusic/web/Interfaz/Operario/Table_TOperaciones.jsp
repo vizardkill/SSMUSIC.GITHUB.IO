@@ -2,6 +2,7 @@
     <table id="table_TOperaciones" class="table table-striped table-advance table-hover">
         <thead>
             <tr>                                            
+                <th></th>
                 <th>ID Empresa</th>
                 <th>Empresa</th>
                 <th>ID Artista</th>
@@ -11,6 +12,7 @@
         </thead>
         <tfoot>
             <tr>
+                <th></th>
                 <th>ID Empresa</th>
                 <th>Empresa</th>
                 <th>ID Artista</th>
