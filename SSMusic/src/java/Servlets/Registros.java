@@ -125,7 +125,6 @@ public class Registros extends HttpServlet {
             response.getWriter().write(generarRegalias(request, response));
         }
         if (peticion.equals("upd_Empresa")) {
-            response.setContentType("text/html");
             response.getWriter().write(updateEmpresa(request, response));
         }
         
@@ -229,14 +228,16 @@ public class Registros extends HttpServlet {
             Log log = new Log();
             Empresa emp = new Empresa();
             emp.setId_emp(Integer.parseInt(request.getParameter("Id")));
-            emp.setNIT_emp(request.getParameter("NIT_EMPRESA_D"));
-            emp.setNom_emp(request.getParameter("NOM_EMPRESA_D"));
+            emp.setNIT_emp(request.getParameter("NIT_Empresa"));
+            emp.setNom_emp(request.getParameter("Nom_Empresa"));
             emp.setNom_encargado(request.getParameter("NOM_ENCARGADO_D"));
             emp.setDoc_encargado(request.getParameter("DOC_ENCARGADO_D"));
             emp.setTel_encargado(request.getParameter("TEL_ENCARGADO_D"));
             emp.setCor_encargado(request.getParameter("COR_ENCARGADO_D"));
-            emp.setTipo_operacion(request.getParameter("TIPO_OPERACION_D"));
-            emp.setValor_operacion(Double.parseDouble(request.getParameter("VALOR_OPERACION_D")));
+            emp.setTipo_operacion(request.getParameter("Tipo_operacion"));
+            double valor = Double.parseDouble(request.getParameter("Valor_operacion"));
+            System.out.println("llego al servlet ratita");
+            emp.setValor_operacion(valor);
             
 
             //Datos log

@@ -26,6 +26,7 @@ public class controller_emp {
     }
 
     public boolean updateEmpresa(Empresa emp) {
+        System.out.println("llego al controlador ");
         IEmpresa_DAO edao = new DAO_Empresa();
         boolean result = edao.updateEmpresa(emp);
         return result;

@@ -129,6 +129,7 @@ public class DAO_Empresa implements IEmpresa_DAO {
 
     @Override
     public boolean updateEmpresa(Empresa emp) {
+        System.out.println("llego al dao");
         Connection con;
         String sql = "UPDATE EMPRESA_DIFUSORA SET "
                 + "NIT_EMPRESA_D = ?, "
@@ -162,7 +163,6 @@ public class DAO_Empresa implements IEmpresa_DAO {
             System.out.println("Error: Clase DAO_Empresa, método registrar" + ex);
             return false;
         }
-
         return true;
     }
 }

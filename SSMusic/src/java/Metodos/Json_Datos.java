@@ -48,7 +48,7 @@ public class Json_Datos {
             item.addProperty("Valor_operacion", x.getValor_operacion());
             item.addProperty("acciones", ""
                     + "<div class='btn-group'>"
-                    + "<button type='button' id='" + "btn_edit" + "' style='width:40px; height:34px' title='Modificar Registro' class='btn btn-xs btn-primary' data-toggle='modal' data-target='#Modal_RegistrarEmp' data-id='1' data-accion='Observacion'> <i class='icon_pencil-edit'></i></button> "
+                    + "<button type='button' name='btn_edit' id='" + "btn_edit" + "' style='width:40px; height:34px' title='Modificar Registro' class='btn btn-xs btn-primary btn_edit'> <i class='icon_pencil-edit'></i></button> "
                     + "<button type='button' id='" + "btn_delete" + "' style='width:40px; height:34px' title='Eliminar Registro' class='btn btn-xs btn-danger btn_delete' name='btn_delete'><i class='icon_trash'></i></button>"
                     + "</div>");
             //Datos adicionales

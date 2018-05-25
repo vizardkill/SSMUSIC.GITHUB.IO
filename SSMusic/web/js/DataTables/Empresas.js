@@ -59,6 +59,7 @@ $(document).ready(function () {
         order: [[1, 'asc']],
         dom: 'frtlip'
     });
+
     $('#table_Empresas tbody').on('click', 'td.details-control', function () {
         var tr = $(this).closest('tr');
         var tdi = tr.find('i.fa');
@@ -99,37 +100,55 @@ $(document).ready(function () {
             alert("presiono cancelar");
         }
     });
-    $(document).on('click', '.UpdateEmpresa', function () {
-            
-            var data = table.row($(this).parents('tr')).data();
-            
-            data = data.Id;
-            $.post("../../Registros?peticion=upd_Empresa", {Id: data}, function (result) {
-                if (result.result) {
+    $(document).on('click', '.btn_edit', function () {
+        var data = table.row($(this).parents('tr')).data();
+
+        document.getElementById("NIT_EMPRESA_D_UP").value = data.NIT_Empresa;
+        document.getElementById("NOM_EMPRESA_D_UP").value = data.Nom_Empresa;
+        document.getElementById("NOM_ENCARGADO_D_UP").value = data.NOM_ENCARGADO_D;
+        document.getElementById("DOC_ENCARGADO_D_UP").value = data.DOC_ENCARGADO_D;
+        document.getElementById("TEL_ENCARGADO_D_UP").value = data.TEL_ENCARGADO_D;
+        document.getElementById("COR_ENCARGADO_D_UP").value = data.COR_ENCARGADO_D;
+        document.getElementById("TIPO_OPERACION_D_UP").value = data.Tipo_operacion;
+        document.getElementById("VALOR_OPERACION_D_UP").value = data.Valor_operacion;
+        $("#Modal_updateEmp").modal('show');
+        $("#Up_Empresa").submit(function (e) {
+            e.preventDefault();
+            $.post("../../Registros?peticion=upd_Empresa",
+                    {
+                        Id: data.Id,
+                        NIT_Empresa: data.NIT_Empresa,
+                        Nom_Empresa: data.Nom_Empresa,
+                        NOM_ENCARGADO_D: data.NOM_ENCARGADO_D,
+                        DOC_ENCARGADO_D: data.DOC_ENCARGADO_D,
+                        TEL_ENCARGADO_D: data.TEL_ENCARGADO_D,
+                        COR_ENCARGADO_D: data.COR_ENCARGADO_D,
+                        Tipo_operacion: data.Tipo_operacion,
+                        Valor_operacion: data.Valor_operacion
+
+                    }, function (result) {
+                if (result === true) {
                     $('#table_Empresas').DataTable().ajax.reload();
-                    alert("La empresa fue eliminada con exito!");
+                    alert("La empresa fue modificada con exito!");
                 } else {
-                    alert("No se puede eliminar, la empresa tiene asociado varios artistas");
+                    alert("No se pudieron efectuar los cambios");
                 }
             }, 'json');
-
-        
+        });
     });
 });
 
-
-
-function loadModalUpdate(){
-    var data = table.row($(this).parents('tr')).data();
-            document.getElementById("NIT_EMPRESA_D_UP").value=data.NIT_Empresa;
-            document.getElementById("NOM_EMPRESA_D_UP").value=data.Nom_Empresa;
-            document.getElementById("NOM_ENCARGADO_D_UP").value=data.NOM_ENCARGADO_D;
-            document.getElementById("DOC_ENCARGADO_D_UP").value=data.DOC_ENCARGADO_D;
-            document.getElementById("TEL_ENCARGADO_D_UP").value=data.TEL_ENCARGADO_D;
-            document.getElementById("COR_ENCARGADO_D_UP").value=data.COR_ENCARGADO_D;
-            document.getElementById("TIPO_OPERACION_D_UP").value=data.Tipo_operacion;
-            document.getElementById("VALOR_OPERACION_D_UP").value=data.Valor_operacion;
+function loadModalUpdate(data) {
+    document.getElementById("NIT_EMPRESA_D_UP").value = data.NIT_Empresa;
+    document.getElementById("NOM_EMPRESA_D_UP").value = data.Nom_Empresa;
+    document.getElementById("NOM_ENCARGADO_D_UP").value = data.NOM_ENCARGADO_D;
+    document.getElementById("DOC_ENCARGADO_D_UP").value = data.DOC_ENCARGADO_D;
+    document.getElementById("TEL_ENCARGADO_D_UP").value = data.TEL_ENCARGADO_D;
+    document.getElementById("COR_ENCARGADO_D_UP").value = data.COR_ENCARGADO_D;
+    document.getElementById("TIPO_OPERACION_D_UP").value = data.Tipo_operacion;
+    document.getElementById("VALOR_OPERACION_D_UP").value = data.Valor_operacion;
 }
+
 
 function Empresasformat(d) {
     // `d` is the original data object for the row

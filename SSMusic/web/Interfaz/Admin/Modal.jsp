@@ -90,7 +90,7 @@
 
 
         <div class="modal-content">
-            <form id="Reg_Empresa" class="form form-inline" action="" >
+            <form id="Up_Empresa" class="form form-inline" action="">
 
                 <div class="modal-header">
                     <div class="form_top">
