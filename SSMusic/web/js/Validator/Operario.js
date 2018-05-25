@@ -67,19 +67,23 @@ $(document).ready(function () {
                     }
                 }
             },
-            DOCUMENTO: {
+            APELLIDO2: {
                 validators: {
                     stringLength: {
-                        min: 10,
-                        max: 15,
-                        message: 'El documento debe ser de un minimo de 8 caracteres y maximo 15'
+                        min: 3,
+                        max: 20,
+                        message: 'El apellido debe ser de un minimo de 3 caracteres y maximo 20'
                     },
                     notEmpty: {
-                        message: 'Por favor introduce un numero de documento'
+                        message: 'Por favor introduce un apellido'
+                    },
+                    regexp: {
+                        regexp: /^[a-z\s]+$/i,
+                        message: 'El nombre no puede contener caracteres especiales ni numeros'
                     }
                 }
             },
-            COR_ENCARGADO_D: {
+            CORREO: {
                 validators: {
                     emailAddress: {
                         message: 'Por favor introduce un correo electronico valido'
@@ -87,21 +91,30 @@ $(document).ready(function () {
                     notEmpty: {
                         message: 'Por favor introduce un numero telefonico'
                     }
-                }
+                }       
             },
-            TIPO_OPERACION_D: {
-                validators: {
+            TELEFONO: {
+                 validators: {
+                    stringLength: {
+                        min: 7,
+                        max: 12,
+                        message: 'Por favor introduce un numero telefonico de un minimo de 7 caracteres y maximo 12'
+                    },
                     notEmpty: {
-                        message: 'Por favor introduce un tipo de operacion'
+                        message: 'Por favor introduce un numero telefonico'
                     }
-                }
+                } 
             },
-            VALOR_OPERACION_D: {
-                validators: {
+            DIRECCION:{
+                 validators: {
                     notEmpty: {
-                        message: 'Por favor introduce un monto $'
+                        message: 'Por favor introduce una direccion'
+                    },
+                    stringLength: {
+                        min: 8,
+                        message: 'Por introduce una Direccion de minimo 8 caracteres'
                     }
-                }
+                }           
             }
         }
     })
@@ -125,12 +138,13 @@ $(document).ready(function () {
                 $.post($form.attr('action'), $form.serialize(), function (result) {
                     if (result.result === true) {
                         $('#table_Operarios').DataTable().ajax.reload();
-                        $('#ErrorRegistroOp').text('Operario Registrado con exito');
-                         document.getElementById("Modal_RegistrarOp").reset();
+                        $('#Error_ReOpe').text('Operario Registrado con exito');
+                        document.getElementById("Reg_Operarios").reset();
                     } else {
-                        $('#ErrorRegistroOp').text('Hubo problemas con el Registro');
+                        $('#Error_ReOpe').text('Hubo problemas con el Registro');
                     }
                     setTimeout(function () {
+                        $('#Error_ReOpe').text('');
                         $('#Modal_RegistrarOp').modal('hide');
                     }, 2000);
                 }, 'json');

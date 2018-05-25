@@ -244,7 +244,7 @@
                     </div> 
                 </div>
                 <div class="modal-body" >
-                    <p id="mensaje_Rope" style="color: #ff0000">${sessionScope['ErrorRegistroOp']}</p>
+                    <span id="Error_ReOpe" style="color: #ff0000"></span>
                     <div class="container-fluid">
 
                         <div class="col-md-12">

@@ -213,16 +213,16 @@ public class DAO_Usuario implements IUsuario_DAO {
     public boolean deleteUser(Usuario user) {
         Connection con;
 
-        String sql = "DELETE FROM USUARIO WHERE DOCUMENTO = ?";
+        String sql = "DELETE FROM USUARIO WHERE ID_USUARIO = ?";
         
         try {
             con = DBUtil.getConexion();;
             try (PreparedStatement ps = con.prepareStatement(sql)) {
-                ps.setString(1, user.getDocumento());
+                ps.setInt(1, user.getId());
                 ps.executeUpdate();
             }
         } catch (SQLException e) {
-            System.out.println("Error: Clase ClienteDaoImple, método eliminar");
+            System.out.println("Error: Clase ClienteDaoImple, método eliminar: " + e);
             return false;
         }
         return true;

@@ -72,18 +72,7 @@
                     <i class="icon_house_alt"></i>
                     <span>Inicio</span>
                 </a>
-            </li>
-            <li class="sub-menu">
-                <a href="javascript:;" class="">
-                    <i class="icon_document_alt"></i>
-                    <span>Contacto</span>
-                    <span class="menu-arrow arrow_carrot-right"></span>
-                </a>
-                <ul class="sub">
-                    <li><a class="" href="">Enviar Correo</a></li>                          
-                    <li><a class="" href="">Reportar Problemas</a></li>
-                </ul>
-            </li>                       
+            </li>                     
             <li class="sub-menu">
                 <a href="javascript:;" class="">
                     <i class="icon_table"></i>
@@ -108,7 +97,7 @@
                     <li><a class="" href="Informe_GananciasEmpresa.jsp">Ganancias Empresas</a></li>
                 </ul>
             </li>
-            
+
         </ul>
         <!-- sidebar menu end-->
     </div>

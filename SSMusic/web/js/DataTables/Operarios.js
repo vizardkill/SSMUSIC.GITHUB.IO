@@ -84,11 +84,12 @@ $(document).ready(function () {
             var data = table.row($(this).parents('tr')).data();
             data = data.Id;
             $.post("../../Datos?peticion=EliminarOperario", {Id: data}, function (result) {
-                if (result.result) {
+                if (result) {
                     $('#table_Operarios').DataTable().ajax.reload();
                     alert("El usuario fue eliminado con exito!");
                 } else {
                     alert("El usuario no pudo ser eliminado");
+                    $('#table_Operarios').DataTable().ajax.reload();
                 }
             }, 'json');
 

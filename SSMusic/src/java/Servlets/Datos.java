@@ -7,10 +7,13 @@ package Servlets;
 
 import Controladores.controller_art;
 import Controladores.controller_emp;
+import Controladores.controller_oper;
+import Controladores.controller_user;
 import Metodos.Json_Datos;
 import Modelo.Artista;
 import Modelo.Empresa;
 import Modelo.Informes;
+import Modelo.Usuario;
 import com.google.gson.JsonObject;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -73,14 +76,14 @@ public class Datos extends HttpServlet {
             response.getWriter().write(data.jsonEmpresas());
         }
         if (peticion.equals("data_ope")) {
-             response.getWriter().write(data.jsonOperarios());
+            response.getWriter().write(data.jsonOperarios());
         }
         if (peticion.equals("data_Informe")) {
             String tipo = request.getParameter("tipo");
-            response.getWriter().write(data.jsonInforme(tipo));        
+            response.getWriter().write(data.jsonInforme(tipo));
         }
         if (peticion.equals("data_logs")) {
-            response.getWriter().write(data.jsonLog());    
+            response.getWriter().write(data.jsonLog());
         }
     }
 
@@ -100,7 +103,7 @@ public class Datos extends HttpServlet {
         if (peticion.equals("EliminarEmpresa")) {
             controller_emp cemp = new controller_emp();
             Empresa emp = new Empresa();
-            System.out.println("Id empresa: "+ request.getParameter("Id"));
+            System.out.println("Id empresa: " + request.getParameter("Id"));
             emp.setId_emp(Integer.parseInt(request.getParameter("Id")));
             boolean result = cemp.deleteEmpresa(emp);
 
@@ -116,12 +119,25 @@ public class Datos extends HttpServlet {
             System.out.println(request.getParameter("Id"));
             art.setId(Integer.parseInt(request.getParameter("Id")));
             boolean result = cart.deleteUser(art);
+
+            com.google.gson.JsonObject json = new JsonObject();
+            JsonObject item = new JsonObject();
+            item.addProperty("result", result);
+            json.add("result", item);
+            response.getWriter().write(json.toString());
+        }
+
+        if (peticion.equals("EliminarOperario")) {
+            controller_user coper = new controller_user();
+            Usuario u = new Usuario();
+            u.setId(Integer.parseInt(request.getParameter("Id")));
+            boolean result = coper.deleteUser(u);
             
             com.google.gson.JsonObject json = new JsonObject();
             JsonObject item = new JsonObject();
             item.addProperty("result", result);
             json.add("result", item);
-            response.getWriter().write(json.toString());    
+            response.getWriter().write(json.toString());
         }
 
     }
