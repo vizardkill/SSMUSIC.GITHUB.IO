@@ -26,7 +26,7 @@ public class Calendario {
 
     private String fechaString(Calendar cal) {
         String aux = null;
-        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy h:mm a");
         if (cal != null) {
             aux = sdf.format(cal.getTime());
         }
