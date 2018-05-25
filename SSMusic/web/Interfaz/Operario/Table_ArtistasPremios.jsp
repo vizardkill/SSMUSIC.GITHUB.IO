@@ -2,7 +2,6 @@
     <table id="table_premios" class="table table-striped table-advance table-hover" >
         <thead>
             <tr>                                            
-                <th></th>
                 <th>Id</th>
                 <th>Banda o Artista</th>
                 <th>Tipo de Regalia</th>
@@ -11,7 +10,6 @@
         </thead>
         <tfoot>
             <tr>
-                <th></th>
                 <th>Id</th>
                 <th>Banda o Artista</th>
                 <th>Tipo de Regalia</th>
