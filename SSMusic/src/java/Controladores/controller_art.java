@@ -25,9 +25,10 @@ public class controller_art {
         return result;
     }
 
-    public void updateUser(Artista art) {
+    public boolean updateUser(Artista art) {
         IArtista_DAO adao = new DAO_Artista();
-        adao.updateArtista(art);
+       boolean result = adao.updateArtista(art);
+        return result;
     }
 
     public boolean deleteUser(Artista art) {

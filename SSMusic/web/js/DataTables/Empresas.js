@@ -113,21 +113,29 @@ $(document).ready(function () {
         document.getElementById("VALOR_OPERACION_D_UP").value = data.Valor_operacion;
         $("#Modal_updateEmp").modal('show');
         $("#Up_Empresa").submit(function (e) {
+           
+        var nombre = document.getElementById("NOM_EMPRESA_D_UP").value;
+        var nom_enc = document.getElementById("NOM_ENCARGADO_D_UP").value;
+        var doc_enc = document.getElementById("DOC_ENCARGADO_D_UP").value;
+        var tel_enc = document.getElementById("TEL_ENCARGADO_D_UP").value;
+        var correo = document.getElementById("COR_ENCARGADO_D_UP").value;
+        var t_operacion =document.getElementById("TIPO_OPERACION_D_UP").value;
+         var valor_op =document.getElementById("VALOR_OPERACION_D_UP").value;
             e.preventDefault();
             $.post("../../Registros?peticion=upd_Empresa",
                     {
                         Id: data.Id,
                         NIT_Empresa: data.NIT_Empresa,
-                        Nom_Empresa: data.Nom_Empresa,
-                        NOM_ENCARGADO_D: data.NOM_ENCARGADO_D,
-                        DOC_ENCARGADO_D: data.DOC_ENCARGADO_D,
-                        TEL_ENCARGADO_D: data.TEL_ENCARGADO_D,
-                        COR_ENCARGADO_D: data.COR_ENCARGADO_D,
-                        Tipo_operacion: data.Tipo_operacion,
-                        Valor_operacion: data.Valor_operacion
+                        Nom_Empresa: nombre,
+                        NOM_ENCARGADO_D: nom_enc,
+                        DOC_ENCARGADO_D: doc_enc,
+                        TEL_ENCARGADO_D: tel_enc,
+                        COR_ENCARGADO_D: correo,
+                        Tipo_operacion: t_operacion,
+                        Valor_operacion: valor_op
 
                     }, function (result) {
-                if (result === true) {
+                if (result) {
                     $('#table_Empresas').DataTable().ajax.reload();
                     alert("La empresa fue modificada con exito!");
                 } else {

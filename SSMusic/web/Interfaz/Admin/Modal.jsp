@@ -230,6 +230,73 @@
     </div>
 </div>
 
+<!--Modal Update Artista -->                     
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="Modal_UpdateArt" >
+    <div class="modal-dialog modal-lg" role="document">
+
+
+        <div class="modal-content">
+            <form class="form form-inline" action="" id="Upd_Artistas" enctype="multipart/form-data">
+                <div class="modal-header">
+                    <div class="form_top">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h2>Registro de <span>Artista</span></h2>
+                    </div> 
+                </div>
+
+
+                <div class="modal-body" >
+                    <div class="container-fluid">
+                        <span id="Error_ReArt" name="Error_ReArt" style="color: #ff0000"></span>
+
+                        <div class="col-sm-12">    
+                            <div class="form-group col-md-6">
+                                <label for="ID_ARTISTA_UP" class="control-label">Empresa: </label>
+                                <select id="select_empresas" name="select_empresas" class="form-control input select" >
+                                    <option value=" ">Seleccione una empresa</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-sm-6">  
+                                <label for="NOM_ARTISTA_UP" class="control-label">Nombre Artista: </label>
+                                <input name="NOM_ARTISTA_UP" id='NOM_ARTISTA_UP' type='text' placeholder="Nombre Artista" class="form-control input"/>      
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group col-sm-6">       
+                                <label for="NOM_REPRESENTANTE_UP" class="control-label">Nombre Representante: </label>
+                                <input name="NOM_REPRESENTANTE_UP" id='NOM_REPRESENTANTE_UP' type='text' placeholder="Nombre Representante" class="form-control input"/>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label for="DOC_REPRESENTANTE_UP" class="control-label">Documento Representante: </label>
+                                <input name="DOC_REPRESENTANTE_UP" id='DOC_REPRESENTANTE_UP' type='text' placeholder="Documento Representante" class="form-control input"/>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group col-sm-6">
+                                <label for="TEL_REPRESENTANTE_UP" class="control-label">Telefono Representante: </label>
+                                <input name="TEL_REPRESENTANTE_UP" id='TEL_REPRESENTANTE_UP' type='text' placeholder="Telefono Representante" class="form-control input"/>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label for="COR_REPRESENTANTE_UP" class="control-label">Correo Representante: </label>
+                                <input name="COR_REPRESENTANTE_UP" id='COR_REPRESENTANTE_UP' type='text' placeholder="Correo Representante" class="form-control input"/>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button id="RegistroArtista" type="submit" class="btn btn-default" name="RegistroArtista">Registrar</button>
+                        <button id="btn_art_close" type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    </div>
+                </div>
+            </form>  
+        </div> 
+
+    </div>
+</div>
+
 <!--Modal Registro Operario-->
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="Modal_RegistrarOp" >
     <div class="modal-dialog modal-lg" role="document">

@@ -127,7 +127,9 @@ public class Registros extends HttpServlet {
         if (peticion.equals("upd_Empresa")) {
             response.getWriter().write(updateEmpresa(request, response));
         }
-        
+        if (peticion.equals("upd_Artista")) {
+            response.getWriter().write(UpdateArtista(request, response));
+        }
         
 
     }
@@ -259,6 +261,47 @@ public class Registros extends HttpServlet {
         }
         return item.toString();
     }
+    
+    public String UpdateArtista(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        HttpSession session = request.getSession(true);
+        JsonObject item = new JsonObject();
+        try {
+            Calendario fechaR = new Calendario();
+            String FECHA_REGISTRO = fechaR.Fecha_Registro();
+            Log log = new Log();
+            Artista art = new Artista();
+            art.setId(Integer.parseInt(request.getParameter("Id")));
+            art.setNombre_art(request.getParameter("NOM_ARTISTA"));
+            art.setNom_representante(request.getParameter("NOM_REPRESENTANTE"));
+            art.setDoc_representante(request.getParameter("DOC_REPRESENTANTE"));
+            art.setTel_representante(request.getParameter("TEL_REPRESENTANTE"));
+            art.setCor_representante(request.getParameter("COR_REPRESENTANTE"));
+            
+           
+            
+
+            int id_user = (Integer) session.getAttribute("ID_USUARIO");
+            log.setId_usuario_log(id_user);
+            log.setTipo_de_gestion("Update Artista");
+            log.setFecha_log(FECHA_REGISTRO);
+
+            controller_art adao = new controller_art();
+            boolean result = adao.updateUser(art);
+
+            controller_log logdao = new controller_log();
+            if (result) {
+                logdao.registerLog(log);
+            }
+            item.addProperty("result", result);
+
+        } catch (NumberFormatException e) {
+            System.out.println(e);
+        }
+        return item.toString();
+    }
+    
 
     public String RegistroArtista(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
