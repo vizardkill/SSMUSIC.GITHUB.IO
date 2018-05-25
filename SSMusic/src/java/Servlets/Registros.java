@@ -508,7 +508,7 @@ public class Registros extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         // Create path components to save the file
-        String ruta = "D:\\Documents\\NetBeansProjects\\PPI\\SSMusic\\web\\img\\Icons_art\\";
+        String ruta = "D:\\Documents\\NetBeansProjects\\SSMusic\\web\\img\\Icons_art\\";
         final String path = ruta;
         final Part filePart = request.getPart("Img_art-0");
         String SRC;

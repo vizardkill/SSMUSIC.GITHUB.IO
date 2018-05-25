@@ -129,11 +129,10 @@ $(document).ready(function () {
                     processData: false,
                     type: 'POST',
                     success: function (result) {
-                        var json = $.parseJSON(result);
-                        if (json.result === true) {
-                            $('#table_Artistas').DataTable().ajax.reload();
+                        if (result) {
                             $('#Error_ReArt').text('Artista registrado con Exito');
                             document.getElementById("Reg_Artistas").reset();
+                            $('#table_Artistas').DataTable().ajax.reload();
                         } else {
                             $('#Error_ReArt').text('Hubo problemas con el Registro');
                         }
