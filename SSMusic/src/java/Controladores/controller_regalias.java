@@ -34,6 +34,13 @@ public class controller_regalias {
         List<Regalias> reg = edao.getParametros();
         return reg;
     }
+    
+     public boolean setParametros(Regalias reg) {
+        IRegalias_DAO edao = new DAO_Regalias();
+         boolean result = edao.setParametrosOro(reg);
+         boolean result2 = edao.setParametrosPlatino(reg);
+        return result;
+    }
 
     public boolean getCandidatosRegalias(Regalias reg) {
         Calendario fechaR = new Calendario();

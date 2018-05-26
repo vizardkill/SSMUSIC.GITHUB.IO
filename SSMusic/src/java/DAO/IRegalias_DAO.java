@@ -18,4 +18,7 @@ public interface IRegalias_DAO {
     public ArrayList<Regalias> getCandidatosRegalias(Regalias reg);
     public ArrayList<Regalias> getParametros();
     public ArrayList<Regalias> getArtistasGanadores();
+    
+     public boolean setParametrosOro(Regalias reg);
+      public boolean setParametrosPlatino(Regalias reg);
 }

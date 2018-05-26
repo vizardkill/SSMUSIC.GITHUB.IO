@@ -131,8 +131,48 @@ public class Registros extends HttpServlet {
             response.getWriter().write(UpdateArtista(request, response));
         }
         
+         if (peticion.equals("reg_parametrosReg")) {
+            response.getWriter().write(RegistroTipoRegalia(request, response));
+        }
+        
 
     }
+    
+    public String RegistroTipoRegalia(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        HttpSession session = request.getSession(true);
+        com.google.gson.JsonObject json = new JsonObject();
+        JsonObject item = new JsonObject();
+        try {
+
+            Calendario fechaR = new Calendario();
+            String FECHA_REGISTRO = fechaR.Fecha_Registro();
+
+            Log log = new Log();
+            Regalias reg = new Regalias();
+            reg.setCondicion_oro(Long.parseLong(request.getParameter("Cond_oro")));
+            reg.setCondicion_platino(Long.parseLong(request.getParameter("Cond_platino")));
+            //Datos log
+            int id_user = (Integer) session.getAttribute("ID_USUARIO");
+            log.setId_usuario_log(id_user);
+            log.setTipo_de_gestion("Parametro Premios");
+            log.setFecha_log(FECHA_REGISTRO);
+
+            controller_regalias edao = new controller_regalias();
+            controller_log logdao = new controller_log();
+            boolean result = edao.setParametros(reg);
+            if (result) {
+                logdao.registerLog(log);
+            }
+            item.addProperty("result", result);
+
+        } catch (NumberFormatException e) {
+            System.out.println(e);
+        }
+        return item.toString();
+    }
+    
     
     public String generarRegalias(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

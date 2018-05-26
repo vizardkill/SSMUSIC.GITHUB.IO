@@ -19,12 +19,12 @@ public class Regalias {
     private String fecha_fin;
     private int total_operaciones;
     private String fecha_actual;
-    private int condicion_reg;
+    private long condicion_reg;
     private String nom_condicion;
     private int id_param_oro;
     private int id_param_platino;
-    private int condicion_oro;
-    private int condicion_platino;
+    private long condicion_oro;
+    private long condicion_platino;
     private String nom_art;
 
     public String getNom_art() {
@@ -35,19 +35,19 @@ public class Regalias {
         this.nom_art = nom_art;
     }
 
-    public int getCondicion_oro() {
+    public long getCondicion_oro() {
         return condicion_oro;
     }
 
-    public void setCondicion_oro(int condicion_oro) {
+    public void setCondicion_oro(long condicion_oro) {
         this.condicion_oro = condicion_oro;
     }
 
-    public int getCondicion_platino() {
+    public long getCondicion_platino() {
         return condicion_platino;
     }
 
-    public void setCondicion_platino(int condicion_platino) {
+    public void setCondicion_platino(long condicion_platino) {
         this.condicion_platino = condicion_platino;
     }
     
@@ -71,11 +71,11 @@ public class Regalias {
     
     
     
-    public int getCondicion_reg() {
+    public long getCondicion_reg() {
         return condicion_reg;
     }
 
-    public void setCondicion_reg(int condicion_reg) {
+    public void setCondicion_reg(long condicion_reg) {
         this.condicion_reg = condicion_reg;
     }
 
@@ -153,7 +153,7 @@ public class Regalias {
         this.tipo_reg = tipo_reg;
     }
 
-    public Regalias(int id_reg, int id_art, int id_emp, String tipo_reg, String fecha_ini, String fecha_fin, int total_operaciones, String fecha_actual, int condicion_reg, String nom_condicion, int id_param_oro, int id_param_platino, int condicion_oro, int condicion_platino, String nom_art) {
+    public Regalias(int id_reg, int id_art, int id_emp, String tipo_reg, String fecha_ini, String fecha_fin, int total_operaciones, String fecha_actual, long condicion_reg, String nom_condicion, int id_param_oro, int id_param_platino, long condicion_oro, long condicion_platino, String nom_art) {
         this.id_reg = id_reg;
         this.id_art = id_art;
         this.id_emp = id_emp;

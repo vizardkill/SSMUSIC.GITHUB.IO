@@ -92,7 +92,7 @@ public class DAO_Regalias implements IRegalias_DAO{
 
         String sql = "SELECT  VENTAS.ID_ARTISTA_VE AS ID_ART,\n" +
 "        ARTISTA.ID_EMPRESA_D_ART as ID_EMP,\n" +
-"        SUM(VENTAS.CANTIDAD_OPERACIONES) AS TOTAL_OPERACIONES\n" +
+"        SUM(VENTAS.VALOR_VENTA) AS TOTAL_OPERACIONES\n" +
 "        FROM VENTAS\n" +
 "       INNER JOIN ARTISTA ON VENTAS.ID_ARTISTA_VE = ARTISTA.ID_ARTISTA\n" +
 "WHERE VENTAS.FECHA_VENTA >= ?\n" +
@@ -144,7 +144,7 @@ public class DAO_Regalias implements IRegalias_DAO{
             rs = stm.executeQuery(sql);
             while (rs.next()) {
                 Regalias reg = new Regalias();
-               reg.setCondicion_reg(rs.getInt("CONDICION_REG"));
+               reg.setCondicion_reg(rs.getLong("CONDICION_REG"));
                reg.setNom_condicion(rs.getString("NOM_TREG"));
                reg.setId_reg(rs.getInt("ID_TREG"));
                System.out.println(reg.getNom_condicion());
@@ -158,6 +158,58 @@ public class DAO_Regalias implements IRegalias_DAO{
             System.out.println("Error: Clase DAO_Regalias, método getParametros");
         }
         return listaReg;
+    }
+    
+     @Override
+    public boolean setParametrosOro(Regalias reg) {
+        Connection con;
+        String sql = "UPDATE TIPO_REGALIA SET CONDICION_REG = ? WHERE ID_TREG=?";
+
+        try {
+            con = DBUtil.getConexion();
+            try (PreparedStatement ps = con.prepareStatement(sql)) {
+                
+                
+                ps.setLong(1, reg.getCondicion_oro());
+                ps.setInt(2, 1);
+                
+                ps.executeUpdate();
+                ps.close();
+            }
+            con.close();
+
+        } catch (SQLException ex) {
+            System.out.println("Error: Clase DAO_Regalias, método registrar" + ex);
+            return false;
+        }
+
+        return true;
+    }
+    
+    @Override
+    public boolean setParametrosPlatino(Regalias reg) {
+        Connection con;
+        String sql = "UPDATE TIPO_REGALIA SET CONDICION_REG = ? WHERE ID_TREG=?";
+
+        try {
+            con = DBUtil.getConexion();
+            try (PreparedStatement ps = con.prepareStatement(sql)) {
+                
+                
+                ps.setLong(1, reg.getCondicion_platino());
+                ps.setInt(2, 2);
+                
+                ps.executeUpdate();
+                ps.close();
+            }
+            con.close();
+
+        } catch (SQLException ex) {
+            System.out.println("Error: Clase DAO_Regalias, método registrar" + ex);
+            return false;
+        }
+
+        return true;
     }
     
     
