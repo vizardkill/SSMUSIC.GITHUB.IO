@@ -130,14 +130,12 @@ public class Registros extends HttpServlet {
         if (peticion.equals("upd_Artista")) {
             response.getWriter().write(UpdateArtista(request, response));
         }
-        
+
          if (peticion.equals("reg_parametrosReg")) {
             response.getWriter().write(RegistroTipoRegalia(request, response));
-        }
-        
-
+        }     
     }
-    
+        
     public String RegistroTipoRegalia(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 

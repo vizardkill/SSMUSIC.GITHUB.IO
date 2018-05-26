@@ -24,19 +24,38 @@
                 <section class="wrapper">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h3 class="page-header"><i class="fa fa-laptop"></i> Gestion de la Aplicación</h3>
+                            <h3 class="page-header"><i class="fa fa-laptop"></i>Logs de Auditoria</h3>
                             <ol class="breadcrumb">
                                 <li><i class="fa fa-home"></i><a href="Estudiante.jsp">Inicio</a></li>
-                                <li><i class="fa fa-laptop"></i> Gestión</li>  
-                            </ol>
-                            <button type="button" class="btn btn-xs btn-primary" role="button" data-toggle="modal" data-target="#Modal_Premios" data-id="1" data-accion="Modificar Valor del Premio">Modificar Valor del Premio</button>
-                            <button type="button" class="btn btn-xs btn-primary" onclick="ListarArtistaPorEmpresa();" role="button" data-toggle="modal" data-target="#Modal_Venta" data-id="1" data-accion="Registrar Venta">Registrar Venta</button>
+                                <li><i class="fa fa-laptop"></i> Logs</li>  
+                            </ol>    
                         </div>
                     </div> 
                     <div class="row">                    
                         <div class="col-lg-12">
                             <section class="panel">
-
+                                <div id="table-responsive">
+                                    <table id="table_logs" class="table table-striped table-advance table-hover" >
+                                        <thead>
+                                            <tr>                                            
+                                                <th></th>
+                                                <th>Usuario</th>
+                                                <th>Tipo de Gestion</th>
+                                                <th>Fecha de Gestion</th>
+                                            </tr>
+                                        </thead>
+                                        <tfoot>
+                                            <tr>
+                                                <th></th>
+                                                <th>Usuario</th>
+                                                <th>Tipo de Gestion</th>
+                                                <th>Fecha de Gestion</th>
+                                            </tr>
+                                        </tfoot>
+                                        <tbody id="employee_data" >
+                                        </tbody>
+                                    </table>
+                                </div>
                             </section>
                         </div>
                     </div>

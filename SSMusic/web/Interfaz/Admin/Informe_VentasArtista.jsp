@@ -36,8 +36,7 @@
                         <div class="col-lg-12">
                             <section class="panel">
                                 <header class="panel-heading">
-                                     <button type="button" class="btn btn-xs btn-primary" onclick="ListarArtistaPorEmpresa();" role="button" data-toggle="modal" data-target="#Modal_Venta" data-id="1" data-accion="Registrar Venta">Registrar Venta</button>
-                                </header>
+                               </header>
                                 <br>
                                 <div class="col-md-6"><span><i class="fa fa-calendar-check"></i>Seleccione una Fecha para Buscar:</span></div>
                                 <br>

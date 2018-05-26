@@ -24,7 +24,6 @@
                                 <li><i class="fa fa-home"></i><a href="Estudiante.jsp">Inicio</a></li>
                                 <li><i class="fa fa-laptop"></i> Gestion de Ventas</li>  
                             </ol>    
-                            <button type="button" class="btn btn-xs btn-primary" onclick="ListarArtistaPorEmpresa();" role="button" data-toggle="modal" data-target="#Modal_Venta" data-id="1" data-accion="Registrar Venta">Registrar Venta</button>
                         </div>
                     </div> 
                     <div class="row">                    

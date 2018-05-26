@@ -284,7 +284,7 @@
                             </div>
                         </div>
 
-                        
+
                     </div>
                     <div class="modal-footer">
                         <button id="RegistroArtista" type="submit" class="btn btn-default" name="RegistroArtista">Registrar</button>
@@ -426,6 +426,44 @@
 
     </div>
 </div>
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="Modal_Premios" >
+    <div class="modal-dialog modal-lg" role="document">
+
+
+        <div class="modal-content">
+            <form class="form form-inline" action="../../Registros?peticion=reg_parametrosReg" id="Reg_Operarios" method="POST">
+                <div class="modal-header">
+                    <div class="form_top">
+                        <button id="btn_close_reg" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h2>Modificar Valor de  <span>Recompensas</span></h2>
+                    </div> 
+                </div>
+                <div class="modal-body" >
+                    <label id="Error_Regala" style="color: #ff0000"></label>
+                    <div class="container-fluid">
+                        <div class="date_filter col-sm-12">    
+                            <div class="col-md-6"> 
+                                <span id="date-label-from" class="date-label">Disco de Oro: </span> <input class="form-control input" type="text" id="Cond_oro" name="Cond_oro"/>
+
+                            </div><div class="col-md-6">
+                                <span id="date-label-to" class="date-label"> Fecha Final: </span> <input class="form-control input" type="text" id="Cond_platino" name="Cond_platino"/>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-12">
+
+                        </div>                   
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-xs btn-primary" id="btn" onclick="" >Actualizar Recompensas</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
 
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="Modal_Regalias" >
     <div class="modal-dialog modal-lg" role="document">
@@ -458,7 +496,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-xs btn-primary" id="btn" onclick="validatorRegalias();" >Generar Regalias</button>
+                <button type="button" class="btn btn-xs btn-primary" id="btn" onclick="validatorRegalias();" >Generar Recompensas</button>
             </div>
         </div>
     </div>

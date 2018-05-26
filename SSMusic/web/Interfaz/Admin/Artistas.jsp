@@ -10,7 +10,6 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <script src="js/gestion.js" type="text/javascript"></script>
         <link rel="shortcut icon" href="../../favicon.ico">
 
         <title>S&SMusic - Empresas</title>
@@ -58,14 +57,14 @@
                 </section>
             </section>
             <!--main content end-->
-            </section>
-            <div class="text-right">
-                <div class="credits">    
-                    <a href="http://www.politecnicojic.edu.co/">Politécnico Colombiano Jaime Isaza Cadavid</a> desarrollado por <a href="">Santiago Cardona & Santiago Arbelaez</a>
-                </div>
+        </section>
+        <div class="text-right">
+            <div class="credits">    
+                <a href="http://www.politecnicojic.edu.co/">Politécnico Colombiano Jaime Isaza Cadavid</a> desarrollado por <a href="">Santiago Cardona & Santiago Arbelaez</a>
             </div>
-            <script src="js/Serialize_Tables.js" type="text/javascript"></script>
-            <script src="../../js/Validator/Artista.js" type="text/javascript"></script>
-        
+        </div>
+        <script src="js/Serialize_Tables.js" type="text/javascript"></script>
+        <script src="../../js/Validator/Artista.js" type="text/javascript"></script>
+        <script src="js/gestion.js" type="text/javascript"></script>
     </body>
 </html>

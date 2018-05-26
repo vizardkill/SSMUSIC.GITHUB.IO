@@ -10,7 +10,6 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <script src="js/gestion.js" type="text/javascript"></script>
         <link rel="shortcut icon" href="../../favicon.ico">
 
         <title>S&SMusic - Empresas</title>
@@ -66,6 +65,6 @@
             </div>
             <script src="js/Serialize_Tables.js" type="text/javascript"></script>
             <script src="../../js/Validator/Artista.js" type="text/javascript"></script>
-        
+            <script src="js/gestion.js" type="text/javascript"></script>      
     </body>
 </html>
