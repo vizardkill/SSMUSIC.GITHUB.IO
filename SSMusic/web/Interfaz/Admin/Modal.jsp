@@ -446,7 +446,7 @@
                                 <span id="date-label-from" class="date-label">Disco de Oro: </span> <input class="form-control input" type="text" id="Cond_oro" name="Cond_oro"/>
 
                             </div><div class="col-md-6">
-                                <span id="date-label-to" class="date-label"> Fecha Final: </span> <input class="form-control input" type="text" id="Cond_platino" name="Cond_platino"/>
+                                <span id="date-label-to" class="date-label"> Disco de Platino: </span> <input class="form-control input" type="text" id="Cond_platino" name="Cond_platino"/>
                             </div>
 
                         </div>

@@ -132,7 +132,18 @@ public class Registros extends HttpServlet {
         }
 
          if (peticion.equals("reg_parametrosReg")) {
+            HttpSession session = request.getSession(true);
             response.getWriter().write(RegistroTipoRegalia(request, response));
+             if (true) {
+                 
+             }
+             if (session.getAttribute("TIPO_PERFIL").toString().equals("Admin")) {
+                 response.sendRedirect("Interfaz/Admin/Gestion.jsp");
+             }
+             if (session.getAttribute("TIPO_PERFIL").toString().equals("Oper")) {
+                  response.sendRedirect("Interfaz/Operario/Gestion.jsp");
+             }
+            
         }     
     }
         
@@ -546,7 +557,7 @@ public class Registros extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         // Create path components to save the file
-        String ruta = "D:\\Documents\\NetBeansProjects\\SSMusic\\web\\img\\Icons_art\\";
+        String ruta = "C:\\SSMusic\\web\\img\\Icons_art\\";
         final String path = ruta;
         final Part filePart = request.getPart("Img_art-0");
         String SRC;
